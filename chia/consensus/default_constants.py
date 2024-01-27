@@ -33,14 +33,14 @@ DEFAULT_CONSTANTS = ConsensusConstants(
     # Used as the initial cc rc challenges, as well as first block back pointers, and first SES back pointer
     # We override this value based on the chain being run (testnet0, testnet1, mainnet, etc)
     # Default used for tests is std_hash(b'')
-    GENESIS_CHALLENGE=bytes32.fromhex("e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"),
+    GENESIS_CHALLENGE=bytes32.fromhex("e4f6dc58585cc5eea23b760c9936f501cfb184b25fe225ea845bfb5928e59d8d"),
     # Forks of chia should change this value to provide replay attack protection. This is set to mainnet genesis chall
-    AGG_SIG_ME_ADDITIONAL_DATA=bytes.fromhex("ccd5bb71183532bff220ba46c268991a3ff07eb358e8255a65c30a2dce0e5fbb"),
+    AGG_SIG_ME_ADDITIONAL_DATA=bytes.fromhex("e4f6dc58585cc5eea23b760c9936f501cfb184b25fe225ea845bfb5928e59d8d"),
     GENESIS_PRE_FARM_POOL_PUZZLE_HASH=bytes32.fromhex(
-        "d23da14695a188ae5708dd152263c4db883eb27edeb936178d4d988b8f3ce5fc"
+        "e4f6dc58585cc5eea23b760c9936f501cfb184b25fe225ea845bfb5928e59d8d"
     ),
     GENESIS_PRE_FARM_FARMER_PUZZLE_HASH=bytes32.fromhex(
-        "3d8765d3a597ec1d99663f6c9816d915b9f68613ac94009884c4addaefcce6af"
+        "e4f6dc58585cc5eea23b760c9936f501cfb184b25fe225ea845bfb5928e59d8d"
     ),
     MAX_VDF_WITNESS_SIZE=64,
     # Size of mempool = 10x the size of block
@@ -63,15 +63,15 @@ DEFAULT_CONSTANTS = ConsensusConstants(
     MAX_GENERATOR_REF_LIST_SIZE=uint32(512),  # Number of references allowed in the block generator ref list
     POOL_SUB_SLOT_ITERS=uint64(37600000000),  # iters limit * NUM_SPS
     SOFT_FORK2_HEIGHT=uint32(0),
-    # June 2024
-    HARD_FORK_HEIGHT=uint32(5496000),
-    HARD_FORK_FIX_HEIGHT=uint32(5496000),
+    # at the start, was June 2024
+    HARD_FORK_HEIGHT=uint32(10), #5496000),
+    HARD_FORK_FIX_HEIGHT=uint32(10), #5496000),
     # June 2027
-    PLOT_FILTER_128_HEIGHT=uint32(10542000),
+    PLOT_FILTER_128_HEIGHT=uint32(5542000),
     # June 2030
-    PLOT_FILTER_64_HEIGHT=uint32(15592000),
+    PLOT_FILTER_64_HEIGHT=uint32(10592000),
     # June 2033
-    PLOT_FILTER_32_HEIGHT=uint32(20643000),
+    PLOT_FILTER_32_HEIGHT=uint32(15643000),
 )
 
 
