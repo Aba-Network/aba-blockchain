@@ -413,7 +413,7 @@ async def start_rpc_server(
     """
     try:
         if max_request_body_size is None:
-            max_request_body_size = 1024**2
+            max_request_body_size = 1024**2 # 10*1024**2
 
         prefer_ipv6 = str2bool(str(net_config.get("prefer_ipv6", False)))
 
