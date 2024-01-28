@@ -5,7 +5,7 @@ ping_interval: 120
 self_hostname: &self_hostname "localhost"
 prefer_ipv6: False
 rpc_timeout: 300
-daemon_port: 55400
+daemon_port: 55600
 daemon_max_message_size: 50000000 # maximum size of RPC message in bytes
 daemon_heartbeat: 300 # sets the heartbeat for ping/ping interval and timeouts
 daemon_allow_tls_1_2: False # if True, allow TLS 1.2 for daemon connections
@@ -61,13 +61,13 @@ network_overrides: &network_overrides
   config:
     mainnet:
       address_prefix: "aba"
-      default_full_node_port: 8444
+      default_full_node_port: 8644
     testnet10:
       address_prefix: "taba"
-      default_full_node_port: 58444
+      default_full_node_port: 58644
     testnet11:
       address_prefix: "taba"
-      default_full_node_port: 58444
+      default_full_node_port: 58644
 
 selected_network: &selected_network "mainnet"
 ALERTS_URL: https://download.aba.ooo/notify/mainnet_alert.txt
@@ -133,7 +133,7 @@ seeder:
   # Crawler is its own standalone service within the seeder component
   crawler:
     start_rpc_server: True
-    rpc_port: 8561
+    rpc_port: 8761
     ssl:
       private_crt: "config/ssl/crawler/private_crawler.crt"
       private_key: "config/ssl/crawler/private_crawler.key"
@@ -141,11 +141,11 @@ seeder:
 harvester:
   farmer_peers:
     - host: *self_hostname
-      port: 8447
+      port: 8647
 
   # If True, starts an RPC server at the following port
   start_rpc_server: True
-  rpc_port: 8560
+  rpc_port: 8760
   num_threads: 30
   plots_refresh_parameter:
     interval_seconds: 120 # The interval in seconds to refresh the plot file manager
@@ -199,11 +199,11 @@ pool:
 
 farmer:
   # The farmer server (if run) will run on this port
-  port: 8447
+  port: 8647
   # The farmer will attempt to connect to these full nodes
   full_node_peers:
     - host: *self_hostname
-      port: 8444
+      port: 8644
 
   pool_public_keys: []
 
@@ -212,7 +212,7 @@ farmer:
 
   # If True, starts an RPC server at the following port
   start_rpc_server: True
-  rpc_port: 8559
+  rpc_port: 8759
 
   # To send a share to a pool, a proof of space must have required_iters less than this number
   pool_share_threshold: 1000
@@ -230,7 +230,7 @@ farmer:
 timelord_launcher:
   # The server where the VDF clients will connect to.
   host: *self_hostname
-  port: 8000
+  port: 8200
   # Number of VDF client processes to keep alive in the local machine.
   process_count: 3
   logging: *logging
@@ -247,13 +247,13 @@ timelord:
       - 150000
   full_node_peers:
     - host: *self_hostname
-      port: 8444
+      port: 8644
   # Maximum number of seconds allowed for a client to reconnect to the server.
   max_connection_time: 60
   # The ip and port where the TCP clients will connect.
   vdf_server:
     host: *self_hostname
-    port: 8000
+    port: 8200
   logging: *logging
   network_overrides: *network_overrides
   selected_network: *selected_network
@@ -283,7 +283,7 @@ timelord:
   multiprocessing_start_method: default
 
   start_rpc_server: True
-  rpc_port: 8557
+  rpc_port: 8757
 
   ssl:
     private_crt: "config/ssl/timelord/private_timelord.crt"
@@ -293,7 +293,7 @@ timelord:
 
 full_node:
   # The full node server (if run) will run on this port
-  port: 8444
+  port: 8644
   # The full node will attempt to connect to these full nodes
   full_node_peers: []
 
@@ -332,7 +332,7 @@ full_node:
 
   # If True, starts an RPC server at the following port
   start_rpc_server: True
-  rpc_port: 8555
+  rpc_port: 8755
 
   # Use UPnP to attempt to allow other full nodes to reach your node behind a gateway
   enable_upnp: True
@@ -422,7 +422,7 @@ full_node:
     - "dns-introducer.aba.ooo"
   introducer_peer:
     host: introducer.aba.ooo # Chia AWS introducer IPv4/IPv6
-    port: 8444
+    port: 8644
     enable_private_networks: False
   logging: *logging
   network_overrides: *network_overrides
@@ -441,7 +441,7 @@ full_node:
 
 ui:
   # Which port to use to communicate with the full node
-  rpc_port: 8555
+  rpc_port: 8755
 
   # This SSH key is for the ui SSH server
   ssh_filename: config/ssh_host_key
@@ -452,14 +452,14 @@ ui:
   # this is where the electron UI will find its daemon
   # defaults to the one running locally with its private keys
   daemon_host: *self_hostname
-  daemon_port: 55400
+  daemon_port: 55600
   daemon_ssl:
     private_crt: config/ssl/daemon/private_daemon.crt
     private_key: config/ssl/daemon/private_daemon.key
 
 introducer:
   host: *self_hostname
-  port: 8445
+  port: 8645
   max_peers_to_send: 20
   # The introducer will only return peers it has seen in the last
   # recent_peer_threshold seconds
@@ -473,7 +473,7 @@ introducer:
     public_key: "config/ssl/full_node/public_full_node.key"
 
 wallet:
-  rpc_port: 9256
+  rpc_port: 9456
 
   enable_profiler: False
 
@@ -498,7 +498,7 @@ wallet:
 
   full_node_peers:
     - host: *self_hostname
-      port: 8444
+      port: 8644
   # The path of NFT off-chain metadata cache
   nft_metadata_cache_path: "nft_cache"
   # The length of NFT ID prefix will be used as hash index
@@ -528,7 +528,7 @@ wallet:
 
   introducer_peer:
     host: introducer.aba.ooo # Chia AWS introducer IPv4/IPv6
-    port: 8444
+    port: 8644
     enable_private_networks: False
 
   ssl:
@@ -592,7 +592,7 @@ data_layer:
   # TODO: organize consistently with other sections
   wallet_peer:
     host: localhost
-    port: 9256
+    port: 9456
 
   database_path: "data_layer/db/data_layer_CHALLENGE.sqlite"
   # The location where the server files will be stored.
@@ -604,14 +604,14 @@ data_layer:
 
   # Data for running a data layer server.
   host_ip: 0.0.0.0
-  host_port: 8575
+  host_port: 8775
   # Data for running a data layer client.
   manage_data_interval: 60
   selected_network: *selected_network
   # If True, starts an RPC server at the following port
   start_rpc_server: True
   # TODO: what considerations are there in choosing this?
-  rpc_port: 8562
+  rpc_port: 8762
   rpc_server_max_request_body_size: 26214400
   fee: 1000000000
 
