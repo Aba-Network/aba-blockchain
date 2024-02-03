@@ -122,7 +122,7 @@ class TXConfigLoader(CoinSelectionConfigLoader):
             logged_in_fingerprint: int = kwargs.get("logged_in_fingerprint", -1)
             reuse_puzhash_config = config.get("reuse_public_key_for_change", None)
             if reuse_puzhash_config is None:
-                reuse_puzhash = False
+                reuse_puzhash = True #False
             else:
                 reuse_puzhash = reuse_puzhash_config.get(str(logged_in_fingerprint), False)
         else:
