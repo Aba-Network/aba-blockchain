@@ -33,9 +33,9 @@ DEFAULT_CONSTANTS = ConsensusConstants(
     # Used as the initial cc rc challenges, as well as first block back pointers, and first SES back pointer
     # We override this value based on the chain being run (testnet0, testnet1, mainnet, etc)
     # Default used for tests is std_hash(b'')
-    GENESIS_CHALLENGE=bytes32.fromhex("e4f6dc58585cc5eea23b760c9936f501cfb184b25fe225ea845bfb5928e59d8d"),
+    GENESIS_CHALLENGE=bytes32.fromhex("9c24167b2b628e8edec251888fd200dde01b14d153d924c48f4e6eb4e09536dd"),
     # Forks of chia should change this value to provide replay attack protection. This is set to mainnet genesis chall
-    AGG_SIG_ME_ADDITIONAL_DATA=bytes.fromhex("e4f6dc58585cc5eea23b760c9936f501cfb184b25fe225ea845bfb5928e59d8d"),
+    AGG_SIG_ME_ADDITIONAL_DATA=bytes.fromhex("9c24167b2b628e8edec251888fd200dde01b14d153d924c48f4e6eb4e09536dd"),
     GENESIS_PRE_FARM_POOL_PUZZLE_HASH=bytes32.fromhex(
         "e4f6dc58585cc5eea23b760c9936f501cfb184b25fe225ea845bfb5928e59d8d"
     ),

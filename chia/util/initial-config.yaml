@@ -15,7 +15,7 @@ outbound_rate_limit_percent: 30
 network_overrides: &network_overrides
   constants:
     mainnet:
-      GENESIS_CHALLENGE: 1b54a66ac0b89eb18582781110f95c6ffcbcf49db9f36ddbbe84370cd36c8223
+      GENESIS_CHALLENGE: 9c24167b2b628e8edec251888fd200dde01b14d153d924c48f4e6eb4e09536dd
       GENESIS_PRE_FARM_POOL_PUZZLE_HASH: "e4f6dc58585cc5eea23b760c9936f501cfb184b25fe225ea845bfb5928e59d8d"
       GENESIS_PRE_FARM_FARMER_PUZZLE_HASH: "e4f6dc58585cc5eea23b760c9936f501cfb184b25fe225ea845bfb5928e59d8d"
     testnet10:
