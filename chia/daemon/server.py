@@ -81,19 +81,19 @@ class PlotEvent(str, Enum):
 # determine if application is a script file or frozen exe
 if getattr(sys, "frozen", False):
     name_map = {
-        "chia": "chia",
-        "chia_data_layer": "start_data_layer",
-        "chia_data_layer_http": "start_data_layer_http",
-        "chia_wallet": "start_wallet",
-        "chia_full_node": "start_full_node",
-        "chia_harvester": "start_harvester",
-        "chia_farmer": "start_farmer",
-        "chia_introducer": "start_introducer",
-        "chia_timelord": "start_timelord",
-        "chia_timelord_launcher": "timelord_launcher",
-        "chia_full_node_simulator": "start_simulator",
-        "chia_seeder": "start_seeder",
-        "chia_crawler": "start_crawler",
+        "aba": "chia",
+        "aba_data_layer": "start_data_layer",
+        "aba_data_layer_http": "start_data_layer_http",
+        "aba_wallet": "start_wallet",
+        "aba_full_node": "start_full_node",
+        "aba_harvester": "start_harvester",
+        "aba_farmer": "start_farmer",
+        "aba_introducer": "start_introducer",
+        "aba_timelord": "start_timelord",
+        "aba_timelord_launcher": "timelord_launcher",
+        "aba_full_node_simulator": "start_simulator",
+        "aba_seeder": "start_seeder",
+        "aba_crawler": "start_crawler",
     }
 
     def executable_for_service(service_name: str) -> str:
