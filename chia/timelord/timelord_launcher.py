@@ -160,7 +160,7 @@ def main():
         log.info("Timelord launcher not supported on Windows.")
         return
     root_path = DEFAULT_ROOT_PATH
-    setproctitle("chia_timelord_launcher")
+    setproctitle("aba_timelord_launcher")
     net_config = load_config(root_path, "config.yaml")
     config = net_config["timelord_launcher"]
     initialize_logging("TLauncher", config["logging"], root_path)

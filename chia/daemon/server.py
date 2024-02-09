@@ -63,7 +63,7 @@ except ModuleNotFoundError:
 
 log = logging.getLogger(__name__)
 
-service_plotter = "chia_plotter"
+service_plotter = "aba_plotter"
 
 
 class PlotState(str, Enum):
@@ -81,7 +81,7 @@ class PlotEvent(str, Enum):
 # determine if application is a script file or frozen exe
 if getattr(sys, "frozen", False):
     name_map = {
-        "aba": "chia",
+        "aba": "aba",
         "aba_data_layer": "start_data_layer",
         "aba_data_layer_http": "start_data_layer_http",
         "aba_wallet": "start_wallet",
@@ -1511,7 +1511,7 @@ async def async_run_daemon(root_path: Path, wait_for_unlock: bool = False) -> in
     # since it might be necessary to wait for the GUI to unlock the keyring first.
     chia_init(root_path, should_check_keys=(not wait_for_unlock))
     config = load_config(root_path, "config.yaml")
-    setproctitle("chia_daemon")
+    setproctitle("aba_daemon")
     initialize_service_logging("daemon", config)
     crt_path = root_path / config["daemon_ssl"]["private_crt"]
     key_path = root_path / config["daemon_ssl"]["private_key"]

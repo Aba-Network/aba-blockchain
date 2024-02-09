@@ -99,6 +99,7 @@ build/
 
 # cache for tooling such as tools/manage_clvm.py
 .chia_cache/
+.aba/cache
 
 #       =====                       =====
 #     DO NOT EDIT BELOW - GENERATED

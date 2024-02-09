@@ -70,7 +70,7 @@ class DataLayerRpcApi:
     # TODO: other RPC APIs do not accept a wallet and the service start does not expect to provide one
     def __init__(self, data_layer: DataLayer):  # , wallet: DataLayerWallet):
         self.service: DataLayer = data_layer
-        self.service_name = "chia_data_layer"
+        self.service_name = "aba_data_layer"
 
     def get_routes(self) -> Dict[str, Endpoint]:
         return {

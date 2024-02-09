@@ -155,7 +155,7 @@ class TestSimulation:
         async def verify_daemon_connection(daemon: WebSocketServer, service: str) -> bool:
             return len(daemon.connections.get(service, set())) >= 1
 
-        await time_out_assert(60, verify_daemon_connection, True, full_system.daemon, "chia_full_node")
+        await time_out_assert(60, verify_daemon_connection, True, full_system.daemon, "aba_full_node")
 
         async with aiohttp.ClientSession() as session:
             ws = await session.ws_connect(
@@ -172,7 +172,7 @@ class TestSimulation:
             await time_out_assert(10, verify_daemon_connection, True, full_system.daemon, service_name)
 
             blockchain_state_found = False
-            payload = create_payload("get_blockchain_state", {}, service_name, "chia_full_node")
+            payload = create_payload("get_blockchain_state", {}, service_name, "aba_full_node")
             await ws.send_str(payload)
             msg = await ws.receive()
             if msg.type == aiohttp.WSMsgType.TEXT:

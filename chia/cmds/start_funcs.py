@@ -20,7 +20,7 @@ def launch_start_daemon(root_path: Path) -> subprocess.Popen:
     creationflags = 0
     if sys.platform == "win32":
         creationflags = subprocess.CREATE_NEW_PROCESS_GROUP | subprocess.CREATE_NO_WINDOW
-
+    #print([sys.argv[0], "run_daemon", "--wait-for-unlock"])
     process = subprocess.Popen(
         [sys.argv[0], "run_daemon", "--wait-for-unlock"],
         encoding="utf-8",

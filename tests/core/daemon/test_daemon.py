@@ -438,15 +438,15 @@ async def test_daemon_passthru(get_daemon, bt):
                 db_version=2,
                 connect_to_daemon=True,
             ) as _:
-                await time_out_assert_not_none(30, ws_server.connections.get, "chia_full_node")
+                await time_out_assert_not_none(30, ws_server.connections.get, "aba_full_node")
 
-                payload = create_payload("get_blockchain_state", {}, service_name, "chia_full_node")
+                payload = create_payload("get_blockchain_state", {}, service_name, "aba_full_node")
                 await ws.send_str(payload)
 
                 response = await ws.receive()
                 message = assert_response_success_only(response)
                 assert message["command"] == "get_blockchain_state"
-                assert message["origin"] == "chia_full_node"
+                assert message["origin"] == "aba_full_node"
                 assert message["data"]["blockchain_state"]["genesis_challenge_initialized"] is True
 
 

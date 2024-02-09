@@ -43,7 +43,7 @@ def test_every_simulator_command() -> None:
     )
     assert start_result.exit_code == 0
     assert f"Farming & Prefarm reward address: {address}" in start_result.output
-    assert "chia_full_node_simulator: started" in start_result.output
+    assert "aba_full_node_simulator: started" in start_result.output
     assert "Genesis block generated, exiting." in start_result.output
 
     config_dir = SIMULATOR_ROOT_PATH.joinpath(simulator_name)
@@ -71,7 +71,7 @@ def test_custom_farming_address() -> None:
     )
     assert start_result.exit_code == 0
     assert f"Farming & Prefarm reward address: {address}" in start_result.output
-    assert "chia_full_node_simulator: started" in start_result.output
+    assert "aba_full_node_simulator: started" in start_result.output
     assert "Genesis block generated, exiting." in start_result.output
 
     try:
@@ -89,7 +89,7 @@ def stop_simulator(runner: CliRunner, simulator_name: str) -> None:
         catch_exceptions=False,
     )
     assert result.exit_code == 0
-    assert "chia_full_node_simulator: Stopped\nDaemon stopped\n" == result.output
+    assert "aba_full_node_simulator: Stopped\nDaemon stopped\n" == result.output
     rmtree(SIMULATOR_ROOT_PATH / simulator_name)
 
 

@@ -39,7 +39,7 @@ def chia_daemon_fixture(chia_root: ChiaRoot) -> Iterator[None]:
 
 @pytest.fixture(name="chia_data", scope="function")
 def chia_data_fixture(chia_root: ChiaRoot, chia_daemon: None, scripts_path: pathlib.Path) -> Iterator[None]:
-    with closing_chia_root_popen(chia_root=chia_root, args=[os.fspath(scripts_path.joinpath("chia_data_layer"))]):
+    with closing_chia_root_popen(chia_root=chia_root, args=[os.fspath(scripts_path.joinpath("aba_data_layer"))]):
         # TODO: this is not pretty as a hard coded time
         # let it settle
         time.sleep(5)

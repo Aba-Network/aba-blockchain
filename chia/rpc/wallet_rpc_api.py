@@ -126,7 +126,7 @@ class WalletRpcApi:
     def __init__(self, wallet_node: WalletNode):
         assert wallet_node is not None
         self.service = wallet_node
-        self.service_name = "chia_wallet"
+        self.service_name = "aba_wallet"
 
     def get_routes(self) -> Dict[str, Endpoint]:
         return {
