@@ -1,5 +1,5 @@
 from __future__ import annotations
-
+"""
 SPACEBUCKS = {
     "asset_id": "a628c1c2c6fcb74d53746157e438e108eab5c0bb3e5c80ff9b1910b3e4832913",
     "name": "Spacebucks",
@@ -23,10 +23,10 @@ CHIA_HOLIDAY_TOKEN = {
     "name": "Chia Holiday 2021 Token",
     "symbol": "CH21",
 }
-
-DEFAULT_CATS = {
+"""
+DEFAULT_CATS = { """
     SPACEBUCKS["asset_id"]: SPACEBUCKS,
     MARMOT["asset_id"]: MARMOT,
     STABLY_USDS["asset_id"]: STABLY_USDS,
-    CHIA_HOLIDAY_TOKEN["asset_id"]: CHIA_HOLIDAY_TOKEN,
+    CHIA_HOLIDAY_TOKEN["asset_id"]: CHIA_HOLIDAY_TOKEN, """
 }
