@@ -1,3 +1,4 @@
+# Aba has modified this file
 _kill_servers() {
   PROCS=`ps -e | grep -E 'chia|vdf_client' -v "chia-start-sim" | awk '!/grep/' | awk '{print $1}'`
   if [ -n "$PROCS" ]; then

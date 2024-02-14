@@ -1,5 +1,13 @@
+# Aba has modified this file
 from __future__ import annotations
+
 """
+LFG = {
+    "asset_id": "",
+    "name": "LFG",
+    "symbol": "LFG",
+}
+
 SPACEBUCKS = {
     "asset_id": "a628c1c2c6fcb74d53746157e438e108eab5c0bb3e5c80ff9b1910b3e4832913",
     "name": "Spacebucks",
@@ -25,6 +33,7 @@ CHIA_HOLIDAY_TOKEN = {
 }
 """
 DEFAULT_CATS = { """
+    LFG["asset_id"]: LFG,
     SPACEBUCKS["asset_id"]: SPACEBUCKS,
     MARMOT["asset_id"]: MARMOT,
     STABLY_USDS["asset_id"]: STABLY_USDS,
