@@ -1,5 +1,7 @@
 # Changelog
 
+THIS FILE IS CURRENTLY OUT OF DATE AT LEAST TEMPORARILY. Aba has modified this file
+
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
@@ -9,88 +11,94 @@ for setuptools_scm/PEP 440 reasons.
 ## 2.1.4 Chia blockchain 2024-01-10
 
 ### Fixed
-* Update chia_rs to 0.2.15 for AMD K10 architecture (fixes #16386)
+
+- Update chia_rs to 0.2.15 for AMD K10 architecture (fixes #16386)
 
 ### Changed
-* improved CPU usage due to tight loop in `send_transaction()`
-* improve performance of `total_mempool_fees()` and `total_mempool_cost()`
-* reduced the default maximum peer count to 40 from 80 (only applies to new configs)
-* changed to `normal` SQlite db sync option (previously was `full`)
-* reduced the mempool size to 10 blocks from 50 blocks (improves performance)
-* improve performance of the mempool by batch fetching items from the db
 
+- improved CPU usage due to tight loop in `send_transaction()`
+- improve performance of `total_mempool_fees()` and `total_mempool_cost()`
+- reduced the default maximum peer count to 40 from 80 (only applies to new configs)
+- changed to `normal` SQlite db sync option (previously was `full`)
+- reduced the mempool size to 10 blocks from 50 blocks (improves performance)
+- improve performance of the mempool by batch fetching items from the db
 
 ## 2.1.3 Chia blockchain 2023-12-18
 
 ### Fixed
-* Fixed a regression in 2.1.2 that could cause a farmer to fail to be able to create a block in some cases
+
+- Fixed a regression in 2.1.2 that could cause a farmer to fail to be able to create a block in some cases
 
 ## 2.1.2 Chia blockchain 2023-12-13
 
 ### Fixed
-* Fix deep reorgs and add tests
-* Reduce possible Signage Point bursts by forwarding 4 most recent cached SPs only
-* Fix condition serialization in RPC client
-* Fix DID resync to not create DID wallets that don't belong to the current key
-* Fix `get_block_spends` to work correctly post hard-fork
-* Shutdown on startup failure and log to the log if possible
-* fix issue with syncing testnet10 from 0
-* Chunk SQLite query for old TR/TX conversion (fixes #16589)
-* Allow set_status to overwrite trade in store (fixes #16461)
-* Add cache to wallet node preventing resend of processing TX
-* Correct `FullNodeDiscovery.pending_tasks` typo without `s`
-* Fix `chia wallet coins list` by adding NFT, DID, DAO_CAT to wallets denominated in mojos
-* generalize JSON serializer
-* Fix possible peak height race
-* Fix invalid sync request
-* request blocks in batches of 32 instead of 33 (saves 3% bandwidth)
-* Fix `get_block_generator` fork detection
-* Fix set_status accidental arg (fixes #16817)
-* Fix issues with upgrading Chia via RPM by claiming ownership of `/opt/chia` in the RPM
-* clean out `/opt/chia` before install and after removal of rpm
+
+- Fix deep reorgs and add tests
+- Reduce possible Signage Point bursts by forwarding 4 most recent cached SPs only
+- Fix condition serialization in RPC client
+- Fix DID resync to not create DID wallets that don't belong to the current key
+- Fix `get_block_spends` to work correctly post hard-fork
+- Shutdown on startup failure and log to the log if possible
+- fix issue with syncing testnet10 from 0
+- Chunk SQLite query for old TR/TX conversion (fixes #16589)
+- Allow set_status to overwrite trade in store (fixes #16461)
+- Add cache to wallet node preventing resend of processing TX
+- Correct `FullNodeDiscovery.pending_tasks` typo without `s`
+- Fix `chia wallet coins list` by adding NFT, DID, DAO_CAT to wallets denominated in mojos
+- generalize JSON serializer
+- Fix possible peak height race
+- Fix invalid sync request
+- request blocks in batches of 32 instead of 33 (saves 3% bandwidth)
+- Fix `get_block_generator` fork detection
+- Fix set_status accidental arg (fixes #16817)
+- Fix issues with upgrading Chia via RPM by claiming ownership of `/opt/chia` in the RPM
+- clean out `/opt/chia` before install and after removal of rpm
 
 ### Added
-* Allow DApps to use WalletConnect to sign customized puzzles by extending sign APIs
-* Add support for lists of peers in the config (thanks @felixbrucker)
-* Update to support looking up mnemonic by just the first 4 letters of each word
-* Allow the daemon to use TLS v1.2 via config flag (thanks @dkackman)
-* Add systemd init files to CLI-only Linux packages
-* DL: remove data from the DB on unsubscribe
+
+- Allow DApps to use WalletConnect to sign customized puzzles by extending sign APIs
+- Add support for lists of peers in the config (thanks @felixbrucker)
+- Update to support looking up mnemonic by just the first 4 letters of each word
+- Allow the daemon to use TLS v1.2 via config flag (thanks @dkackman)
+- Add systemd init files to CLI-only Linux packages
+- DL: remove data from the DB on unsubscribe
 
 ### Changed
-* ban peers for 10 minutes when violating consensus rules
-* Remove `tx_endpoint` from `select_coins`
-* DID wallet coin_added by @ytx1991 in https://github.com/Chia-Network/chia-blockchain/pull/16256
-* Use network overrides for default port for WalletPeers
-* Improve clarity of legacy support policy language
-* Add config option to set rpc timeout and use it for simulator tests
-* rename `ClassgroupElement.from_bytes()`
-* Optimize CRCAT trades
-* harmonize `SerializedProgram` with `Program`
-* Swap some info logs in seeder to warning
-* Distinguish `insufficient_partials` from `invalid_partials`
-* transition away from `__bytes__` conversion for fixed-size integers
-* Use BLS from `chia_rs` and stop using `blspy` wheel in chia-blockchain
-* simplify the interface to `mempool_manager.new_peak()`
-* reduce redundant calls to compute the header hash
-* Change `-h` to `-k` for `--key` flag for datalayer `get_value` cli command
-* Update `chia_rs` to `0.2.13`
-* Update `clvm_tools` to `0.4.7`
-* Update `aiohttp` to `3.9.1` (fixes a WebSocket bug introduced in 3.9.0)
-* Change `chia show keys --show-mnemonic-seed` to also show farmer private key (thanks xchdata1)
-* Adjust ban times when unable to download properly DL DAT files
-* return `List[TransactionRecord]` from nft bulk mint functions
-* DL: delete full files when subscribed to a datastore per config
 
+- ban peers for 10 minutes when violating consensus rules
+- Remove `tx_endpoint` from `select_coins`
+- DID wallet coin_added by @ytx1991 in https://github.com/Chia-Network/chia-blockchain/pull/16256
+- Use network overrides for default port for WalletPeers
+- Improve clarity of legacy support policy language
+- Add config option to set rpc timeout and use it for simulator tests
+- rename `ClassgroupElement.from_bytes()`
+- Optimize CRCAT trades
+- harmonize `SerializedProgram` with `Program`
+- Swap some info logs in seeder to warning
+- Distinguish `insufficient_partials` from `invalid_partials`
+- transition away from `__bytes__` conversion for fixed-size integers
+- Use BLS from `chia_rs` and stop using `blspy` wheel in chia-blockchain
+- simplify the interface to `mempool_manager.new_peak()`
+- reduce redundant calls to compute the header hash
+- Change `-h` to `-k` for `--key` flag for datalayer `get_value` cli command
+- Update `chia_rs` to `0.2.13`
+- Update `clvm_tools` to `0.4.7`
+- Update `aiohttp` to `3.9.1` (fixes a WebSocket bug introduced in 3.9.0)
+- Change `chia show keys --show-mnemonic-seed` to also show farmer private key (thanks xchdata1)
+- Adjust ban times when unable to download properly DL DAT files
+- return `List[TransactionRecord]` from nft bulk mint functions
+- DL: delete full files when subscribed to a datastore per config
 
 ## 2.1.1 Chia blockchain 2023-10-11
 
 ### Fixed
+
 - Changed electron version for GUI to 25.9.0 to fix whitescreen issues seen on some linux systems (fixes #16538)
 
 ## 2.1.0 Chia blockchain 2023-10-05
 
 ### Added
+
 - Credential Restricted CATs
 - Add timelock information to Trades and Transactions
 - Add ergonomic timelock parsing to RPCs
@@ -116,6 +124,7 @@ for setuptools_scm/PEP 440 reasons.
 - Bladebit Hybrid disk mode
 
 ### Changed
+
 - Remove CAT1 UX guards
 - Dedup offer cancellation logic
 - upgrade electron-builder to 24.6.3 and Lerna to 7.1.3
@@ -140,6 +149,7 @@ for setuptools_scm/PEP 440 reasons.
 - Update install-gui.sh to check Node 18 and npm 9
 
 ### Fixed
+
 - Fixed python3-venv in install.sh (thanks @d1m1trus)
 - Change include_standard_libraries for CLVM compilation default to True
 - add dust warning message to chia coins commands & cleanup code
@@ -165,7 +175,7 @@ for setuptools_scm/PEP 440 reasons.
 - add fee for cat creation
 - max_coin_amount should default to None in wallet send command
 - Add extra_conditions to special offer making
-- bump chia_rs to include bugfix for new AGG_SIG_* conditions in mempool mode
+- bump chia*rs to include bugfix for new AGG_SIG*\* conditions in mempool mode
 - Fix `chia farm summary` aborting early if no local full node present (fixes #16164) (thanks @xchdata1)
 - fix typo in PendingTxCache
 - rename `chia data add_missing_files` `-f`/`--foldername` to `-d`/`--directory`
@@ -174,6 +184,7 @@ for setuptools_scm/PEP 440 reasons.
 - Fix glitch NFT wallet test
 
 ### Removed
+
 - Support for MacOS 10.14 and 10.15
 - Support for Chia database schema version 1
 - Support for minting CATs via RPC
@@ -209,7 +220,7 @@ for setuptools_scm/PEP 440 reasons.
 - Move CAT_MOD from cat_loader -> cat_utils
 - Use a more aggresive activation schedule on testnet10
 - Full_node: More set usage in subscription code
-- Rename exclude_coin_* -> excluded_coin_* for consistency
+- Rename exclude*coin*_ -> excluded*coin*_ for consistency
 - Add `**kwargs` to all `generate_signed_transaction` definitions
 - Full_node: Add `max_height` to `CoinStore.get_coin_states_by_ids`
 - Util: Some tweaks to `StructStream` and sized ints
@@ -302,6 +313,7 @@ for setuptools_scm/PEP 440 reasons.
 ## 1.8.2 Chia blockchain 2023-06-28
 
 ### Added
+
 - Add `chia wallet vcs` command for Verifiable Credential operations
 - Add `chia wallet clawback` command for clawback operations
 - Add `chia wallet did` commands `get_details`, `update_metadata`, `find_lost`, `message_spend`, `transfer`
@@ -311,6 +323,7 @@ for setuptools_scm/PEP 440 reasons.
 - Add `confirmed` boolean to wallet RPC `get_transactions`
 
 ### Changed
+
 - Identical spend aggregation
 - CAT wallet now will hint to CAT change
 - Move to Discord in docs and install scripts
@@ -325,6 +338,7 @@ for setuptools_scm/PEP 440 reasons.
 - Updated `chiavdf` to `1.0.9`
 
 ### Fixed
+
 - Fix `chia wallet make_offer` short-option collision on `-r` (Fixes #14874) (Thanks @yyolk)
 - Fix `GENERATOR_MOD2` to have the same cost as `GENERATOR_MOD`
 - Subscribe to the change children of CATs
@@ -339,11 +353,13 @@ for setuptools_scm/PEP 440 reasons.
 ## 1.8.1 Chia blockchain 2023-05-17
 
 ### Changed
+
 - Updated testnet softfork height so softfork rules take effect on testnet immediately
 - Move to Discord in docs and install scripts (#15193)
 - Optimize compact proofs
 
 ### Fixed
+
 - Issue where CLI only listed first 50 NFTs by hardcoding `num` param when listing NFTs from CLI
 - Issue where wallet might display `RuntimeError: dictionary changed size during iteration` by avoiding dict changes while iterating in `handle_nft`
 - Issue where node had trouble keeping peers with `assert self.peak is not None` error by not adding transactions to the mempool before it has a valid peak (fixes #15217)
@@ -351,6 +367,7 @@ for setuptools_scm/PEP 440 reasons.
 ## 1.8.0 Chia blockchain 2023-05-03
 
 ### Added
+
 - Added `chia completion` command
 - Added wallet_removed to `state_changes` messages to support wallet removal in GUI
 - Add support to `cat_spend` RPC for running TAIL
@@ -359,6 +376,7 @@ for setuptools_scm/PEP 440 reasons.
 - DataLayer plugin support and infrastructure
 
 ### Changed
+
 - Fix soft fork to 60 days
 - Don't subscribe to all coin ids in the DB
 - Handle trade coins in the `try` block of `new_coin_state`
@@ -379,6 +397,7 @@ for setuptools_scm/PEP 440 reasons.
 - List the columns for `INSERT` into `coin_record`
 
 ### Fixed
+
 - Disconnect untrusted peers if we find a trusted synced one
 - Only compile CLVM if source newer than hex
 - Fixed windows issues with passphrase prompt on CLI by flushing prompt (Fixes #14889)
@@ -405,6 +424,7 @@ for setuptools_scm/PEP 440 reasons.
 ## 1.7.1 Chia blockchain 2023-03-22
 
 ### Added
+
 - `get_transaction_memo` wallet RPC
 - `set_wallet_resync_on_startup` wallet RPC to reset wallet sync data on wallet restart
 - `nft_count_nfts` wallet RPC - counts NFTs per wallet or for all wallets
@@ -417,6 +437,7 @@ for setuptools_scm/PEP 440 reasons.
 - `curry` Chialisp library replaces `curry-and-treehash`
 
 ### Changed
+
 - `chia show -f` changed to output proper JSON
 - `Rate limiting` log messages are themselves rate limited
 - Notified GUI when wallets are removed
@@ -432,6 +453,7 @@ for setuptools_scm/PEP 440 reasons.
 - Changed mempool backend to use an in-memory SQLite DB
 
 ### Fixed
+
 - Quieted wallet log output for `Record: ... not in mempool` (fixes #14452)
 - Quieted log output for `AttributeError: 'NoneType' object has no attribute '_get_extra_info`
 - Reduced log output for `Using previous generator for height`
@@ -447,6 +469,7 @@ for setuptools_scm/PEP 440 reasons.
 - Improved the accuracy of the wallet sync status indication
 
 ### Deprecated
+
 - `curry-and-treehash` Chialisp library replaced by new `curry` library
 
 ## 1.7.0 Chia blockchain 2023-02-15
@@ -460,7 +483,7 @@ for setuptools_scm/PEP 440 reasons.
 - Add gzip support to DataLayer download client (Thanks, @Chida82!)
 - Add proxy support to DataLayer download client (Thanks again, @Chida82!)
 - Add `get_timestamp_for_height` Wallet RPC for converting heights to timestamps
-- Add `tools/legacy_keyring.py` to allow migration from the removed old key storage format.  Available only from source installations.
+- Add `tools/legacy_keyring.py` to allow migration from the removed old key storage format. Available only from source installations.
 - Add Arch Linux to install-gui.sh script (Thanks, @DaOneLuna!)
 - Add a `daemon_heartbeat` setting to config.yaml
 - add `trusted_max_subscribe_items` and `wallet:trusted_peers` to config.yaml
@@ -936,7 +959,7 @@ for setuptools_scm/PEP 440 reasons.
 - Added RPCs for NFT (see <https://docs.chia.net/docs/12rpcs/nft_rpcs>)
 - Enable stricter mempool rule when dealing with multiple extra arguments
 - Added a retry when loading pool info from a pool at 2 minute intervals
-- Added CLI options `--sort-by-height` and –sort-by-relevance` to `chia wallet get_transactions`
+- Added CLI options `--sort-by-height` and –sort-by-relevance`to`chia wallet get_transactions`
 - Harvester: Introduce `recursive_plot_scan`
 - Add libgmp-dev to Bladebit installation - thanks to @TheLastCicada
 - Add support for multiple of the same CAT in aggregate offers - Thanks to @roseiliend
@@ -1160,7 +1183,7 @@ There is a known issue where harvesters will not reconnect to the farmer automat
 - Added new CLI option, chia keys derive, to allow deriving any number of keys in various ways. This is particularly useful to do an exhaustive search for a given address using chia keys derive search.
 - Div soft fork block height set to 2,300,000.
 - Added the ability to add an optional fee for creating and changing plot NFTs.
-- Added *multiprocessing_start_method:* entry in config.yaml that allows setting the python *start method* for multiprocessing (default is *spawn* on Windows & MacOS, *fork* on Unix).
+- Added _multiprocessing_start_method:_ entry in config.yaml that allows setting the python _start method_ for multiprocessing (default is _spawn_ on Windows & MacOS, _fork_ on Unix).
 - Added option to "Cancel transaction" accepted offers that are stuck in "pending".
 
 ### Changed
@@ -1225,7 +1248,7 @@ There is a known issue where harvesters will not reconnect to the farmer automat
 - If you start with wallet mode and then switch to farmer mode and back to wallet mode, the full node will continue to sync in the background. To get the full node to stop syncing after switching to wallet mode, you will need to close the Chia and relaunch the Chia app.
 - Wallets with large number of transactions or large number of coins will take longer to sync (more than a few minutes), but should take less time than a full node sync. It could fail in some cases.
 - Huge numbers cannot be put into amount/fee input for transactions in the GUI.
-- Some Linux systems experience excessive memory usage with the value *default*/*python_default*/*fork* configured for *multiprocessing_start_method:*. Setting this value to *spawn* may produce better results, but in some uncommon cases, is know to cause crashes.
+- Some Linux systems experience excessive memory usage with the value _default_/_python_default_/_fork_ configured for _multiprocessing_start_method:_. Setting this value to _spawn_ may produce better results, but in some uncommon cases, is know to cause crashes.
 - Sending a TX with too low of a fee can cause an infinite spinner in the GUI when the mempool is full.
   - Workaround: Restart the GUI, or clear unconfirmed TX.
 - Claiming rewards when self-pooling using CLI will show an error message, but it will actually create the transaction.
@@ -1235,7 +1258,7 @@ There is a known issue where harvesters will not reconnect to the farmer automat
 ### Added
 
 - Farmers rejoice: today's release integrates two plotters in broad use in the Chia community: Bladebit, created by @harold-b, and Madmax, created by @madMAx43v3r. Both of these plotters bring significant improvements in plotting time. More plotting info [here](https://github.com/Chia-Network/chia-blockchain/wiki/Alternative--Plotters).
-- This release also includes several important performance improvements as a result of last weekends "Dust Storm", with two goals in mind: make sure everyone can farm at all times, and improve how many transactions per second each node can accept, especially for low-end hardware. Please know that these optimizations are only the first wave in a series of many over the next few releases to help address this going forward. While the changes we have implemented in this update may not necessarily solve for *every* possible congestion scenario, they should go a long way towards helping low-end systems perform closer to expectations if this happens again.
+- This release also includes several important performance improvements as a result of last weekends "Dust Storm", with two goals in mind: make sure everyone can farm at all times, and improve how many transactions per second each node can accept, especially for low-end hardware. Please know that these optimizations are only the first wave in a series of many over the next few releases to help address this going forward. While the changes we have implemented in this update may not necessarily solve for _every_ possible congestion scenario, they should go a long way towards helping low-end systems perform closer to expectations if this happens again.
 - Performance improvements for nodes to support higher transaction volumes, especially for low powered devices like RaspBerry Pi. Full details at [#9050](https://github.com/Chia-Network/chia-blockchain/pull/9050).
   - Improved multi-core usage through process pools.
   - Prioritized block validation.
@@ -1281,7 +1304,7 @@ We have some great improvements in this release: We launched our migration of ke
 
 ### Changed
 
-- Truncate points_[found,acknowledged]_24h to 24 hours at each signage point.
+- Truncate points\_[found,acknowledged]\_24h to 24 hours at each signage point.
 - Improved reliability of test_farmer_harvester_rpc.py, by increasing the interval between harvester checks, which should avoid spamming logs with excessive plot refreshing and cache updates.
 - Thanks @cross for change that allows using IPv6 address in config.yaml for remote harvesters and other chia services.
 - Change to stop creating unused indexes in block_records and full_blocks tables.
@@ -1403,15 +1426,15 @@ Today we’re releasing version 1.2.6 to address a resource bug with nodes, and 
 - Added an option to sign bytes as well as UTF-8 strings, which is particularly helpful if you're writing Chialisp puzzles that require signatures and you want to test them without necessarily writing a whole python script for signing the relevant data.
 - Added a first version of .pre-commit-config.yaml and applied the changes required by the following initial hooks in separate commits. To use this you need to install pre-commit, see <https://pre-commit.com/#installation/>.
 - We have added many new translations in this release based on community
-submissions. Thanks to @RuiZhe for Chinese, Traditional; @HansCZ for Czech;
-@LUXDAD for English, Australia; @f00b4r for Finnish; @jimkoen, @ruvado for German; @Arielzikri for Hebrew; @A-Caccese for Italian; @Hodokami for Japanese; @LUXDAD for Latvian; @vaexperience for Lithuanian; @LUXDAD for Russian; @juands1644 for Spanish, Argentina; @MrDyngrak, @ordtrogen for Swedish; @richeyphu for Thai; @Ansugo, @baturman for Turkish.
+  submissions. Thanks to @RuiZhe for Chinese, Traditional; @HansCZ for Czech;
+  @LUXDAD for English, Australia; @f00b4r for Finnish; @jimkoen, @ruvado for German; @Arielzikri for Hebrew; @A-Caccese for Italian; @Hodokami for Japanese; @LUXDAD for Latvian; @vaexperience for Lithuanian; @LUXDAD for Russian; @juands1644 for Spanish, Argentina; @MrDyngrak, @ordtrogen for Swedish; @richeyphu for Thai; @Ansugo, @baturman for Turkish.
 
 ### Changed
 
-- Thanks @altendky for Correct * to ** kwargs unpacking in time_out_assert().
+- Thanks @altendky for Correct \* to \*\* kwargs unpacking in time_out_assert().
 - Thanks @altendky for changing the default to paginate to chia wallet get_transactions to address cases such as piping and output redirection to a file where the command previously just hung while waiting for the user to press c for the next page.
 - Removed commented-out debug breakpoints.
-- Enabled Rust condition checker to add the ability to parse the output conditions from a  generator program in Rust. It also validates some of the conditions in Rust.
+- Enabled Rust condition checker to add the ability to parse the output conditions from a generator program in Rust. It also validates some of the conditions in Rust.
 - Switched IP address lookup to first use Chia's service ip.chia.net.
 - Made changes so that when creating SSL certificate and private key files, we ensure that files are written with the proper file permissions.
 - Define a new encrypted keyring format to be used to store keys, and which is optionally encrypted to a user-supplied passphrase. GUI for the passphrase will come in an upcoming release.
@@ -1450,7 +1473,7 @@ submissions. Thanks to @RuiZhe for Chinese, Traditional; @HansCZ for Czech;
 - Thanks @aarcro for adding timing metrics to plot check.
 - Thanks @chadwick2143 for adding the ability to set the port to use for the harvester.
 - Added more friendly error reporting for peername errors.
-- We have added many new translations in this release. Thanks to @L3Sota,  @hodokami and @L3Sota for Japanese; @danielrangel6, @memph1x and @dvd101x for Spanish (Mexico); @fsavaget, @semnosao and @ygalvao for Portuguese (Brazilian); @juands1644 for Spanish (Argentina); @darkflare for Portuguese; @wong8888, @RuiZhe, @LM_MA, @ezio20121225, @GRIP123, @11221206 and @nicko1122 for Chinese Traditional; @atomsymbol for Slovak; @SirGeoff and @rolandfarkasCOM for Hungarian; @ordtrogen for Swedish; @HansCZ and @kafkic for Czech; @SupperDog for Chinese Simplified; @baturman and @Ansugo for Turkish; @thebacktrack for Russian; @itservicelukaswinter for German; @saeed508, @Amirr_ezA and @themehran for Persian; @hgthtung for Vietnamese; @f00b4r for Finnish; @IMIMIM for Latvian; @Rothnita and @vanntha85 for Khmer; @Rothnita and @Gammaubl for Thai; @marcin1990 for Polish; @mydienst for Bosnian; @dvd101x and @darkflare for Spanish; @ATSHOOTER for Albanian; @Munyuk81 for Indonesian; @loppefaaret for Danish; @sharjeelaziz and @nzjake for English; @nzjake for English (New Zealand). We apologize if we missed anyone and welcome corrections.
+- We have added many new translations in this release. Thanks to @L3Sota, @hodokami and @L3Sota for Japanese; @danielrangel6, @memph1x and @dvd101x for Spanish (Mexico); @fsavaget, @semnosao and @ygalvao for Portuguese (Brazilian); @juands1644 for Spanish (Argentina); @darkflare for Portuguese; @wong8888, @RuiZhe, @LM_MA, @ezio20121225, @GRIP123, @11221206 and @nicko1122 for Chinese Traditional; @atomsymbol for Slovak; @SirGeoff and @rolandfarkasCOM for Hungarian; @ordtrogen for Swedish; @HansCZ and @kafkic for Czech; @SupperDog for Chinese Simplified; @baturman and @Ansugo for Turkish; @thebacktrack for Russian; @itservicelukaswinter for German; @saeed508, @Amirr_ezA and @themehran for Persian; @hgthtung for Vietnamese; @f00b4r for Finnish; @IMIMIM for Latvian; @Rothnita and @vanntha85 for Khmer; @Rothnita and @Gammaubl for Thai; @marcin1990 for Polish; @mydienst for Bosnian; @dvd101x and @darkflare for Spanish; @ATSHOOTER for Albanian; @Munyuk81 for Indonesian; @loppefaaret for Danish; @sharjeelaziz and @nzjake for English; @nzjake for English (New Zealand). We apologize if we missed anyone and welcome corrections.
 
 ### Changed
 
@@ -1501,13 +1524,13 @@ submissions. Thanks to @RuiZhe for Chinese, Traditional; @HansCZ for Czech;
 ### Added
 
 - Portable pooled plots are now available using our new plot NFT. These allow you to plot new plots to an NFT that can either self farm or join and leave pools. During development there were changes to the plot NFT so portable pool plots (those made with `-c` option to `chia plots create`) using code from before June 25th are invalid on mainnet.
-OG plots made before this release can continue to be farmed side by side with the new portable pool plots but can not join pools using the official pooling protocol. You can learn more as a farmer by checking out the [pool user guide](https://github.com/Chia-Network/chia-blockchain/wiki/Pooling-User-Guide). Pool operators and those wanting to understand how the official pooling protocol operates should check out our [pooling implementation reference repository](https://github.com/Chia-Network/pool-reference). If you plan to use plot NFT, all your farmers and harvesters must be on 1.2.0 to function properly for portable pool plots.
+  OG plots made before this release can continue to be farmed side by side with the new portable pool plots but can not join pools using the official pooling protocol. You can learn more as a farmer by checking out the [pool user guide](https://github.com/Chia-Network/chia-blockchain/wiki/Pooling-User-Guide). Pool operators and those wanting to understand how the official pooling protocol operates should check out our [pooling implementation reference repository](https://github.com/Chia-Network/pool-reference). If you plan to use plot NFT, all your farmers and harvesters must be on 1.2.0 to function properly for portable pool plots.
 - The exact commit after which Plot NFTs should be valid is the 89f7a4b3d6329493cd2b4bc5f346a819c99d3e7b commit (in which `pools.testnet9` branch was merged to main) or 5d62b3d1481c1e225d8354a012727ab263342c0a within the `pools.testnet9` branch.
 - `chia farm summary` and the GUI now use a new RPC endpoint to properly show plots for local and remote harvesters. This should address issues #6563, #5881, #3875, #1461.
 - `chia configure` now supports command line updates to peer count and target peer count.
 - Thank you @gldecurtins for adding logging support for remote syslog.
 - Thanks to @maran and @Animazing for adding farmer and pool public key display to the RPC.
-- We have added translations for Hungarian, Belarusian, Catalan, and Albanian.  For Hungarian thanks to @SirGeoff, @azazio @onokaxxx, @rolandfarkasCOM, @HUNDavid , @horvathpalzsolt, @stishun74, @tusdavgaming, @idotitusz, @rasocsabi, @mail.kope, @gsprblnt, @mbudahazi, @csiberius, @tomatos83, @zok42, @ocel0t, @rwtoptomi, @djxpitke, @ftamas85, @zotya0330, @fnni, @kapabeates, @zamery, @viktor.gonczi, @pal.suta, @miv, and @Joeman_. For Belarusian thanks to @shurix83, @haxycgm, and @metalomaniax. For Catalan thank you to @Poliwhirl, @Pep-33, @marqmarti, @meuca, @Guiwdin, @carlescampi, @jairobtx, @Neoares, @darknsis, @augustfarrerasgimeno, and @fornons. Finally for Albanian thanks to @ATSHOOTER and @lakedeejay. We apologize if we missed anyone and welcome corrections.
+- We have added translations for Hungarian, Belarusian, Catalan, and Albanian. For Hungarian thanks to @SirGeoff, @azazio @onokaxxx, @rolandfarkasCOM, @HUNDavid , @horvathpalzsolt, @stishun74, @tusdavgaming, @idotitusz, @rasocsabi, @mail.kope, @gsprblnt, @mbudahazi, @csiberius, @tomatos83, @zok42, @ocel0t, @rwtoptomi, @djxpitke, @ftamas85, @zotya0330, @fnni, @kapabeates, @zamery, @viktor.gonczi, @pal.suta, @miv, and @Joeman\_. For Belarusian thanks to @shurix83, @haxycgm, and @metalomaniax. For Catalan thank you to @Poliwhirl, @Pep-33, @marqmarti, @meuca, @Guiwdin, @carlescampi, @jairobtx, @Neoares, @darknsis, @augustfarrerasgimeno, and @fornons. Finally for Albanian thanks to @ATSHOOTER and @lakedeejay. We apologize if we missed anyone and welcome corrections.
 - Our release process is now fully automated from tagging a release to publishing installers to all of the appropriate locations and now makes the release artifacts available via torrents as well.
 - All Chia repositories now automatically build M1 wheels and create a new MacOS M1 native installer.
 - New CLI command `chia plotnft` to manage pools.
@@ -1522,7 +1545,7 @@ OG plots made before this release can continue to be farmed side by side with th
 
 - We have made a host of changes to the GUI to support pooling and to improve the wallet experience.
 - We updated chiapos to version 1.0.3. This adds parallel reads to GetFullProof. Thanks to @marcoabreu ! We now print target/final directory early in the logs refs and log process ID. Thanks to @grayfallstown ! We are now using Gulrak 1.5.6.
-@683280 optimized code in phase1.hpp. @jespino and @mrhacky started migrating to flags instead of booleans parameters for `show_progress` and `nobitfield`. If you are providing third-party tools you may need to make adjustments if relying on the chiapos log.
+  @683280 optimized code in phase1.hpp. @jespino and @mrhacky started migrating to flags instead of booleans parameters for `show_progress` and `nobitfield`. If you are providing third-party tools you may need to make adjustments if relying on the chiapos log.
 - Updated chiavdf to version 1.0.2 to fix certain tests.
 - Windows builds now rely upon Python 3.9 which obviates the fix in 1.1.7.
 - We are now using miniupnpc version 2.2.2 so that we can support Python 3.9 on Windows.
@@ -1759,7 +1782,7 @@ Batch process weight proof epochs in groups of 900 to fit below May 2020 sqlite 
 
 ### Changed
 
-- The plotter in bitfield mode is much improved in plotting speed (~15% faster than in 1.0.3), now requires 28% less temporary space (238.3 GiB/256 GB), and now uses its maximum memory in phase 1 and only needs 3389MiB for optimal sorting of a k32. Total writes should also be down by about 20%. On almost all machines we expect bitfield to be as fast or faster. For CPUs that predate the [Nehalem architecture](https://en.wikipedia.org/wiki/Nehalem_(microarchitecture)), bitfield plotting will not work and you will need to use no bitfield. Those CPUs were generally designed before 2010.
+- The plotter in bitfield mode is much improved in plotting speed (~15% faster than in 1.0.3), now requires 28% less temporary space (238.3 GiB/256 GB), and now uses its maximum memory in phase 1 and only needs 3389MiB for optimal sorting of a k32. Total writes should also be down by about 20%. On almost all machines we expect bitfield to be as fast or faster. For CPUs that predate the [Nehalem architecture](<https://en.wikipedia.org/wiki/Nehalem_(microarchitecture)>), bitfield plotting will not work and you will need to use no bitfield. Those CPUs were generally designed before 2010.
 - The `src` directory in chia-blockchain has been changed to `chia` to avoid namespace collisions.
 - GUI install builds have been simplified to rely on one `.spec` file in `chia/`
 - The weight proof timeout can now be configured in config.yaml.
@@ -2052,7 +2075,7 @@ Batch process weight proof epochs in groups of 900 to fit below May 2020 sqlite 
 - The websocket address is no longer displayed in the GUI unless it is running as a remote GUI. Thanks @dkackman !
 - `chia plots check` now will continue checking after it finds an error in a plot to the total number of checks you specified.
 - If you run install-gui.sh or install-timelord.sh without being in the venv, the script will warn you that you need to `. ./activate` and exit with error.
-- If you attempt to install on a 32 bit Pi/ARM OS, the installer exits with a helpful error message. You  can still fail when running under a 64 bit kernel but using a 32 bit Python 3.
+- If you attempt to install on a 32 bit Pi/ARM OS, the installer exits with a helpful error message. You can still fail when running under a 64 bit kernel but using a 32 bit Python 3.
 - The application is now more aware of whether it is running a testnet or mainnet. This impacts wallet's display behavior and certain blockchain validation rules.
 - Interface improvements for `chia netspace`.
 - Now that aiosqlite included our upstream improvements we install version 0.17.0.
@@ -2098,13 +2121,13 @@ Batch process weight proof epochs in groups of 900 to fit below May 2020 sqlite 
 - We have added Italian, Russian, and Finnish. More to come soon.
 - There is now remote UI support. [Documents](https://github.com/Chia-Network/chia-blockchain-gui/blob/main/remote.md) will temporarily live in the repository but have moved to the [wiki](https://github.com/Chia-Network/chia-blockchain/wiki/Connecting-the-UI-to-a-remote-daemon). Thanks to @dkackman for this excellent addition!
 - Added the ability to specify an address for the pool when making plots (-c flag), as opposed to a public key. The block
-validation was changed to allow blocks like these to be made. This will enable changing pools in the future, by specifying a smart transaction for your pool rewards.
+  validation was changed to allow blocks like these to be made. This will enable changing pools in the future, by specifying a smart transaction for your pool rewards.
 - Added `chia plots check --challenge-start [start]` that begins at a different `[start]` for `-n [challenges]`. Useful when you want to do more detailed checks on plots without restarting from lower challenge values you already have done. Huge thanks to @eFishCent for this and all of the debugging work behind the scenes confirming that plot failures were machine errors and not bugs!
 
 ### Changed
 
 - Sub blocks renamed to blocks, and blocks renamed to transaction blocks, everywhere. This effects the RPC, now
-all fields that referred to sub blocks are changed to blocks.
+  all fields that referred to sub blocks are changed to blocks.
 - Base difficulty and weight have increased, so difficulty of "5" in the rc1 testnet will be equivalent to "21990232555520" in the previous testnet.
 - 'chia wallet send' now takes in TXCH or XCH as units instead of mojos.
 - Transactions have been further sped up.
@@ -2417,7 +2440,7 @@ all fields that referred to sub blocks are changed to blocks.
 - A bug in bls-singatures/blspy could cause a stack overflow if too many signatures were verified at once. This caused the block of death at 11997 of the Beta 15 chain. Updated to 0.2.4 to address the issue.
 - GUI Wallet now correctly updates around reorgs.
 - chiapos 0.12.32 fixed a an out of bounds read that could crash the plotter. It also contains a fix to better handle the case of drive letters on Windows.
-- Node would fail to start on Windows Server 2016 with lots of cores. This [python issue explains]( https://bugs.python.org/issue26903) the problem.
+- Node would fail to start on Windows Server 2016 with lots of cores. This [python issue explains](https://bugs.python.org/issue26903) the problem.
 
 ### Known Issues
 
@@ -2591,7 +2614,7 @@ all fields that referred to sub blocks are changed to blocks.
 - Handle disconnection and reconnection of hard drives properly.
 - Addressed pre-Haswell Windows signatures failing.
 - MacOS, Linux x64, and Linux aarch64 were not correctly compiling libsodium in
-the blspy/bls-signatures library.
+  the blspy/bls-signatures library.
 - Removed outdated "200 plots" language from Plot tab.
 - Fixed spelling error for "folder" on Plot tab.
 - Various node dependency security vulnerabilities have been fixed.
@@ -2607,76 +2630,76 @@ the blspy/bls-signatures library.
 ### Added
 
 - We have released a new plot file format. We believe that plots made in this
-format and with these IETF BLS keys will work without significant changes on
-mainnet at launch.
+  format and with these IETF BLS keys will work without significant changes on
+  mainnet at launch.
 - We now use [chacha8](https://cr.yp.to/chacha.html) and
-[blake3](https://github.com/BLAKE3-team/BLAKE3) for proof of space instead of
-the now deprecated AES methods. This should increase plotting speed and support
-more processors.
+  [blake3](https://github.com/BLAKE3-team/BLAKE3) for proof of space instead of
+  the now deprecated AES methods. This should increase plotting speed and support
+  more processors.
 - Plot refreshing happens during all new challenges and only new/modified files
-are read.
+  are read.
 - Updated [blspy](https://github.com/Chia-Network/bls-signatures) to use the
-new [IETF standard for BLS signatures](https://tools.ietf.org/html/draft-irtf-cfrg-bls-signature-02).
+  new [IETF standard for BLS signatures](https://tools.ietf.org/html/draft-irtf-cfrg-bls-signature-02).
 - Added a faster VDF process which generates n-wesolowski proofs quickly
-after the VDF result is known. This requires a high number of CPUs. To use it,
-set timelord.fast_algorithm = True in the config file.
+  after the VDF result is known. This requires a high number of CPUs. To use it,
+  set timelord.fast_algorithm = True in the config file.
 - Added a new type of timelord helper - blue boxes, which generate compact
-proofs of time for existing proven blocks. This helps reducing the database
-size and speeds up syncing a node for new users joining the network. Full nodes
-send 100 random un-compact blocks per hour to blue boxes, and if
-timelord.sanitizer_mode = True, the blue box timelord will work on those
-challenges. Unlike the main timelord, average machines can run blue boxes
-and contribute to the chain. Expect improvements to the install method for
-blue boxes in future releases.
+  proofs of time for existing proven blocks. This helps reducing the database
+  size and speeds up syncing a node for new users joining the network. Full nodes
+  send 100 random un-compact blocks per hour to blue boxes, and if
+  timelord.sanitizer_mode = True, the blue box timelord will work on those
+  challenges. Unlike the main timelord, average machines can run blue boxes
+  and contribute to the chain. Expect improvements to the install method for
+  blue boxes in future releases.
 - From the UI you can add a directory that harvester will always check for
-existing and new plots. Harvester will only look in the specific directory you
-specify so you'll have to add any subfolders you want to also contain plots.
+  existing and new plots. Harvester will only look in the specific directory you
+  specify so you'll have to add any subfolders you want to also contain plots.
 - The UI now asks for confirmation before closing and shows shutdown progress.
 - UI now tries to shut down servers gracefully before exiting, and also closes
-the daemon before starting.
+  the daemon before starting.
 - The various sub repositories (chiapos, chiavdf, etc.) now build ARM64 binary
-wheels for Linux with Python 3.8. This makes installing on Ubuntu 20.04 lts on
-a Raspberry Pi 3 or 4 easy.
+  wheels for Linux with Python 3.8. This makes installing on Ubuntu 20.04 lts on
+  a Raspberry Pi 3 or 4 easy.
 - Ci's check to see if they have secret access and attempt to fail cleanly so
-that ci runs successfully complete from PRs or forked repositories.
+  that ci runs successfully complete from PRs or forked repositories.
 - Farmer now sends challenges after a handshake with harvester.
 - The bls-signatures binary wheels include libsodium on all but Windows which
-we expect to add in future releases.
+  we expect to add in future releases.
 - The chia executable is now available if installing from the Windows or MacOS
-Graphical installer. Try `./chia -h` from
-`~\AppData\Local\Chia-Blockchain\app-0.1.8\resources\app.asar.unpacked\daemon\`
-in Windows or
-`/Applications/Chia.app/Contents/Resources/app.asar.unpacked/daemon` on MacOS.
+  Graphical installer. Try `./chia -h` from
+  `~\AppData\Local\Chia-Blockchain\app-0.1.8\resources\app.asar.unpacked\daemon\`
+  in Windows or
+  `/Applications/Chia.app/Contents/Resources/app.asar.unpacked/daemon` on MacOS.
 
 ### Changed
 
 - Minor changes have been made across the repositories to better support
-compiling on OpenBSD. HT @n1000.
+  compiling on OpenBSD. HT @n1000.
 - Changed XCH units to TXCH units for testnet.
 - A push to a branch will cancel all ci runs still running for that branch.
 - Ci's now cache pip and npm caches between runs.
 - Improve test speed with smaller discriminants, less blocks, less keys, and
-smaller plots.
+  smaller plots.
 - RPC servers and clients were refactored.
 - The keychain no longer supports old keys that don't have mnemonics.
 - The keychain uses BIP39 for seed derivation, using the "" passphrase, and
-also stores public keys.
-- Plots.yaml has been replaced.  Plot secret keys are stored in the plots,
- and a list of directories that harvester can find plots in are in config.yaml.
-You can move plots around to any directory in config.yaml as long as the farmer
-has the correct farmer's secret key too.
+  also stores public keys.
+- Plots.yaml has been replaced. Plot secret keys are stored in the plots,
+  and a list of directories that harvester can find plots in are in config.yaml.
+  You can move plots around to any directory in config.yaml as long as the farmer
+  has the correct farmer's secret key too.
 - Auto scanning of plot directories for .plot files.
 - The block header format was changed (puzzle hashes and pool signature).
 - Coinbase and fees coin are now in merkle set, and bip158 filter.
 - New harvester protocol with 2/2 harvester and farmer signatures, and modified
-farmer and full node protocols.
+  farmer and full node protocols.
 - 255/256 filter which allows virtually unlimited plots per harvester or drive.
 - Improved create_plots and check_plots scripts, which are now
-"chia plots create" and "chia plots check".
+  "chia plots create" and "chia plots check".
 - Add plot directories to config.yaml from the cli with "chia plots add".
 - Use real plot sizes in UI instead of a formula/
 - HD keys now use EIP 2333 format instead of BIP32, for compatibility with
-other chains.
+  other chains.
 - Keys are now derived with the EIP 2334 (m/12381/8444/a/b).
 - Removed the ability to pass in sk_seed to plotting, to increase security.
 - Linux builds of chiavdf and blspy now use a fresh build of gmp 6.2.1.
@@ -2686,13 +2709,13 @@ other chains.
 - uPnP now works on Windows.
 - Log rotation should now properly rotate every 20MB and keep 7 historical logs.
 - Node had a significant memory leak under load due to an extraneous fork
-in the network code.
+  in the network code.
 - Skylake processors on Windows without AVX would fail to run.
 - Harvester no longer runs into 512 maximum file handles open issue on Windows.
 - The version generator for new installers incorrectly handled the "dev"
-versions after a release tag.
+  versions after a release tag.
 - Due to a python bug, ssl connections could randomly fail. Worked around
-[Python issue 29288](https://bugs.python.org/issue29288)
+  [Python issue 29288](https://bugs.python.org/issue29288)
 - Removed websocket max message limit, allowing for more plots
 - Daemon was crashing when websocket gets improperly closed
 
@@ -2700,14 +2723,14 @@ versions after a release tag.
 
 - All keys generated before Beta 1.8 are of an old format and no longer useful.
 - All plots generated before Beta 1.8 are no longer compatible with testnet and
-should be deleted.
+  should be deleted.
 
 ### Known Issues
 
 - For Windows users on pre Haswell CPUs there is a known issue that causes
-"Given G1 element failed g1_is_valid check" when attempting to generate
-keys. This is a regression from our previous fix when it was upstreamed into
-relic. We will make a patch available for these systems shortly.
+  "Given G1 element failed g1_is_valid check" when attempting to generate
+  keys. This is a regression from our previous fix when it was upstreamed into
+  relic. We will make a patch available for these systems shortly.
 
 ## [1.0beta7] aka Beta 1.7 - 2020-06-08
 
@@ -2904,7 +2927,7 @@ relic. We will make a patch available for these systems shortly.
 ### Added
 
 - There is now full transaction support on the Chia blockchain. In this initial Beta 1.0 release, all transaction types are supported though the wallets and UIs currently only directly support basic transactions like coinbase rewards and sending coins while paying fees. UI support for our [smart transactions](https://github.com/Chia-Network/wallets/blob/main/README.md) will be available in the UIs shortly.
-- Wallet and Node GUI’s are available on Windows, Mac, and desktop Linux platforms. We now use an Electron UI that is a full light client wallet that can also serve as a node UI. Our Windows Electron Wallet can run standalone by connecting to other nodes on the network or another node you run. WSL 2 on Windows can run everything except the Wallet but you can run the Wallet on the native Windows side of the same machine. Also the WSL 2 install process is 3 times faster and *much* easier. Windows native node/farmer/plotting functionality are coming soon.
+- Wallet and Node GUI’s are available on Windows, Mac, and desktop Linux platforms. We now use an Electron UI that is a full light client wallet that can also serve as a node UI. Our Windows Electron Wallet can run standalone by connecting to other nodes on the network or another node you run. WSL 2 on Windows can run everything except the Wallet but you can run the Wallet on the native Windows side of the same machine. Also the WSL 2 install process is 3 times faster and _much_ easier. Windows native node/farmer/plotting functionality are coming soon.
 - Install is significantly easier with less dependencies on all supported platforms.
 - If you’re a farmer you can use the Wallet to keep track of your earnings. Either use the same keys.yaml on the same machine or copy the keys.yaml to another machine where you want to track of and spend your coins.
 - We have continued to make improvements to the speed of VDF squaring, creating a VDF proof, and verifying a VDF proof.

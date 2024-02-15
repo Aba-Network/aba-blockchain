@@ -1,6 +1,7 @@
+# Aba has modified this file
 #
 # Install helper code to manage inserting the correct version for the GUI
-# Gets the version from the result of "chia version"
+# Gets the version from the result of "aba version"
 # Converts to proper symver format so NPM doesn't complain
 # Adds the version info to the package.json file
 #

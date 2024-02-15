@@ -1,3 +1,4 @@
+# Aba has modified this file
 from __future__ import annotations
 
 import json
@@ -283,7 +284,7 @@ class TestKeysCommands:
         assert runner.invoke(cli, [*base_params, "init"], catch_exceptions=False).exit_code == 0
         # Make sure the command works with no keys
         result = runner.invoke(cli, [*base_params, *cmd_params], catch_exceptions=False)
-        assert result.output == "No keys are present in the keychain. Generate them with 'chia keys generate'\n"
+        assert result.output == "No keys are present in the keychain. Generate them with 'aba keys generate'\n"
         # Add 10 keys to the keychain, give every other a label
         keys = [KeyData.generate(f"key_{i}" if i % 2 == 0 else None) for i in range(10)]
         for key in keys:

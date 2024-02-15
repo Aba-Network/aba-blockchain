@@ -1,3 +1,4 @@
+# Aba has modified this file
 from __future__ import annotations
 
 import os
@@ -67,7 +68,7 @@ def check_keys(new_root: Path, keychain: Optional[Keychain] = None) -> None:
         keychain = Keychain()
     all_sks = keychain.get_all_private_keys()
     if len(all_sks) == 0:
-        print("No keys are present in the keychain. Generate them with 'chia keys generate'")
+        print("No keys are present in the keychain. Generate them with 'aba keys generate'")
         return None
 
     with lock_and_load_config(new_root, "config.yaml") as config:
@@ -416,6 +417,6 @@ def chia_init(
             pass
 
     print("")
-    print("To see your keys, run 'chia keys show --show-mnemonic-seed'")
+    print("To see your keys, run 'aba keys show --show-mnemonic-seed'")
 
     return 0

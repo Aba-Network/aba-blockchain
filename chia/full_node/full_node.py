@@ -252,7 +252,7 @@ class FullNode:
                                     self.db_wrapper.db_version = 2
                                     self.log.info("blockchain database is empty, configuring as v2")
                             except sqlite3.OperationalError:
-                                # it could be a database created with "chia init", which is
+                                # it could be a database created with "aba init", which is
                                 # empty except it has the database_version table
                                 pass
 

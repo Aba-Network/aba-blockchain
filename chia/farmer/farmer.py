@@ -1,3 +1,4 @@
+# Aba has modified this file
 from __future__ import annotations
 
 import asyncio
@@ -219,7 +220,7 @@ class Farmer:
         return await keychain_proxy.get_all_private_keys()
 
     async def setup_keys(self) -> bool:
-        no_keys_error_str = "No keys exist. Please run 'chia keys generate' or open the UI."
+        no_keys_error_str = "No keys exist. Please run 'aba keys generate' or open the UI."
         try:
             self.all_root_sks = [sk for sk, _ in await self.get_all_private_keys()]
         except KeychainProxyConnectionFailure:

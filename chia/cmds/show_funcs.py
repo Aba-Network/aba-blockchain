@@ -1,3 +1,4 @@
+# Aba has modified this file
 from __future__ import annotations
 
 import json
@@ -49,7 +50,7 @@ async def print_blockchain_state(node_client: FullNodeRpcClient, config: Dict[st
         print(f"Current Blockchain Status: Not Synced. Peak height: {peak.height}")
     else:
         print("\nSearching for an initial chain\n")
-        print("You may be able to expedite with 'chia peer full_node -a host:port' using a known node.\n")
+        print("You may be able to expedite with 'aba peer full_node -a host:port' using a known node.\n")
 
     if peak is not None:
         if peak.is_transaction_block:

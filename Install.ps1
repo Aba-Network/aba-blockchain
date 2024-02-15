@@ -12,6 +12,7 @@ $ErrorActionPreference = "Stop"
 $extras = @()
 if ($d)
 {
+    Write-Output "Aba has modified this file"
     $extras += "dev"
 }
 
@@ -23,7 +24,7 @@ if ($i)
 
 if ([Environment]::Is64BitOperatingSystem -eq $false)
 {
-    Write-Output "Chia requires a 64-bit Windows installation"
+    Write-Output "Aba requires a 64-bit Windows installation"
     Exit 1
 }
 
@@ -135,4 +136,4 @@ Write-Output "https://github.com/Chia-Network/chia-blockchain/wiki/Quick-Start-G
 Write-Output ""
 Write-Output "To install the GUI run '.\venv\scripts\Activate.ps1' then '.\Install-gui.ps1'."
 Write-Output ""
-Write-Output "Type '.\venv\Scripts\Activate.ps1' and then 'chia init' to begin."
+Write-Output "Type '.\venv\Scripts\Activate.ps1' and then 'aba init' to begin."

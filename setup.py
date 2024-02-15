@@ -75,14 +75,14 @@ legacy_keyring_dependencies = [
 ]
 
 kwargs = dict(
-    name="chia-blockchain",
-    author="Mariano Sorgente",
-    author_email="mariano@chia.net",
-    description="Chia blockchain full node, farmer, timelord, and wallet.",
-    url="https://chia.net/",
+    name="aba-blockchain",
+    author="Aba blockchain team",
+    author_email="",
+    description="Aba blockchain full node, farmer, timelord, and wallet.",
+    url="https://aba.ooo/",
     license="Apache License",
     python_requires=">=3.8.1, <4",
-    keywords="chia blockchain node",
+    keywords="aba blockchain node",
     install_requires=dependencies,
     extras_require=dict(
         dev=dev_dependencies,

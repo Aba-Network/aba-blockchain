@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# Aba has modified this file
 set -o errexit
 
 USAGE_TEXT="\
@@ -356,4 +356,4 @@ echo "https://github.com/Chia-Network/chia-blockchain/wiki/Quick-Start-Guide"
 echo ""
 echo "To install the GUI run '. ./activate' then 'sh install-gui.sh'."
 echo ""
-echo "Type '. ./activate' and then 'chia init' to begin."
+echo "Type '. ./activate' and then 'aba init' to begin."
