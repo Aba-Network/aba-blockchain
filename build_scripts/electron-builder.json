@@ -1,6 +1,6 @@
 {
-  "productName": "chia",
-  "appId": "net.chia.blockchain",
+  "productName": "aba",
+  "appId": "net.aba.blockchain",
   "asar": true,
   "asarUnpack": "**/daemon/**",
   "npmRebuild": false,
@@ -13,15 +13,15 @@
   ],
   "protocols": [
     {
-      "name": "Chia URL",
+      "name": "Aba URL",
       "schemes": [
-        "chia"
+        "aba"
       ]
     },
     {
-      "name": "Chia XCH Address",
+      "name": "Aba ABA Address",
       "schemes": [
-        "xch"
+        "aba"
       ]
     }
   ],
@@ -29,10 +29,10 @@
     "target": "nsis",
     "icon": "src/assets/img/chia.ico",
     "timeStampServer": "http://timestamp.comodoca.com",
-    "executableName": "Chia"
+    "executableName": "Aba"
   },
   "nsis": {
-    "artifactName": "ChiaSetup-${env.CHIA_INSTALLER_VERSION}.exe",
+    "artifactName": "AbaSetup-${env.CHIA_INSTALLER_VERSION}.exe",
     "oneClick": false,
     "deleteAppDataOnUninstall": true,
     "allowToChangeInstallationDirectory": true,
@@ -42,7 +42,7 @@
     "include": "installer.nsh"
   },
   "mac": {
-    "executableName": "Chia",
+    "executableName": "Aba",
     "artifactName": "${productName}-${env.CHIA_INSTALLER_VERSION}.${ext}",
     "category": "public.app-category.finance",
     "target": "dmg",

@@ -1,3 +1,4 @@
+# Aba has modified this file
 from __future__ import annotations
 
 import sys
@@ -431,7 +432,7 @@ def run_cli_command(capsys: object, chia_root: Path, command_list: List[str]) ->
     exited_cleanly = True
     argv_temp = sys.argv
     try:
-        sys.argv = ["chia", "--root-path", str(chia_root)] + command_list
+        sys.argv = ["aba", "--root-path", str(chia_root)] + command_list
         chia_cli()  # pylint: disable=no-value-for-parameter
     except SystemExit as e:
         if e.code != 0:

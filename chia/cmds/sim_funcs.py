@@ -1,3 +1,4 @@
+# Aba has modified this file
 from __future__ import annotations
 
 import asyncio
@@ -290,7 +291,7 @@ async def async_config_wizard(
     print("Configuration Wizard Complete.")
     print("Starting Simulator now...\n\n")
 
-    sys.argv[0] = str(Path(sys.executable).parent / "chia")  # fix path for tests
+    sys.argv[0] = str(Path(sys.executable).parent / "aba")  # fix path for tests
     await async_start(root_path, config, ("simulator",), False)
 
     # now we make sure the simulator has a genesis block

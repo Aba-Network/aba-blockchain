@@ -1,3 +1,4 @@
+# Aba has modified this file
 from __future__ import annotations
 
 import asyncio
@@ -183,7 +184,7 @@ async def run_cli_cmd(*args: str, root_path: Path) -> asyncio.subprocess.Process
     process = await asyncio.create_subprocess_exec(
         sys.executable,
         "-m",
-        "chia",
+        "aba",
         *args,
         env={**os.environ, "CHIA_ROOT": os.fspath(root_path)},
         stdout=asyncio.subprocess.PIPE,
@@ -2021,7 +2022,7 @@ async def test_clear_pending_roots(
             args: List[str] = [
                 sys.executable,
                 "-m",
-                "chia",
+                "aba",
                 "data",
                 "clear_pending_roots",
                 "--id",

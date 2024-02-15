@@ -1,3 +1,4 @@
+# Aba has modified this file
 from __future__ import annotations
 
 import subprocess
@@ -19,7 +20,7 @@ def test_print_fee_info_cmd(
 ) -> None:
     _, _, _ = one_node_one_block
     scripts_path = Path(sysconfig.get_path("scripts"))
-    subprocess.run([scripts_path.joinpath("chia"), "show", "-f"], check=True)
+    subprocess.run([scripts_path.joinpath("aba"), "show", "-f"], check=True)
 
 
 def test_show_fee_info(

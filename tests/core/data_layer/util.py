@@ -1,3 +1,4 @@
+# Aba has modified this file
 from __future__ import annotations
 
 import contextlib
@@ -142,7 +143,7 @@ class ChiaRoot:
             kwargs["env"]["SYSTEMROOT"] = os.environ["SYSTEMROOT"]
 
         modified_args: List[Union[str, os_PathLike_str]] = [
-            self.scripts_path.joinpath("chia"),
+            self.scripts_path.joinpath("aba"),
             "--root-path",
             self.path,
             *args,
