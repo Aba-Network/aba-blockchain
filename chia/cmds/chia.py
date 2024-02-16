@@ -37,7 +37,7 @@ CONTEXT_SETTINGS = dict(help_option_names=["-h", "--help"])
 
 
 @click.group(
-    help=f"\n  Manage chia blockchain infrastructure ({__version__})\n",
+    help=f"\n  Manage aba blockchain infrastructure ({__version__})\n",
     epilog="Try 'aba start node', 'aba netspace -d 192', or 'aba show -s'",
     context_settings=CONTEXT_SETTINGS,
 )
@@ -86,12 +86,12 @@ def cli(
     check_ssl(Path(root_path))
 
 
-@cli.command("version", help="Show chia version")
+@cli.command("version", help="Show aba version")
 def version_cmd() -> None:
     print(__version__)
 
 
-@cli.command("run_daemon", help="Runs chia daemon")
+@cli.command("run_daemon", help="Runs aba daemon")
 @click.option(
     "--wait-for-unlock",
     help="If the keyring is passphrase-protected, the daemon will wait for an unlock command before accessing keys",

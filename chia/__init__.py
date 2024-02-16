@@ -4,7 +4,7 @@ import importlib.metadata
 
 __version__: str
 try:
-    __version__ = importlib.metadata.version("chia-blockchain")
+    __version__ = importlib.metadata.version("aba-blockchain")
 except importlib.metadata.PackageNotFoundError:
     # package is not installed
-    __version__ = "unknown"
+    __version__ = "unknownk"

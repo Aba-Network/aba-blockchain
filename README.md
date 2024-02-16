@@ -55,7 +55,9 @@ Once installed
 
 ```
 . ./activate
-aba start all or bash start-gui.sh
+aba start all
+or for gui:
+bash start-gui.sh
 ```
 
 aba-blockchain is based on chia-blockchain from Chia Network Inc., licensed under the Apache 2.0 license. The Aba team regularly offers support to CNI & several major Chia projects.

@@ -152,7 +152,7 @@ def check_ssl(root_path: Path) -> None:
                 for path, actual_permissions, expected_permissions in invalid_files
             ),
             "One or more SSL files were found with permission issues.",
-            "Run the following to fix issues: chia init --fix-ssl-permissions",
+            "Run the following to fix issues: aba init --fix-ssl-permissions",
         ]
         print("\n".join(lines), file=sys.stderr)
 
