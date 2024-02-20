@@ -1,3 +1,4 @@
+# Aba has modified this file
 from __future__ import annotations
 
 import copy
@@ -82,7 +83,7 @@ from chia.wallet.wallet_info import WalletInfo
 class DAOWallet:
     """
     This is a wallet in the sense that it conforms to the interface needed by WalletStateManager.
-    It is not a user-facing wallet. A user cannot spend or receive XCH though a wallet of this type.
+    It is not a user-facing wallet. A user cannot spend or receive ABA though a wallet of this type.
 
     Wallets of type CAT and DAO_CAT are the user-facing wallets which hold the voting tokens a user
     owns. The DAO Wallet is used for state-tracking of the Treasury Singleton and its associated
@@ -383,13 +384,13 @@ class DAOWallet:
         # No spendable or receivable value
         return uint128(1)
 
-    # if asset_id == None: then we get normal XCH
+    # if asset_id == None: then we get normal ABA
     async def get_balance_by_asset_type(self, asset_id: Optional[bytes32] = None) -> uint128:
         puzhash = get_p2_singleton_puzhash(self.dao_info.treasury_id, asset_id=asset_id)
         records = await self.wallet_state_manager.coin_store.get_coin_records_by_puzzle_hash(puzhash)
         return uint128(sum([cr.coin.amount for cr in records if not cr.spent]))
 
-    # if asset_id == None: then we get normal XCH
+    # if asset_id == None: then we get normal ABA
     async def select_coins_for_asset_type(self, amount: uint64, asset_id: Optional[bytes32] = None) -> List[Coin]:
         puzhash = get_p2_singleton_puzhash(self.dao_info.treasury_id, asset_id=asset_id)
         records = await self.wallet_state_manager.coin_store.get_coin_records_by_puzzle_hash(puzhash)

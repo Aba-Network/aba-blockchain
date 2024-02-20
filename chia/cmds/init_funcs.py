@@ -141,7 +141,7 @@ def check_keys(new_root: Path, keychain: Optional[Keychain] = None) -> None:
             )
         if updated_target:
             print(
-                f"To change the XCH destination addresses, edit the `xch_target_address` entries in"
+                f"To change the ABA destination addresses, edit the `xch_target_address` entries in"
                 f" {(new_root / 'config' / 'config.yaml').absolute()}."
             )
 
@@ -332,9 +332,9 @@ def chia_init(
     if chia_root is not None:
         print(f"CHIA_ROOT is set to {chia_root}")
 
-    print(f"Chia directory {root_path}")
+    print(f"Aba directory {root_path}")
     if root_path.is_dir() and Path(root_path / "config" / "config.yaml").exists():
-        # This is reached if CHIA_ROOT is set, or if user has run chia init twice
+        # This is reached if CHIA_ROOT is set, or if user has run aba init twice
         # before a new update.
         if testnet:
             configure(

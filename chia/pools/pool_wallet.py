@@ -1,3 +1,4 @@
+# Aba has modified this file
 from __future__ import annotations
 
 import dataclasses
@@ -405,7 +406,7 @@ class PoolWallet:
     ) -> Tuple[TransactionRecord, bytes32, bytes32]:
         """
         A "plot NFT", or pool wallet, represents the idea of a set of plots that all pay to
-        the same pooling puzzle. This puzzle is a `chia singleton` that is
+        the same pooling puzzle. This puzzle is a `aba singleton` that is
         parameterized with a public key controlled by the user's wallet
         (a `smart coin`). It contains an inner puzzle that can switch between
         paying block rewards to a pool, or to a user's own wallet.

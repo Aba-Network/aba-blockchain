@@ -1,3 +1,4 @@
+# Aba has modified this file
 from __future__ import annotations
 
 import os
@@ -17,7 +18,7 @@ def default_beta_root_path() -> Path:
 
 def warn_if_beta_enabled(config: Dict[str, Any]) -> None:
     if config.get("beta", {}).get("enabled", False):
-        print("\nWARNING: beta test mode is enabled. Run `chia beta disable` if this is unintentional.\n")
+        print("\nWARNING: beta test mode is enabled. Run `aba beta disable` if this is unintentional.\n")
 
 
 def prompt_beta_warning() -> bool:

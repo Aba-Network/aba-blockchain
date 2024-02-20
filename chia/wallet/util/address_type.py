@@ -1,3 +1,4 @@
+# Aba has modified this file
 from __future__ import annotations
 
 from enum import Enum
@@ -8,13 +9,13 @@ from chia.util.config import selected_network_address_prefix
 
 
 class AddressType(Enum):
-    XCH = "xch"
+    ABA = "xch"
     NFT = "nft"
     DID = "did:chia:"
 
     def hrp(self, config: Dict[str, Any]) -> str:
-        if self == AddressType.XCH:
-            # Special case to map XCH to the current network's address prefix
+        if self == AddressType.ABA:
+            # Special case to map ABA to the current network's address prefix
             return selected_network_address_prefix(config)
         return str(self.value)
 

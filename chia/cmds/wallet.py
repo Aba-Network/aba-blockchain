@@ -1,3 +1,4 @@
+# Aba has modified this file
 from __future__ import annotations
 
 import asyncio
@@ -131,7 +132,7 @@ def get_transactions_cmd(
     )
 
 
-@wallet_cmd.command("send", help="Send chia to another wallet")
+@wallet_cmd.command("send", help="Send aba to another wallet")
 @click.option(
     "-wp",
     "--wallet-rpc-port",
@@ -141,25 +142,25 @@ def get_transactions_cmd(
 )
 @options.create_fingerprint()
 @click.option("-i", "--id", help="Id of the wallet to use", type=int, default=1, show_default=True, required=True)
-@click.option("-a", "--amount", help="How much chia to send, in XCH", type=str, required=True)
+@click.option("-a", "--amount", help="How much aba to send, in ABA", type=str, required=True)
 @click.option("-e", "--memo", help="Additional memo for the transaction", type=str, default=None)
 @click.option(
     "-m",
     "--fee",
-    help="Set the fees for the transaction, in XCH",
+    help="Set the fees for the transaction, in ABA",
     type=str,
     default="0",
     show_default=True,
     required=True,
 )
-@click.option("-t", "--address", help="Address to send the XCH", type=str, required=True)
+@click.option("-t", "--address", help="Address to send the ABA", type=str, required=True)
 @click.option(
     "-o", "--override", help="Submits transaction without checking for unusual values", is_flag=True, default=False
 )
 @click.option(
     "-ma",
     "--min-coin-amount",
-    help="Ignore coins worth less then this much XCH or CAT units",
+    help="Ignore coins worth less then this much ABA or CAT units",
     type=str,
     required=False,
     default="0",
@@ -167,7 +168,7 @@ def get_transactions_cmd(
 @click.option(
     "-l",
     "--max-coin-amount",
-    help="Ignore coins worth more then this much XCH or CAT units",
+    help="Ignore coins worth more then this much ABA or CAT units",
     type=str,
     required=False,
     default=None,
@@ -299,7 +300,7 @@ def get_address_cmd(wallet_rpc_port: Optional[int], id: int, fingerprint: int, n
     required=True,
 )
 @click.option(
-    "-m", "--fee", help="A fee to add to the offer when it gets taken, in XCH", default="0", show_default=True
+    "-m", "--fee", help="A fee to add to the offer when it gets taken, in ABA", default="0", show_default=True
 )
 @click.option(
     "--force",
@@ -368,7 +369,7 @@ def address_sign_message(wallet_rpc_port: Optional[int], fingerprint: int, addre
         sign_message(
             wallet_rpc_port=wallet_rpc_port,
             fp=fingerprint,
-            addr_type=AddressType.XCH,
+            addr_type=AddressType.ABA,
             message=hex_message,
             address=address,
         )
@@ -421,7 +422,7 @@ def add_token_cmd(wallet_rpc_port: Optional[int], asset_id: str, token_name: str
     asyncio.run(add_token(wallet_rpc_port, fingerprint, asset_id, token_name))
 
 
-@wallet_cmd.command("make_offer", help="Create an offer of XCH/CATs/NFTs for XCH/CATs/NFTs")
+@wallet_cmd.command("make_offer", help="Create an offer of ABA/CATs/NFTs for ABA/CATs/NFTs")
 @click.option(
     "-wp",
     "--wallet-rpc-port",
@@ -445,7 +446,7 @@ def add_token_cmd(wallet_rpc_port: Optional[int], asset_id: str, token_name: str
 )
 @click.option("-p", "--filepath", help="The path to write the generated offer file to", required=True)
 @click.option(
-    "-m", "--fee", help="A fee to add to the offer when it gets taken, in XCH", default="0", show_default=True
+    "-m", "--fee", help="A fee to add to the offer when it gets taken, in ABA", default="0", show_default=True
 )
 @click.option(
     "--reuse",
@@ -543,7 +544,7 @@ def get_offers_cmd(
 @options.create_fingerprint()
 @click.option("-e", "--examine-only", help="Print the summary of the offer file but do not take it", is_flag=True)
 @click.option(
-    "-m", "--fee", help="The fee to use when pushing the completed offer, in XCH", default="0", show_default=True
+    "-m", "--fee", help="The fee to use when pushing the completed offer, in ABA", default="0", show_default=True
 )
 @click.option(
     "--reuse",
@@ -576,7 +577,7 @@ def take_offer_cmd(
 @click.option("-id", "--id", help="The offer ID that you wish to cancel", required=True)
 @click.option("--insecure", help="Don't make an on-chain transaction, simply mark the offer as cancelled", is_flag=True)
 @click.option(
-    "-m", "--fee", help="The fee to use when cancelling the offer securely, in XCH", default="0", show_default=True
+    "-m", "--fee", help="The fee to use when cancelling the offer securely, in ABA", default="0", show_default=True
 )
 def cancel_offer_cmd(wallet_rpc_port: Optional[int], fingerprint: int, id: str, insecure: bool, fee: str) -> None:
     from .wallet_funcs import cancel_offer
@@ -591,7 +592,7 @@ def cancel_offer_cmd(wallet_rpc_port: Optional[int], fingerprint: int, id: str, 
 # TODO: accept multiple dbs on commandline
 # TODO: Convert to Path earlier
 def check_wallet_cmd(ctx: click.Context, db_path: str, verbose: bool) -> None:
-    """check, scan, diagnose, fsck Chia Wallet DBs"""
+    """check, scan, diagnose, fsck Aba Wallet DBs"""
 
     from chia.cmds.check_wallet_db import scan
 
@@ -624,7 +625,7 @@ def did_cmd() -> None:
 @click.option(
     "-m",
     "--fee",
-    help="Set the fees per transaction, in XCH.",
+    help="Set the fees per transaction, in ABA.",
     type=str,
     default="0",
     show_default=True,
@@ -860,7 +861,7 @@ def did_message_spend_cmd(
 @click.option(
     "-m",
     "--fee",
-    help="Set the fees per transaction, in XCH.",
+    help="Set the fees per transaction, in ABA.",
     type=str,
     default="0",
     show_default=True,
@@ -969,7 +970,7 @@ def nft_sign_message(wallet_rpc_port: Optional[int], fingerprint: int, nft_id: s
 @click.option(
     "-m",
     "--fee",
-    help="Set the fees per transaction, in XCH.",
+    help="Set the fees per transaction, in ABA.",
     type=str,
     default="0",
     show_default=True,
@@ -1060,7 +1061,7 @@ def nft_mint_cmd(
 @click.option(
     "-m",
     "--fee",
-    help="Set the fees per transaction, in XCH.",
+    help="Set the fees per transaction, in ABA.",
     type=str,
     default="0",
     show_default=True,
@@ -1115,7 +1116,7 @@ def nft_add_uri_cmd(
 @click.option(
     "-m",
     "--fee",
-    help="Set the fees per transaction, in XCH.",
+    help="Set the fees per transaction, in ABA.",
     type=str,
     default="0",
     show_default=True,
@@ -1184,7 +1185,7 @@ def nft_list_cmd(wallet_rpc_port: Optional[int], fingerprint: int, id: int, num:
 @click.option(
     "-m",
     "--fee",
-    help="Set the fees per transaction, in XCH.",
+    help="Set the fees per transaction, in ABA.",
     type=str,
     default="0",
     show_default=True,
@@ -1269,7 +1270,7 @@ def notification_cmd() -> None:
     show_default=True,
 )
 @click.option("-n", "--message", help="The message of the notification", type=str)
-@click.option("-m", "--fee", help="The fee for the transaction, in XCH", type=str)
+@click.option("-m", "--fee", help="The fee for the transaction, in ABA", type=str)
 def send_notification_cmd(
     wallet_rpc_port: Optional[int],
     fingerprint: int,
@@ -1345,7 +1346,7 @@ def vcs_cmd() -> None:  # pragma: no cover
 @options.create_fingerprint()
 @click.option("-d", "--did", help="The DID of the VC's proof provider", type=str, required=True)
 @click.option("-t", "--target-address", help="The address to send the VC to once it's minted", type=str, required=False)
-@click.option("-m", "--fee", help="Blockchain fee for mint transaction, in XCH", type=str, required=False, default="0")
+@click.option("-m", "--fee", help="Blockchain fee for mint transaction, in ABA", type=str, required=False, default="0")
 def mint_vc_cmd(
     wallet_rpc_port: Optional[int],
     fingerprint: int,
@@ -1403,7 +1404,7 @@ def get_vcs_cmd(
 )
 @click.option("-p", "--new-proof-hash", help="The new proof hash to update the VC to", type=str, required=True)
 @click.option(
-    "-m", "--fee", help="Blockchain fee for update transaction, in XCH", type=str, required=False, default="0"
+    "-m", "--fee", help="Blockchain fee for update transaction, in ABA", type=str, required=False, default="0"
 )
 @click.option(
     "--reuse-puzhash/--generate-new-puzhash",
@@ -1501,7 +1502,7 @@ def get_proofs_for_root_cmd(
     required=False,
 )
 @click.option(
-    "-m", "--fee", help="Blockchain fee for revocation transaction, in XCH", type=str, required=False, default="0"
+    "-m", "--fee", help="Blockchain fee for revocation transaction, in ABA", type=str, required=False, default="0"
 )
 @click.option(
     "--reuse-puzhash/--generate-new-puzhash",
@@ -1536,7 +1537,7 @@ def revoke_vc_cmd(
     "-a", "--min-amount-to-claim", help="The minimum amount to approve to move into the wallet", type=str, required=True
 )
 @click.option(
-    "-m", "--fee", type=str, default=0, show_default=True, help="Blockchain fee for approval transaction, in XCH"
+    "-m", "--fee", type=str, default=0, show_default=True, help="Blockchain fee for approval transaction, in ABA"
 )
 @click.option("-ma", "--min-coin-amount", type=Decimal, help="The minimum coin amount to select")
 @click.option("-l", "--max-coin-amount", type=Decimal, help="The maximum coin amount to select")

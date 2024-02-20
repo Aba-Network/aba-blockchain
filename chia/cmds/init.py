@@ -1,3 +1,4 @@
+# Aba has modified this file
 from __future__ import annotations
 
 import click
@@ -16,7 +17,7 @@ import click
     is_flag=True,
     help="Attempt to fix SSL certificate/key file permissions",
 )
-@click.option("--testnet", is_flag=True, help="Configure this chia install to connect to the testnet")
+@click.option("--testnet", is_flag=True, help="Configure this aba install to connect to the testnet")
 @click.option("--set-passphrase", "-s", is_flag=True, help="Protect your keyring with a passphrase")
 @click.option(
     "--v1-db",
@@ -37,9 +38,9 @@ def init_cmd(
 
     \b
     Follow these steps to create new certificates for a remote harvester:
-    - Make a copy of your Farming Machine CA directory: ~/.chia/[version]/config/ssl/ca
-    - Shut down all chia daemon processes with `chia stop all -d`
-    - Run `chia init -c [directory]` on your remote harvester,
+    - Make a copy of your Farming Machine CA directory: ~/.aba/[version]/config/ssl/ca
+    - Shut down all Aba daemon processes with `aba stop all -d`
+    - Run `aba init -c [directory]` on your remote harvester,
       where [directory] is the the copy of your Farming Machine CA directory
     - Get more details on remote harvester on Chia wiki:
       https://github.com/Chia-Network/chia-blockchain/wiki/Farming-on-many-machines

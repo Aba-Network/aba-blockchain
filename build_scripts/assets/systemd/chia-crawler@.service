@@ -1,12 +1,12 @@
 [Unit]
-Description=Chia Crawler Service for %i
+Description=Aba Crawler Service for %i
 Requires=chia-daemon@%i.service
 After=chia-daemon@%i.service
 
 [Service]
 Type=simple
-Environment=CHIA_ROOT=/home/%i/.chia/mainnet
-ExecStart=/opt/chia/start_crawler
+Environment=CHIA_ROOT=/home/%i/.aba/mainnet
+ExecStart=/opt/aba/start_crawler
 User=%i
 Group=%i
 LimitNOFILE=1048576

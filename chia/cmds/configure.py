@@ -1,3 +1,4 @@
+# Aba has modified this file
 from __future__ import annotations
 
 from pathlib import Path
@@ -206,7 +207,7 @@ def configure(
             change_made = True
 
         if change_made:
-            print("Restart any running chia services for changes to take effect")
+            print("Restart any running aba services for changes to take effect")
             save_config(root_path, "config.yaml", config)
 
 

@@ -1,3 +1,4 @@
+# Aba has modified this file
 from __future__ import annotations
 
 import dataclasses
@@ -682,7 +683,7 @@ class CATWallet:
         selected_cat_amount = sum([c.amount for c in cat_coins])
         assert selected_cat_amount >= starting_amount
 
-        # Figure out if we need to absorb/melt some XCH as part of this
+        # Figure out if we need to absorb/melt some ABA as part of this
         regular_chia_to_claim: int = 0
         if payment_amount > starting_amount:
             fee = uint64(fee + payment_amount - starting_amount)

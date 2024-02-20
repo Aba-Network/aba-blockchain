@@ -1,3 +1,4 @@
+# Aba has modified this file
 from __future__ import annotations
 
 from typing import List, Optional
@@ -42,7 +43,7 @@ class WalletUserStore:
     async def init_wallet(self):
         all_wallets = await self.get_all_wallet_info_entries()
         if len(all_wallets) == 0:
-            await self.create_wallet("Chia Wallet", WalletType.STANDARD_WALLET, "")
+            await self.create_wallet("Aba Wallet", WalletType.STANDARD_WALLET, "")
 
     async def create_wallet(
         self,

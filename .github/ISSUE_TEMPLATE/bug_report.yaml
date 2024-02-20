@@ -1,3 +1,4 @@
+# Aba has modified this file
 name: Bug Report
 description: File a bug report
 title: "[Bug] "
@@ -12,14 +13,14 @@ body:
     id: what-happened
     attributes:
       label: What happened?
-      description:  A clear and concise description of what happened, how to reproduce it, and what you expected to happen.
+      description: A clear and concise description of what happened, how to reproduce it, and what you expected to happen.
     validations:
       required: true
   - type: input
     id: version
     attributes:
       label: Version
-      description: What version of Chia are you running?
+      description: What version of Aba are you running?
     validations:
       required: true
   - type: dropdown

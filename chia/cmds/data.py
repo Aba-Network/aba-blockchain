@@ -1,3 +1,4 @@
+# Aba has modified this file
 from __future__ import annotations
 
 import json
@@ -98,7 +99,7 @@ def create_fee_option() -> Callable[[FC], FC]:
     return click.option(
         "-m",
         "--fee",
-        help="Set the fees for the transaction, in XCH",
+        help="Set the fees for the transaction, in ABA",
         type=str,
         default=None,
         show_default=True,

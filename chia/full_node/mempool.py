@@ -1,3 +1,4 @@
+# Aba has modified this file
 from __future__ import annotations
 
 import logging
@@ -36,7 +37,7 @@ MAX_SKIPPED_ITEMS = 20
 # time on potentially expensive items.
 PRIORITY_TX_THRESHOLD = 3
 
-# Typical cost of a standard XCH spend. It's used as a heuristic to help
+# Typical cost of a standard ABA spend. It's used as a heuristic to help
 # determine how close to the block size limit we're willing to go.
 MIN_COST_THRESHOLD = 6_000_000
 

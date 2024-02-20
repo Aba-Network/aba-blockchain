@@ -1,3 +1,4 @@
+# Aba has modified this file
 from __future__ import annotations
 
 import asyncio
@@ -76,7 +77,7 @@ async def create_dao_wallet(args: Dict[str, Any], wallet_rpc_port: Optional[int]
             wallet_id=1, coin_selection_config=DEFAULT_COIN_SELECTION_CONFIG
         )
         if len(conf_coins) < 2:  # pragma: no cover
-            raise ValueError("DAO creation requires at least 2 xch coins in your wallet.")
+            raise ValueError("DAO creation requires at least 2 ABA coins in your wallet.")
         res = await wallet_client.create_new_dao_wallet(
             mode="new",
             dao_rules=dao_rules,
@@ -183,8 +184,8 @@ async def get_treasury_balance(args: Dict[str, Any], wallet_rpc_port: Optional[i
         xch_mojos = get_mojo_per_unit(WalletType.STANDARD_WALLET)
         cat_mojos = get_mojo_per_unit(WalletType.CAT)
         for asset_id, balance in balances.items():
-            if asset_id == "xch":
-                print(f"XCH: {balance / xch_mojos}")
+            if asset_id == "aba":
+                print(f"ABA: {balance / xch_mojos}")
             else:
                 print(f"{asset_id}: {balance / cat_mojos}")
 
@@ -254,7 +255,7 @@ async def show_proposal(args: Dict[str, Any], wallet_rpc_port: Optional[int], fp
             asset_conds = pd["asset_conditions"]
             print("")
             if xch_conds:
-                print("Proposal XCH Conditions")
+                print("Proposal ABA Conditions")
                 for pmt in xch_conds:
                     puzzle_hash = encode_puzzle_hash(bytes32.from_hexstr(pmt["puzzle_hash"]), prefix)
                     amount = pmt["amount"]
@@ -497,7 +498,7 @@ async def create_spend_proposal(args: Dict[str, Any], wallet_rpc_port: Optional[
             ).to_tx_config(units["chia"], config, fingerprint),
         )
         if res["success"]:
-            asset_id_name = asset_id if asset_id else "XCH"
+            asset_id_name = asset_id if asset_id else "ABA"
             print(f"Created spend proposal for asset: {asset_id_name}")
             print("Successfully created proposal.")
             print("Proposal ID: {}".format(res["proposal_id"]))

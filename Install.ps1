@@ -127,7 +127,7 @@ if ($p)
 }
 
 Write-Output ""
-Write-Output "Chia blockchain .\Install.ps1 complete."
+Write-Output "Aba blockchain .\Install.ps1 complete."
 Write-Output "For assistance join us on Discord in the #support chat channel:"
 Write-Output "https://discord.gg/chia"
 Write-Output ""

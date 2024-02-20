@@ -68,7 +68,7 @@ async def async_start(root_path: Path, config: Dict[str, Any], group: tuple[str,
         return None
 
     if daemon is None:
-        print("Failed to create the chia daemon")
+        print("Failed to create the aba daemon")
         return None
 
     for service in services_for_groups(group):

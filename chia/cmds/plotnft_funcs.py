@@ -1,3 +1,4 @@
+# Aba has modified this file
 from __future__ import annotations
 
 import asyncio
@@ -113,7 +114,7 @@ async def create(
                         return None
             except Exception as e:
                 print(
-                    f"Error creating plot NFT: {e}\n    Please start both farmer and wallet with:  chia start -r farmer"
+                    f"Error creating plot NFT: {e}\n    Please start both farmer and wallet with:  aba start -r farmer"
                 )
             return
         print("Aborting.")

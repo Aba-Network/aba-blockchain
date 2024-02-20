@@ -1,3 +1,4 @@
+# Aba has modified this file
 from __future__ import annotations
 
 import asyncio
@@ -929,7 +930,7 @@ class WalletStateManager:
                     derivation_record = await self.puzzle_store.get_derivation_record_for_puzzle_hash(sender_puzhash)
                 assert derivation_record is not None
                 amount = uint64(amount + coin.amount)
-                # Remove the clawback hint since it is unnecessary for the XCH coin
+                # Remove the clawback hint since it is unnecessary for the ABA coin
                 memos: List[bytes] = [] if len(incoming_tx.memos) == 0 else incoming_tx.memos[0][1][1:]
                 inner_puzzle: Program = self.main_wallet.puzzle_for_pk(derivation_record.pubkey)
                 inner_solution: Program = self.main_wallet.make_solution(

@@ -23,7 +23,7 @@ if [ ! "$CHIA_INSTALLER_VERSION" ]; then
 	echo "WARNING: No environment variable CHIA_INSTALLER_VERSION set. Using 0.0.0."
 	CHIA_INSTALLER_VERSION="0.0.0"
 fi
-echo "Chia Installer Version is: $CHIA_INSTALLER_VERSION"
+echo "Aba Installer Version is: $CHIA_INSTALLER_VERSION"
 export CHIA_INSTALLER_VERSION
 
 echo "Installing npm and electron packagers"
@@ -54,15 +54,15 @@ bash ./build_license_directory.sh
 # need j2 for templating the control file
 pip install j2cli
 CLI_DEB_BASE="chia-blockchain-cli_$CHIA_INSTALLER_VERSION-1_$PLATFORM"
-mkdir -p "dist/$CLI_DEB_BASE/opt/chia"
+mkdir -p "dist/$CLI_DEB_BASE/opt/aba"
 mkdir -p "dist/$CLI_DEB_BASE/usr/bin"
 mkdir -p "dist/$CLI_DEB_BASE/DEBIAN"
 mkdir -p "dist/$CLI_DEB_BASE/etc/systemd/system"
 j2 -o "dist/$CLI_DEB_BASE/DEBIAN/control" assets/deb/control.j2
 cp assets/systemd/*.service "dist/$CLI_DEB_BASE/etc/systemd/system/"
-cp -r dist/daemon/* "dist/$CLI_DEB_BASE/opt/chia/"
+cp -r dist/daemon/* "dist/$CLI_DEB_BASE/opt/aba/"
 
-ln -s ../../opt/chia/chia "dist/$CLI_DEB_BASE/usr/bin/chia"
+ln -s ../../opt/aba/aba "dist/$CLI_DEB_BASE/usr/bin/aba"
 dpkg-deb --build --root-owner-group "dist/$CLI_DEB_BASE"
 # CLI only .deb done
 
@@ -92,26 +92,26 @@ if [ "$PLATFORM" = "arm64" ]; then
   sudo gem install public_suffix -v 4.0.7
   sudo gem install fpm
   echo USE_SYSTEM_FPM=true npx electron-builder build --linux deb --arm64 \
-    --config.extraMetadata.name=chia-blockchain \
-    --config.productName="$PRODUCT_NAME" --config.linux.desktop.Name="Chia Blockchain" \
-    --config.deb.packageName="chia-blockchain" \
+    --config.extraMetadata.name=aba-blockchain \
+    --config.productName="$PRODUCT_NAME" --config.linux.desktop.Name="Aba Blockchain" \
+    --config.deb.packageName="aba-blockchain" \
     --config ../../../build_scripts/electron-builder.json
   USE_SYSTEM_FPM=true npx electron-builder build --linux deb --arm64 \
-    --config.extraMetadata.name=chia-blockchain \
-    --config.productName="$PRODUCT_NAME" --config.linux.desktop.Name="Chia Blockchain" \
-    --config.deb.packageName="chia-blockchain" \
+    --config.extraMetadata.name=aba-blockchain \
+    --config.productName="$PRODUCT_NAME" --config.linux.desktop.Name="Aba Blockchain" \
+    --config.deb.packageName="aba-blockchain" \
     --config ../../../build_scripts/electron-builder.json
   LAST_EXIT_CODE=$?
 else
   echo electron-builder build --linux deb --x64 \
-    --config.extraMetadata.name=chia-blockchain \
-    --config.productName="$PRODUCT_NAME" --config.linux.desktop.Name="Chia Blockchain" \
-    --config.deb.packageName="chia-blockchain" \
+    --config.extraMetadata.name=aba-blockchain \
+    --config.productName="$PRODUCT_NAME" --config.linux.desktop.Name="Aba Blockchain" \
+    --config.deb.packageName="aba-blockchain" \
     --config ../../../build_scripts/electron-builder.json
   npx electron-builder build --linux deb --x64 \
-    --config.extraMetadata.name=chia-blockchain \
-    --config.productName="$PRODUCT_NAME" --config.linux.desktop.Name="Chia Blockchain" \
-    --config.deb.packageName="chia-blockchain" \
+    --config.extraMetadata.name=aba-blockchain \
+    --config.productName="$PRODUCT_NAME" --config.linux.desktop.Name="Aba Blockchain" \
+    --config.deb.packageName="aba-blockchain" \
     --config ../../../build_scripts/electron-builder.json
   LAST_EXIT_CODE=$?
 fi
@@ -125,7 +125,7 @@ if [ "$LAST_EXIT_CODE" -ne 0 ]; then
 	exit $LAST_EXIT_CODE
 fi
 
-GUI_DEB_NAME=chia-blockchain_${CHIA_INSTALLER_VERSION}_${PLATFORM}.deb
+GUI_DEB_NAME=aba-blockchain_${CHIA_INSTALLER_VERSION}_${PLATFORM}.deb
 mv "dist/${PRODUCT_NAME}-${CHIA_INSTALLER_VERSION}.deb" "../../../build_scripts/dist/${GUI_DEB_NAME}"
 cd ../../../build_scripts || exit 1
 

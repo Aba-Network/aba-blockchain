@@ -1,3 +1,4 @@
+# Aba has modified this file
 from __future__ import annotations
 
 import asyncio
@@ -298,7 +299,7 @@ async def send(
             print(f"Wallet id: {wallet_id} not found.")
             return
 
-        final_fee: uint64 = uint64(int(fee * units["chia"]))  # fees are always in XCH mojos
+        final_fee: uint64 = uint64(int(fee * units["chia"]))  # fees are always in ABA mojos
         final_amount: uint64 = uint64(int(amount * mojo_per_unit))
         if typ == WalletType.STANDARD_WALLET:
             print("Submitting transaction...")
@@ -350,7 +351,7 @@ async def send(
                 return None
 
         print("Transaction not yet submitted to nodes")
-        print(f"To get status, use command: chia wallet get_transaction -f {fingerprint} -tx 0x{tx_id}")
+        print(f"To get status, use command: aba wallet get_transaction -f {fingerprint} -tx 0x{tx_id}")
 
 
 async def get_address(wallet_rpc_port: Optional[int], fp: Optional[int], wallet_id: int, new_address: bool) -> None:
@@ -472,7 +473,7 @@ async def make_offer(
                                         },
                                     }
                                     royalty_asset_dict[name] = (
-                                        encode_puzzle_hash(info.royalty_puzzle_hash, AddressType.XCH.hrp(config)),
+                                        encode_puzzle_hash(info.royalty_puzzle_hash, AddressType.ABA.hrp(config)),
                                         info.royalty_percentage,
                                     )
                         else:
@@ -482,7 +483,7 @@ async def make_offer(
                     except ValueError:
                         id = uint32(int(name))
                         if id == 1:
-                            name = "XCH"
+                            name = "ABA"
                             unit = units["chia"]
                         else:
                             name = await wallet_client.get_cat_name(id)
@@ -513,7 +514,7 @@ async def make_offer(
 
                 if fee > 0:
                     print()
-                    print(f"Including Fees: {Decimal(fee) / units['chia']} XCH, {fee} mojos")
+                    print(f"Including Fees: {Decimal(fee) / units['chia']} ABA, {fee} mojos")
 
                 if royalty_asset_dict != {}:
                     royalty_summary: Dict[Any, List[Dict[str, Any]]] = await wallet_client.nft_calculate_royalties(
@@ -525,7 +526,7 @@ async def make_offer(
                     for nft_id, summaries in royalty_summary.items():
                         print(f"  - For {nft_id}:")
                         for summary in summaries:
-                            divisor = units["chia"] if summary["asset"] == "XCH" else units["cat"]
+                            divisor = units["chia"] if summary["asset"] == "ABA" else units["cat"]
                             converted_amount = Decimal(summary["amount"]) / divisor
                             total_amounts_requested.setdefault(summary["asset"], fungible_asset_dict[summary["asset"]])
                             total_amounts_requested[summary["asset"]] += summary["amount"]
@@ -536,7 +537,7 @@ async def make_offer(
                     print()
                     print("Total Amounts Offered:")
                     for asset, requested_amount in total_amounts_requested.items():
-                        divisor = units["chia"] if asset == "XCH" else units["cat"]
+                        divisor = units["chia"] if asset == "ABA" else units["cat"]
                         converted_amount = Decimal(requested_amount) / divisor
                         print(f"  - {converted_amount} {asset} ({requested_amount} mojos)")
 
@@ -561,7 +562,7 @@ async def make_offer(
                         file.write(offer.to_bech32())
                     print(f"Created offer with ID {trade_record.trade_id}")
                     print(
-                        f"Use chia wallet get_offers --id " f"{trade_record.trade_id} -f {fingerprint} to view status"
+                        f"Use aba wallet get_offers --id " f"{trade_record.trade_id} -f {fingerprint} to view status"
                     )
                 else:
                     print("Error creating offer")
@@ -572,7 +573,7 @@ def timestamp_to_time(timestamp: int) -> str:
 
 
 async def print_offer_summary(
-    cat_name_resolver: CATNameResolver, sum_dict: Dict[str, int], has_fee: bool = False, network_xch: str = "XCH"
+    cat_name_resolver: CATNameResolver, sum_dict: Dict[str, int], has_fee: bool = False, network_xch: str = "ABA"
 ) -> None:
     for asset_id, amount in sum_dict.items():
         description: str = ""
@@ -627,7 +628,7 @@ async def print_trade_record(record: TradeRecord, wallet_client: WalletRpcClient
         await print_offer_summary(cat_name_resolver, requested)
         print("Pending Outbound Balances:")
         await print_offer_summary(cat_name_resolver, outbound_balances, has_fee=(fees > 0))
-        print(f"Included Fees: {fees / units['chia']} XCH, {fees} mojos")
+        print(f"Included Fees: {fees / units['chia']} ABA, {fees} mojos")
     print("---------------")
 
 
@@ -707,7 +708,7 @@ async def take_offer(
 
         offered, requested, _, _ = offer.summary()
         cat_name_resolver = wallet_client.cat_asset_id_to_name
-        network_xch = AddressType.XCH.hrp(config).upper()
+        network_xch = AddressType.ABA.hrp(config).upper()
         print("Summary:")
         print("  OFFERED:")
         await print_offer_summary(cat_name_resolver, offered, network_xch=network_xch)
@@ -721,7 +722,7 @@ async def take_offer(
             if royalty_asset_id.hex() in offered:
                 percentage, address = await get_nft_royalty_percentage_and_address(royalty_asset_id, wallet_client)
                 royalty_asset_dict[encode_puzzle_hash(royalty_asset_id, AddressType.NFT.hrp(config))] = (
-                    encode_puzzle_hash(address, AddressType.XCH.hrp(config)),
+                    encode_puzzle_hash(address, AddressType.ABA.hrp(config)),
                     percentage,
                 )
 
@@ -774,7 +775,7 @@ async def take_offer(
                 tx_config=CMDTXConfigLoader().to_tx_config(units["chia"], config, fingerprint),
             )
             print(f"Accepted offer with ID {trade_record.trade_id}")
-            print(f"Use chia wallet get_offers --id {trade_record.trade_id} -f {fingerprint} to view its status")
+            print(f"Use aba wallet get_offers --id {trade_record.trade_id} -f {fingerprint} to view its status")
 
 
 async def cancel_offer(
@@ -797,7 +798,7 @@ async def cancel_offer(
         )
         print(f"Cancelled offer with ID {trade_record.trade_id}")
         if secure:
-            print(f"Use chia wallet get_offers --id {trade_record.trade_id} -f {fingerprint} to view cancel status")
+            print(f"Use aba wallet get_offers --id {trade_record.trade_id} -f {fingerprint} to view cancel status")
 
 
 def wallet_coin_unit(typ: WalletType, address_prefix: str) -> Tuple[str, int]:  # pragma: no cover
@@ -1087,12 +1088,12 @@ async def mint_nft(
         royalty_address = (
             None
             if not royalty_address
-            else ensure_valid_address(royalty_address, allowed_types={AddressType.XCH}, config=config)
+            else ensure_valid_address(royalty_address, allowed_types={AddressType.ABA}, config=config)
         )
         target_address = (
             None
             if not target_address
-            else ensure_valid_address(target_address, allowed_types={AddressType.XCH}, config=config)
+            else ensure_valid_address(target_address, allowed_types={AddressType.ABA}, config=config)
         )
         fee: int = int(d_fee * units["chia"])
         try:
@@ -1191,7 +1192,7 @@ async def transfer_nft(
 ) -> None:
     async with get_wallet_client(wallet_rpc_port, fp) as (wallet_client, fingerprint, config):
         try:
-            target_address = ensure_valid_address(target_address, allowed_types={AddressType.XCH}, config=config)
+            target_address = ensure_valid_address(target_address, allowed_types={AddressType.ABA}, config=config)
             fee: int = int(d_fee * units["chia"])
             response = await wallet_client.transfer_nft(
                 wallet_id,
@@ -1374,7 +1375,7 @@ async def send_notification(
         tx = await wallet_client.send_notification(address, message, amount, fee)
 
         print("Notification sent successfully.")
-        print(f"To get status, use command: chia wallet get_transaction -f {fingerprint} -tx 0x{tx.name}")
+        print(f"To get status, use command: aba wallet get_transaction -f {fingerprint} -tx 0x{tx.name}")
 
 
 async def get_notifications(
@@ -1418,9 +1419,9 @@ async def sign_message(
     nft_id: Optional[str] = None,
 ) -> None:
     async with get_wallet_client(wallet_rpc_port, fp) as (wallet_client, fingerprint, config):
-        if addr_type == AddressType.XCH:
+        if addr_type == AddressType.ABA:
             if address is None:
-                print("Address is required for XCH address type.")
+                print("Address is required for ABA address type.")
                 return
             pubkey, signature, signing_mode = await wallet_client.sign_message_by_address(address, message)
         elif addr_type == AddressType.DID:
@@ -1470,7 +1471,7 @@ async def mint_vc(
             None
             if target_address is None
             else decode_puzzle_hash(
-                ensure_valid_address(target_address, allowed_types={AddressType.XCH}, config=config)
+                ensure_valid_address(target_address, allowed_types={AddressType.ABA}, config=config)
             ),
             uint64(int(d_fee * units["chia"])),
         )
@@ -1482,7 +1483,7 @@ async def mint_vc(
             print_transaction(
                 tx,
                 verbose=False,
-                name="XCH",
+                name="ABA",
                 address_prefix=selected_network_address_prefix(config),
                 mojo_per_unit=get_mojo_per_unit(wallet_type=WalletType.STANDARD_WALLET),
             )
@@ -1541,7 +1542,7 @@ async def spend_vc(
             print_transaction(
                 tx,
                 verbose=False,
-                name="XCH",
+                name="ABA",
                 address_prefix=selected_network_address_prefix(config),
                 mojo_per_unit=get_mojo_per_unit(wallet_type=WalletType.STANDARD_WALLET),
             )
@@ -1610,7 +1611,7 @@ async def revoke_vc(
             print_transaction(
                 tx,
                 verbose=False,
-                name="XCH",
+                name="ABA",
                 address_prefix=selected_network_address_prefix(config),
                 mojo_per_unit=get_mojo_per_unit(wallet_type=WalletType.STANDARD_WALLET),
             )

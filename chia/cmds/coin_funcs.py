@@ -1,3 +1,4 @@
+# Aba has modified this file
 from __future__ import annotations
 
 import sys
@@ -139,7 +140,7 @@ async def async_combine(
         if not await wallet_client.get_synced():
             print("Wallet not synced. Please wait.")
             return
-        is_xch: bool = wallet_type == WalletType.STANDARD_WALLET  # this lets us know if we are directly combining Chia
+        is_xch: bool = wallet_type == WalletType.STANDARD_WALLET  # this lets us know if we are directly combining Aba
 
         tx_config = CMDTXConfigLoader(
             max_coin_amount=max_coin_amount,
@@ -189,7 +190,7 @@ async def async_combine(
         )
         tx_id = transaction.name.hex()
         print(f"Transaction sent: {tx_id}")
-        print(f"To get status, use command: chia wallet get_transaction -f {fingerprint} -tx 0x{tx_id}")
+        print(f"To get status, use command: aba wallet get_transaction -f {fingerprint} -tx 0x{tx_id}")
 
 
 async def async_split(
@@ -218,7 +219,7 @@ async def async_split(
         if not await wallet_client.get_synced():
             print("Wallet not synced. Please wait.")
             return
-        is_xch: bool = wallet_type == WalletType.STANDARD_WALLET  # this lets us know if we are directly spitting Chia
+        is_xch: bool = wallet_type == WalletType.STANDARD_WALLET  # this lets us know if we are directly spitting Aba
         final_amount_per_coin = uint64(int(amount_per_coin * mojo_per_unit))
         total_amount = final_amount_per_coin * number_of_coins
         if is_xch:
@@ -247,7 +248,7 @@ async def async_split(
         )
         tx_id = transaction.name.hex()
         print(f"Transaction sent: {tx_id}")
-        print(f"To get status, use command: chia wallet get_transaction -f {fingerprint} -tx 0x{tx_id}")
+        print(f"To get status, use command: aba wallet get_transaction -f {fingerprint} -tx 0x{tx_id}")
         dust_threshold = config.get("xch_spam_amount", 1000000)  # min amount per coin in mojo
         spam_filter_after_n_txs = config.get("spam_filter_after_n_txs", 200)  # how many txs to wait before filtering
         if final_amount_per_coin < dust_threshold and wallet_type == WalletType.STANDARD_WALLET:

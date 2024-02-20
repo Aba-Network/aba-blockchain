@@ -1467,7 +1467,7 @@ class WalletRpcApi:
         input_message: str = request["message"]
         signing_mode_str: Optional[str] = request.get("signing_mode")
         # Default to BLS_MESSAGE_AUGMENTATION_HEX_INPUT as this RPC was originally designed to verify
-        # signatures made by `chia keys sign`, which uses BLS_MESSAGE_AUGMENTATION_HEX_INPUT
+        # signatures made by `aba keys sign`, which uses BLS_MESSAGE_AUGMENTATION_HEX_INPUT
         if signing_mode_str is None:
             signing_mode = SigningMode.BLS_MESSAGE_AUGMENTATION_HEX_INPUT
         else:
@@ -1478,7 +1478,7 @@ class WalletRpcApi:
 
         if signing_mode == SigningMode.CHIP_0002 or signing_mode == SigningMode.CHIP_0002_P2_DELEGATED_CONDITIONS:
             # CHIP-0002 message signatures are made over the tree hash of:
-            #   ("Chia Signed Message", message)
+            #   ("Aba Signed Message", message)
             message_to_verify: bytes = Program.to((CHIP_0002_SIGN_MESSAGE_PREFIX, input_message)).get_tree_hash()
         elif signing_mode == SigningMode.BLS_MESSAGE_AUGMENTATION_HEX_INPUT:
             # Message is expected to be a hex string
@@ -2181,7 +2181,7 @@ class WalletRpcApi:
                 AddressType.DID.hrp(self.service.config),
             ),
             "latest_coin": coin_state.coin.name().hex(),
-            "p2_address": encode_puzzle_hash(p2_puzzle.get_tree_hash(), AddressType.XCH.hrp(self.service.config)),
+            "p2_address": encode_puzzle_hash(p2_puzzle.get_tree_hash(), AddressType.ABA.hrp(self.service.config)),
             "public_key": public_key.atom.hex(),
             "recovery_list_hash": recovery_list_hash.atom.hex(),
             "num_verification": num_verification.as_int(),

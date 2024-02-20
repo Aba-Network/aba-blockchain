@@ -1,3 +1,4 @@
+# Aba has modified this file
 from __future__ import annotations
 
 from pathlib import Path
@@ -17,10 +18,10 @@ from chia.util.file_keyring import FileKeyring
 # WARNING: Changing the default passphrase will prevent passphrase-less users from accessing
 # their existing keys. Using a new default passphrase requires migrating existing users to
 # the new passphrase.
-DEFAULT_PASSPHRASE_IF_NO_MASTER_PASSPHRASE = "$ chia passphrase set # all the cool kids are doing it!"
+DEFAULT_PASSPHRASE_IF_NO_MASTER_PASSPHRASE = "$ aba passphrase set # all the cool kids are doing it!"
 
-MASTER_PASSPHRASE_SERVICE_NAME = "Chia Passphrase"
-MASTER_PASSPHRASE_USER_NAME = "Chia Passphrase"
+MASTER_PASSPHRASE_SERVICE_NAME = "Aba Passphrase"
+MASTER_PASSPHRASE_USER_NAME = "Aba Passphrase"
 
 
 OSPassphraseStore = Union[MacKeyring, WinKeyring]

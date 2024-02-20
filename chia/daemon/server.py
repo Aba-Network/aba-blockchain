@@ -190,7 +190,7 @@ class WebSocketServer:
             self.log.warning(
                 (
                     "Deprecation Warning: Your version of SSL (%s) does not support TLS1.3. "
-                    "A future version of Chia will require TLS1.3."
+                    "A future version of Aba will require TLS1.3."
                 ),
                 ssl.OPENSSL_VERSION,
             )

@@ -1,6 +1,7 @@
+# Aba has modified this file
 """
 NOTE: This contains duplicate code from `chia.cmds.plots`.
-After `chia plots create` becomes obsolete, consider removing it from there.
+After `aba plots create` becomes obsolete, consider removing it from there.
 """
 from __future__ import annotations
 
@@ -19,7 +20,7 @@ log = logging.getLogger(__name__)
 
 def get_chiapos_install_info() -> Optional[Dict[str, Any]]:
     chiapos_version: str = importlib.metadata.version("chiapos")
-    return {"display_name": "Chia Proof of Space", "version": chiapos_version, "installed": True}
+    return {"display_name": "Aba Proof of Space", "version": chiapos_version, "installed": True}
 
 
 def plot_chia(args: Namespace, root_path: Path) -> None:

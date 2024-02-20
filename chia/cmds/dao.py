@@ -1,3 +1,4 @@
+# Aba has modified this file
 from __future__ import annotations
 
 import asyncio
@@ -119,7 +120,7 @@ def dao_add_cmd(
 )
 @click.option(
     "--proposal-minimum",
-    help="The minimum amount (in xch) that a proposal must use to be created",
+    help="The minimum amount (in ABA) that a proposal must use to be created",
     type=str,
     default="0.000000000001",
     show_default=True,
@@ -140,7 +141,7 @@ def dao_add_cmd(
 @click.option(
     "-m",
     "--fee",
-    help="Set the fees per transaction, in XCH.",
+    help="Set the fees per transaction, in ABA.",
     type=str,
     default="0",
     show_default=True,
@@ -148,7 +149,7 @@ def dao_add_cmd(
 )
 @click.option(
     "--fee-for-cat",
-    help="Set the fees for the CAT creation transaction, in XCH.",
+    help="Set the fees for the CAT creation transaction, in ABA.",
     type=str,
     default="0",
     show_default=True,
@@ -259,7 +260,7 @@ def dao_get_id_cmd(
 @click.option(
     "-m",
     "--fee",
-    help="Set the fees per transaction, in XCH.",
+    help="Set the fees per transaction, in ABA.",
     type=str,
     default="0",
     show_default=True,
@@ -448,7 +449,7 @@ def dao_show_proposal_cmd(
 @click.option(
     "-m",
     "--fee",
-    help="Set the fees per transaction, in XCH.",
+    help="Set the fees per transaction, in ABA.",
     type=str,
     default="0",
     show_default=True,
@@ -519,7 +520,7 @@ def dao_vote_cmd(
 @click.option(
     "-m",
     "--fee",
-    help="Set the fees per transaction, in XCH.",
+    help="Set the fees per transaction, in ABA.",
     type=str,
     default="0",
     show_default=True,
@@ -579,7 +580,7 @@ def dao_close_proposal_cmd(
 @click.option(
     "-m",
     "--fee",
-    help="Set the fees per transaction, in XCH.",
+    help="Set the fees per transaction, in ABA.",
     type=str,
     default="0",
     show_default=True,
@@ -626,7 +627,7 @@ def dao_lockup_coins_cmd(
 @click.option(
     "-m",
     "--fee",
-    help="Set the fees per transaction, in XCH.",
+    help="Set the fees per transaction, in ABA.",
     type=str,
     default="0",
     show_default=True,
@@ -671,7 +672,7 @@ def dao_release_coins_cmd(
 @click.option(
     "-m",
     "--fee",
-    help="Set the fees per transaction, in XCH.",
+    help="Set the fees per transaction, in ABA.",
     type=str,
     default="0",
     show_default=True,
@@ -749,7 +750,7 @@ def dao_proposal(ctx: click.Context) -> None:
 )
 @click.option(
     "--asset-id",
-    help="The asset id of the funds the proposal will send. Leave blank for xch",
+    help="The asset id of the funds the proposal will send. Leave blank for ABA",
     type=str,
     required=False,
     default=None,
@@ -765,7 +766,7 @@ def dao_proposal(ctx: click.Context) -> None:
 @click.option(
     "-m",
     "--fee",
-    help="Set the fees per transaction, in XCH.",
+    help="Set the fees per transaction, in ABA.",
     type=str,
     default="0",
     show_default=True,
@@ -870,7 +871,7 @@ def dao_create_spend_proposal_cmd(
 @click.option(
     "-m",
     "--fee",
-    help="Set the fees per transaction, in XCH.",
+    help="Set the fees per transaction, in ABA.",
     type=str,
     default="0",
     show_default=True,
@@ -952,7 +953,7 @@ def dao_create_update_proposal_cmd(
 @click.option(
     "-m",
     "--fee",
-    help="Set the fees per transaction, in XCH.",
+    help="Set the fees per transaction, in ABA.",
     type=str,
     default="0",
     show_default=True,

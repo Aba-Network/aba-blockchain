@@ -1,3 +1,4 @@
+# Aba has modified this file
 from __future__ import annotations
 
 import asyncio
@@ -63,7 +64,7 @@ async def call_daemon_command(
     daemon = await connect_to_daemon_and_validate(DEFAULT_ROOT_PATH, config, quiet=quiet)
 
     if daemon is None:
-        raise Exception("Failed to connect to chia daemon")
+        raise Exception("Failed to connect to aba daemon")
 
     result: Dict[str, Any]
     try:

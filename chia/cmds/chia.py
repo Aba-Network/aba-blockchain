@@ -97,7 +97,7 @@ def version_cmd() -> None:
     help="If the keyring is passphrase-protected, the daemon will wait for an unlock command before accessing keys",
     default=False,
     is_flag=True,
-    hidden=True,  # --wait-for-unlock is only set when launched by chia start <service>
+    hidden=True,  # --wait-for-unlock is only set when launched by aba start <service>
 )
 @click.pass_context
 def run_daemon_cmd(ctx: click.Context, wait_for_unlock: bool) -> None:

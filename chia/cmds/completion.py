@@ -39,9 +39,9 @@ def generate(shell: str) -> None:
     Generate shell completion code for the current, or specified (-s)hell.
     You will need to 'source' this code to enable shell completion.
     You can source it directly (performs slower) by running:
-        \033[3;33meval "$(chia complete generate)"\033[0m
+        \033[3;33meval "$(aba complete generate)"\033[0m
     or you can save the output to a file:
-        \033[3;33mchia complete generate > ~/.chia-complete-bash\033[0m
+        \033[3;33maba complete generate > ~/.chia-complete-bash\033[0m
     and source that file with:
         \033[3;33m. ~/.chia-complete-bash\033[0m
     """

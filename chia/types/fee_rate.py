@@ -1,4 +1,5 @@
-from __future__ import annotations
+# Aba has modified this file
+from __future__ import annotation
 
 import math
 from dataclasses import dataclass
@@ -17,7 +18,7 @@ from chia.util.streamable import Streamable, streamable
 class FeeRate(Streamable):
     """
     Represents Fee Rate in mojos divided by CLVM Cost.
-    Performs XCH/mojo conversion.
+    Performs ABA/mojo conversion.
     Similar to 'Fee per cost'.
     """
 

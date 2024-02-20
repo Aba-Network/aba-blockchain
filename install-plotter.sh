@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Aba has modified this file
 
 set -o errexit
 
@@ -161,7 +162,7 @@ if [ "$SCRIPT_DIR" != "$PWD" ]; then
 fi
 
 if [ "$VIRTUAL_ENV" = "" ]; then
-  echo "This requires the chia python virtual environment."
+  echo "This requires the aba python virtual environment."
   echo "Execute '. ./activate' before running."
   exit 1
 fi

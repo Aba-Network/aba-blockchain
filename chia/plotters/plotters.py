@@ -506,7 +506,7 @@ def call_plotters(root_path: Path, args):
     plotters = argparse.ArgumentParser("aba plotters", description="Available options.")
     subparsers = plotters.add_subparsers(help="Available options", dest="plotter")
 
-    build_parser(subparsers, root_path, chia_plotter_options, "chiapos", "Create a plot with the default chia plotter")
+    build_parser(subparsers, root_path, chia_plotter_options, "chiapos", "Create a plot with the default aba plotter")
     build_parser(subparsers, root_path, madmax_plotter_options, "madmax", "Create a plot with madMAx")
 
     bladebit_parser = subparsers.add_parser("bladebit", help="Create a plot with bladebit")

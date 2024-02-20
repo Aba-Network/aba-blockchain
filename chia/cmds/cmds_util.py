@@ -251,7 +251,7 @@ def coin_selection_args(func: Callable[..., None]) -> Callable[..., None]:
         "-ma",
         "--min-coin-amount",
         "--min-amount",
-        help="Ignore coins worth less then this much XCH or CAT units",
+        help="Ignore coins worth less then this much ABA or CAT units",
         type=str,
         required=False,
         default=None,
@@ -260,7 +260,7 @@ def coin_selection_args(func: Callable[..., None]) -> Callable[..., None]:
             "-l",
             "--max-coin-amount",
             "--max-amount",
-            help="Ignore coins worth more then this much XCH or CAT units",
+            help="Ignore coins worth more then this much ABA or CAT units",
             type=str,
             required=False,
             default=None,
@@ -275,7 +275,7 @@ def coin_selection_args(func: Callable[..., None]) -> Callable[..., None]:
                     "--exclude-amount",
                     "amounts_to_exclude",
                     multiple=True,
-                    help="Exclude any coins with this XCH or CAT amount from being included.",
+                    help="Exclude any coins with this ABA or CAT amount from being included.",
                 )(func)
             )
         )

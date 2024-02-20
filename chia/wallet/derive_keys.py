@@ -1,3 +1,4 @@
+# Aba has modified this file
 from __future__ import annotations
 
 from typing import List, Optional, Set, Tuple
@@ -11,7 +12,7 @@ from chia.util.ints import uint32
 # EIP 2334 bls key derivation
 # https://eips.ethereum.org/EIPS/eip-2334
 # 12381 = bls spec number
-# 8444 = Chia blockchain number and port number
+# 8644 = Aba blockchain number and port number
 # 0, 1, 2, 3, 4, 5, 6 farmer, pool, wallet, local, backup key, singleton, pooling authentication key numbers
 
 # Allows up to 100 pool wallets (plot NFTs)

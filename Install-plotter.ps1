@@ -41,7 +41,7 @@ if (!(Get-Command Expand-Archive -errorAction SilentlyContinue)) {
 
 if ($null -eq (Get-ChildItem env:VIRTUAL_ENV -ErrorAction SilentlyContinue))
 {
-    Write-Output "This script requires that the Chia Python virtual environment is activated."
+    Write-Output "This script requires that the Aba Python virtual environment is activated."
     Write-Output "Execute '.\venv\Scripts\Activate.ps1' before running."
     Exit 1
 }

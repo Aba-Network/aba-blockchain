@@ -1,3 +1,4 @@
+# Aba has modified this file
 from __future__ import annotations
 
 import argparse
@@ -124,7 +125,7 @@ def _load_config_maybe_locked(
         if not exit_on_error:
             raise ValueError("Config not found")
         print(f"can't find {path}")
-        print("** please run `chia init` to migrate or create new config files **")
+        print("** please run `aba init` to migrate or create new config files **")
         # TODO: fix this hack
         sys.exit(-1)
     # This loop should not be necessary due to the config lock, but it's kept here just in case
