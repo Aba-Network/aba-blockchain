@@ -2041,7 +2041,7 @@ class WalletRpcApi:
         if cancel_all:
             asset_id = None
         else:
-            asset_id = request.get("asset_id", "xch")
+            asset_id = request.get("asset_id", "aba")
 
         start: int = 0
         end: int = start + batch_size
@@ -2049,7 +2049,7 @@ class WalletRpcApi:
         log.info(f"Start cancelling offers for  {'asset_id: ' + asset_id if asset_id is not None else 'all'} ...")
         # Traverse offers page by page
         key = None
-        if asset_id is not None and asset_id != "xch":
+        if asset_id is not None and asset_id != "aba":
             key = bytes32.from_hexstr(asset_id)
         while True:
             records: Dict[bytes32, TradeRecord] = {}
@@ -2642,7 +2642,7 @@ class WalletRpcApi:
         for asset_id in asset_list:
             balance = await dao_wallet.get_balance_by_asset_type(asset_id=asset_id)
             if asset_id is None:
-                balances["xch"] = balance
+                balances["aba"] = balance
             else:
                 balances[asset_id.hex()] = balance
         return {"success": True, "balances": balances}
@@ -3533,7 +3533,7 @@ class WalletRpcApi:
             xch_coins = {Coin.from_json_dict(xch_coin) for xch_coin in xch_coin_list}
         xch_change_target = request.get("xch_change_target", None)
         if xch_change_target is not None:
-            if xch_change_target[:2] == "xch":
+            if xch_change_target[:2] == "aba":
                 xch_change_ph = decode_puzzle_hash(xch_change_target)
             else:
                 xch_change_ph = bytes32(hexstr_to_bytes(xch_change_target))

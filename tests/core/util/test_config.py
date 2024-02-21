@@ -1,3 +1,4 @@
+# Aba modified this file
 from __future__ import annotations
 
 import asyncio
@@ -312,11 +313,11 @@ class TestConfig:
     @pytest.mark.parametrize("prefix", [None])
     def test_selected_network_address_prefix_default_config(self, config_with_address_prefix: Dict[str, Any]) -> None:
         """
-        Temp config.yaml created using a default config. address_prefix is defaulted to "xch"
+        Temp config.yaml created using a default config. address_prefix is defaulted to "aba"
         """
         config = config_with_address_prefix
         prefix = selected_network_address_prefix(config)
-        assert prefix == "xch"
+        assert prefix == "aba"
 
     @pytest.mark.parametrize("prefix", ["txch"])
     def test_selected_network_address_prefix_testnet_config(self, config_with_address_prefix: Dict[str, Any]) -> None:

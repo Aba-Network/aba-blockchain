@@ -1,3 +1,4 @@
+# Aba modified this file
 from __future__ import annotations
 
 import asyncio
@@ -283,7 +284,7 @@ class Service(Generic[_T_RpcServiceProtocol, _T_ApiProtocol, _T_RpcApiProtocol])
     async def setup_process_global_state(self, signal_handlers: SignalHandlers) -> None:
         # Being async forces this to be run from within an active event loop as is
         # needed for the signal handler setup.
-        proctitle_name = f"chia_{self._service_name}"
+        proctitle_name = f"aba_{self._service_name}"
         setproctitle(proctitle_name)
 
         global main_pid

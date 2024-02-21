@@ -1,3 +1,4 @@
+# Aba modified this file
 from __future__ import annotations
 
 import random
@@ -260,8 +261,8 @@ async def test_nft_mint_from_did_rpc(
             }
             for i in range(n)
         ]
-        target_list = [encode_puzzle_hash((ph_taker), "xch") for x in range(n)]
-        royalty_address = encode_puzzle_hash(bytes32.random(seeded_random), "xch")
+        target_list = [encode_puzzle_hash((ph_taker), "aba") for x in range(n)]
+        royalty_address = encode_puzzle_hash(bytes32.random(seeded_random), "aba")
         royalty_percentage = 300
         fee = 100
         required_amount = n + (fee * n)
@@ -455,7 +456,7 @@ async def test_nft_mint_from_did_rpc_no_royalties(
             }
             for i in range(n)
         ]
-        target_list = [encode_puzzle_hash((ph_taker), "xch") for x in range(n)]
+        target_list = [encode_puzzle_hash((ph_taker), "aba") for x in range(n)]
         royalty_address = None
         royalty_percentage = None
         required_amount = n
@@ -863,8 +864,8 @@ async def test_nft_mint_from_xch_rpc(
             }
             for i in range(n)
         ]
-        target_list = [encode_puzzle_hash((ph_taker), "xch") for x in range(n)]
-        royalty_address = encode_puzzle_hash(bytes32.random(seeded_random), "xch")
+        target_list = [encode_puzzle_hash((ph_taker), "aba") for x in range(n)]
+        royalty_address = encode_puzzle_hash(bytes32.random(seeded_random), "aba")
         royalty_percentage = 300
         fee = 100
         required_amount = n + (fee * n)

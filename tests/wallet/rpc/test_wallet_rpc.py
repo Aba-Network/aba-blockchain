@@ -1,3 +1,4 @@
+# Aba modified this file
 from __future__ import annotations
 
 import asyncio
@@ -1160,7 +1161,7 @@ async def test_offer_endpoints(wallet_rpc_environment: WalletRpcTestEnvironment)
     id, advanced_summary = await wallet_1_rpc.get_offer_summary(offer, advanced=True)
     assert id == offer.name()
     assert summary == {
-        "offered": {"xch": 5},
+        "offered": {"aba": 5},
         "requested": {cat_asset_id.hex(): 1},
         "infos": driver_dict,
         "fees": 1,

@@ -60,4 +60,11 @@ or for gui:
 bash start-gui.sh
 ```
 
+## Troubleshooting
+
+Note: Code is still currently uses the $CHIA_ROOT environmental variable, so if that is set for a different installation, it may cause problems. Just set it in the local terminal environment before starting aba.
+
+To troubleshoot, do aba stop all, edit ~/.aba/mainnet/config/config.yaml (or equivalent) and change log_level value to DEBUG, and review ~/.aba/mainnet/log/debug.log for messages to help diagnose the issue or communicate
+with our support team
+
 aba-blockchain is based on chia-blockchain from Chia Network Inc., licensed under the Apache 2.0 license. The Aba team regularly offers support to CNI & several major Chia projects.

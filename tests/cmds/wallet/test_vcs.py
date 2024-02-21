@@ -1,3 +1,4 @@
+# Aba modified this file
 from __future__ import annotations
 
 from pathlib import Path
@@ -45,9 +46,9 @@ def test_vcs_mint(capsys: object, get_test_cli_clients: Tuple[TestRpcClients, Pa
     inst_rpc_client = VcsMintRpcClient()  # pylint: disable=no-value-for-parameter
     test_rpc_clients.wallet_rpc_client = inst_rpc_client
     did_bytes = get_bytes32(1)
-    did_id = encode_puzzle_hash(did_bytes, "did:chia:")
+    did_id = encode_puzzle_hash(did_bytes, "did:aba:")
     target_bytes = get_bytes32(2)
-    target_addr = encode_puzzle_hash(target_bytes, "xch")
+    target_addr = encode_puzzle_hash(target_bytes, "aba")
     command_args = ["wallet", "vcs", "mint", FINGERPRINT_ARG, f"-d{did_id}", "-m0.5", f"-t{target_addr}"]
     # these are various things that should be in the output
     assert_list = [

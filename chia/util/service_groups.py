@@ -6,8 +6,8 @@ from typing import Generator, Iterable, KeysView
 SERVICES_FOR_GROUP = {
     "all": [
         "aba_harvester",
-        "aba_timelord_launcher",
-        "aba_timelord",
+        #"aba_timelord_launcher",
+        #"aba_timelord",
         "aba_farmer",
         "aba_full_node",
         "aba_wallet",

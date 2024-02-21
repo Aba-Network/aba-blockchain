@@ -1,3 +1,4 @@
+# Aba modified this file
 from __future__ import annotations
 
 from pathlib import Path
@@ -34,7 +35,7 @@ def test_notifications_send(capsys: object, get_test_cli_clients: Tuple[TestRpcC
     inst_rpc_client = NotificationsSendRpcClient()  # pylint: disable=no-value-for-parameter
     test_rpc_clients.wallet_rpc_client = inst_rpc_client
     target_ph = get_bytes32(1)
-    target_addr = encode_puzzle_hash(target_ph, "xch")
+    target_addr = encode_puzzle_hash(target_ph, "aba")
     msg = "test message"
     command_args = [
         "wallet",

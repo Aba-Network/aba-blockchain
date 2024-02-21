@@ -1,3 +1,4 @@
+# Aba modified this file
 from __future__ import annotations
 
 from pathlib import Path
@@ -25,7 +26,7 @@ def test_nft_create(capsys: object, get_test_cli_clients: Tuple[TestRpcClients, 
             return {"wallet_id": 4}
 
     inst_rpc_client = NFTCreateRpcClient()  # pylint: disable=no-value-for-parameter
-    did_id = encode_puzzle_hash(get_bytes32(2), "did:chia:")
+    did_id = encode_puzzle_hash(get_bytes32(2), "did:aba:")
     test_rpc_clients.wallet_rpc_client = inst_rpc_client
     command_args = ["wallet", "nft", "create", FINGERPRINT_ARG, "-ntest", "--did-id", did_id]
     # these are various things that should be in the output
@@ -111,7 +112,7 @@ def test_nft_mint(capsys: object, get_test_cli_clients: Tuple[TestRpcClients, Pa
             return {"spend_bundle": "spend bundle here"}
 
     inst_rpc_client = NFTCreateRpcClient()  # pylint: disable=no-value-for-parameter
-    target_addr = encode_puzzle_hash(get_bytes32(2), "xch")
+    target_addr = encode_puzzle_hash(get_bytes32(2), "aba")
     test_rpc_clients.wallet_rpc_client = inst_rpc_client
     command_args = [
         "wallet",
@@ -231,7 +232,7 @@ def test_nft_transfer(capsys: object, get_test_cli_clients: Tuple[TestRpcClients
 
     inst_rpc_client = NFTTransferRpcClient()  # pylint: disable=no-value-for-parameter
     nft_coin_id = get_bytes32(2).hex()
-    target_address = encode_puzzle_hash(get_bytes32(2), "xch")
+    target_address = encode_puzzle_hash(get_bytes32(2), "aba")
     test_rpc_clients.wallet_rpc_client = inst_rpc_client
     command_args = [
         "wallet",
@@ -310,7 +311,7 @@ def test_nft_list(capsys: object, get_test_cli_clients: Tuple[TestRpcClients, Pa
     # these are various things that should be in the output
     assert_list = [
         "https://example.com/data",
-        "did:chia:1qgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpq4msw0c",
+        "did:aba:1qgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpq4msw0c",
     ] + launcher_ids
     run_cli_command_and_assert(capsys, root_dir, command_args, assert_list)
     expected_calls: logType = {
@@ -337,7 +338,7 @@ def test_nft_set_did(capsys: object, get_test_cli_clients: Tuple[TestRpcClients,
 
     inst_rpc_client = NFTSetDidRpcClient()  # pylint: disable=no-value-for-parameter
     nft_coin_id = get_bytes32(2).hex()
-    did_id = encode_puzzle_hash(get_bytes32(3), "did:chia:")
+    did_id = encode_puzzle_hash(get_bytes32(3), "did:aba:")
     test_rpc_clients.wallet_rpc_client = inst_rpc_client
     command_args = [
         "wallet",
@@ -380,7 +381,7 @@ def test_nft_get_info(capsys: object, get_test_cli_clients: Tuple[TestRpcClients
     # these are various things that should be in the output
     assert_list = [
         f"Current NFT coin ID:       {nft_coin_id}",
-        "Owner DID:                 did:chia:1qgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpq4msw0c",
+        "Owner DID:                 did:aba:1qgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpq4msw0c",
     ]
     run_cli_command_and_assert(capsys, root_dir, command_args, assert_list)
     expected_calls: logType = {

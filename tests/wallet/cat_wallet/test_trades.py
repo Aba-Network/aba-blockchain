@@ -1,3 +1,4 @@
+# Aba modified this file
 from __future__ import annotations
 
 import dataclasses
@@ -119,14 +120,14 @@ async def test_cat_trades(
     if credential_restricted:
         # Aliasing
         env_maker.wallet_aliases = {
-            "xch": 1,
+            "aba": 1,
             "did": 2,
             "cat": 3,
             "vc": 4,
             "new cat": 5,
         }
         env_taker.wallet_aliases = {
-            "xch": 1,
+            "aba": 1,
             "did": 2,
             "new cat": 3,
             "vc": 4,
@@ -191,24 +192,24 @@ async def test_cat_trades(
                 # Balance checking for this scenario is covered in tests/wallet/vc_wallet/test_vc_lifecycle
                 WalletStateTransition(
                     pre_block_balance_updates={
-                        "xch": {"set_remainder": True},
+                        "aba": {"set_remainder": True},
                         "did": {"init": True, "set_remainder": True},
                         "cat": {"init": True, "set_remainder": True},
                     },
                     post_block_balance_updates={
-                        "xch": {"set_remainder": True},
+                        "aba": {"set_remainder": True},
                         "did": {"set_remainder": True},
                         "cat": {"set_remainder": True},
                     },
                 ),
                 WalletStateTransition(
                     pre_block_balance_updates={
-                        "xch": {"set_remainder": True},
+                        "aba": {"set_remainder": True},
                         "did": {"init": True, "set_remainder": True},
                         "new cat": {"init": True, "set_remainder": True},
                     },
                     post_block_balance_updates={
-                        "xch": {"set_remainder": True},
+                        "aba": {"set_remainder": True},
                         "did": {"set_remainder": True},
                         "new cat": {"set_remainder": True},
                     },
@@ -228,21 +229,21 @@ async def test_cat_trades(
                 # Balance checking for this scenario is covered in tests/wallet/vc_wallet/test_vc_lifecycle
                 WalletStateTransition(
                     pre_block_balance_updates={
-                        "xch": {"set_remainder": True},
+                        "aba": {"set_remainder": True},
                         "vc": {"init": True, "set_remainder": True},
                     },
                     post_block_balance_updates={
-                        "xch": {"set_remainder": True},
+                        "aba": {"set_remainder": True},
                         "vc": {"set_remainder": True},
                     },
                 ),
                 WalletStateTransition(
                     pre_block_balance_updates={
-                        "xch": {"set_remainder": True},
+                        "aba": {"set_remainder": True},
                         "vc": {"init": True, "set_remainder": True},
                     },
                     post_block_balance_updates={
-                        "xch": {"set_remainder": True},
+                        "aba": {"set_remainder": True},
                         "vc": {"set_remainder": True},
                     },
                 ),
@@ -292,12 +293,12 @@ async def test_cat_trades(
     else:
         # Aliasing
         env_maker.wallet_aliases = {
-            "xch": 1,
+            "aba": 1,
             "cat": 2,
             "new cat": 3,
         }
         env_taker.wallet_aliases = {
-            "xch": 1,
+            "aba": 1,
             "new cat": 2,
             "cat": 3,
         }
@@ -326,21 +327,21 @@ async def test_cat_trades(
                 # Balance checking for this scenario is covered in test_cat_wallet
                 WalletStateTransition(
                     pre_block_balance_updates={
-                        "xch": {"set_remainder": True},
+                        "aba": {"set_remainder": True},
                         "cat": {"init": True, "set_remainder": True},
                     },
                     post_block_balance_updates={
-                        "xch": {"set_remainder": True},
+                        "aba": {"set_remainder": True},
                         "cat": {"set_remainder": True},
                     },
                 ),
                 WalletStateTransition(
                     pre_block_balance_updates={
-                        "xch": {"set_remainder": True},
+                        "aba": {"set_remainder": True},
                         "new cat": {"init": True, "set_remainder": True},
                     },
                     post_block_balance_updates={
-                        "xch": {"set_remainder": True},
+                        "aba": {"set_remainder": True},
                         "new cat": {"set_remainder": True},
                     },
                 ),
@@ -475,7 +476,7 @@ async def test_cat_trades(
         [
             WalletStateTransition(
                 pre_block_balance_updates={
-                    "xch": {
+                    "aba": {
                         "pending_coin_removal_count": 1,
                         "<=#spendable_balance": -2,
                         "<=#max_send_amount": -2,
@@ -484,7 +485,7 @@ async def test_cat_trades(
                     },
                 },
                 post_block_balance_updates={
-                    "xch": {
+                    "aba": {
                         "pending_coin_removal_count": -1,
                         "confirmed_wallet_balance": -2,  # One for offered XCH, one for fee
                         "unconfirmed_wallet_balance": -2,  # One for offered XCH, one for fee
@@ -518,7 +519,7 @@ async def test_cat_trades(
             ),
             WalletStateTransition(
                 pre_block_balance_updates={
-                    "xch": {
+                    "aba": {
                         "pending_coin_removal_count": 1,
                         "<=#spendable_balance": -2,
                         "<=#max_send_amount": -2,
@@ -542,7 +543,7 @@ async def test_cat_trades(
                     ),
                 },
                 post_block_balance_updates={
-                    "xch": {
+                    "aba": {
                         "pending_coin_removal_count": -1,
                         "unspent_coin_count": 1,
                         ">#spendable_balance": 0,
@@ -688,7 +689,7 @@ async def test_cat_trades(
                     },
                 },
                 post_block_balance_updates={
-                    "xch": {
+                    "aba": {
                         "confirmed_wallet_balance": 3,
                         "unconfirmed_wallet_balance": 3,
                         "spendable_balance": 3,
@@ -706,7 +707,7 @@ async def test_cat_trades(
             ),
             WalletStateTransition(
                 pre_block_balance_updates={
-                    "xch": {
+                    "aba": {
                         "unconfirmed_wallet_balance": -4,  # -3 for offer, -1 for fee
                         "<=#spendable_balance": -4,
                         "<=#max_send_amount": -4,
@@ -733,7 +734,7 @@ async def test_cat_trades(
                     ),
                 },
                 post_block_balance_updates={
-                    "xch": {
+                    "aba": {
                         "confirmed_wallet_balance": -4,
                         ">#spendable_balance": 0,
                         ">#max_send_amount": 0,
@@ -987,7 +988,7 @@ async def test_cat_trades(
         [
             WalletStateTransition(
                 pre_block_balance_updates={
-                    "xch": {
+                    "aba": {
                         "pending_coin_removal_count": 1,
                         "<=#spendable_balance": -7,
                         "<=#max_send_amount": -7,
@@ -996,7 +997,7 @@ async def test_cat_trades(
                     },
                 },
                 post_block_balance_updates={
-                    "xch": {
+                    "aba": {
                         "pending_coin_removal_count": -1,
                         ">#spendable_balance": 0,
                         ">#max_send_amount": 0,
@@ -1049,7 +1050,7 @@ async def test_cat_trades(
             ),
             WalletStateTransition(
                 pre_block_balance_updates={
-                    "xch": {
+                    "aba": {
                         "unconfirmed_wallet_balance": 7,
                     },
                     "cat": {
@@ -1075,7 +1076,7 @@ async def test_cat_trades(
                     ),
                 },
                 post_block_balance_updates={
-                    "xch": {
+                    "aba": {
                         "confirmed_wallet_balance": 7,
                         "spendable_balance": 7,
                         "max_send_amount": 7,
@@ -1242,7 +1243,7 @@ async def test_cat_trades(
                     },
                 },
                 post_block_balance_updates={
-                    "xch": {
+                    "aba": {
                         "confirmed_wallet_balance": 10,
                         "unconfirmed_wallet_balance": 10,
                         "spendable_balance": 10,
@@ -1268,7 +1269,7 @@ async def test_cat_trades(
             ),
             WalletStateTransition(
                 pre_block_balance_updates={
-                    "xch": {
+                    "aba": {
                         "unconfirmed_wallet_balance": -10,
                         "<=#spendable_balance": -10,
                         "<=#max_send_amount": -10,
@@ -1291,7 +1292,7 @@ async def test_cat_trades(
                     ),
                 },
                 post_block_balance_updates={
-                    "xch": {
+                    "aba": {
                         "confirmed_wallet_balance": -10,
                         ">#spendable_balance": 0,
                         ">#max_send_amount": 0,
@@ -1351,7 +1352,7 @@ async def test_cat_trades(
         [
             WalletStateTransition(
                 pre_block_balance_updates={
-                    "xch": {
+                    "aba": {
                         "pending_coin_removal_count": 2,
                         "<=#spendable_balance": -13,
                         "<=#max_send_amount": -13,
@@ -1367,7 +1368,7 @@ async def test_cat_trades(
                     },
                 },
                 post_block_balance_updates={
-                    "xch": {
+                    "aba": {
                         "confirmed_wallet_balance": -13,
                         "unconfirmed_wallet_balance": -13,
                         ">=#spendable_balance": 0,
@@ -1401,7 +1402,7 @@ async def test_cat_trades(
             ),
             WalletStateTransition(
                 pre_block_balance_updates={
-                    "xch": {
+                    "aba": {
                         "unconfirmed_wallet_balance": 13,
                     },
                     "cat": {
@@ -1424,7 +1425,7 @@ async def test_cat_trades(
                     ),
                 },
                 post_block_balance_updates={
-                    "xch": {
+                    "aba": {
                         "confirmed_wallet_balance": 13,
                         "spendable_balance": 13,
                         "max_send_amount": 13,

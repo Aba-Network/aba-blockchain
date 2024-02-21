@@ -1,3 +1,4 @@
+# Aba modified this file
 from __future__ import annotations
 
 from clvm.casts import int_from_bytes
@@ -35,7 +36,7 @@ def make_puzzle(amount: int) -> int:
     puzzle_hash = puzzle_prog.get_tree_hash()
 
     solution = "()"
-    prefix = "xch"
+    prefix = "aba"
     print("PH", puzzle_hash)
     print(f"Address: {encode_puzzle_hash(puzzle_hash, prefix)}")
 

@@ -349,7 +349,7 @@ fi
 echo ""
 echo "Aba blockchain install.sh complete."
 echo "For assistance join us on Discord in the #support chat channel:"
-echo "https://discord.gg/chia"
+echo "https://discord.gg/Cz3gpRpV"
 echo ""
 echo "Try the Quick Start Guide to running chia-blockchain:"
 echo "https://github.com/Chia-Network/chia-blockchain/wiki/Quick-Start-Guide"

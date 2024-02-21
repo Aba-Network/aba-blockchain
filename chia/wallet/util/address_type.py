@@ -9,9 +9,9 @@ from chia.util.config import selected_network_address_prefix
 
 
 class AddressType(Enum):
-    ABA = "xch"
+    ABA = "aba"
     NFT = "nft"
-    DID = "did:chia:"
+    DID = "did:aba:"
 
     def hrp(self, config: Dict[str, Any]) -> str:
         if self == AddressType.ABA:

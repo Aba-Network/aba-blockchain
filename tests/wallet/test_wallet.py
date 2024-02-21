@@ -1,3 +1,4 @@
+# Aba modified this file
 from __future__ import annotations
 
 import asyncio
@@ -1636,7 +1637,7 @@ class TestWalletSimulator:
         await server_2.start_client(PeerInfo(self_hostname, server_1.get_port()), None)
         # Test general string
         message = "Hello World"
-        response = await api_0.sign_message_by_address({"address": encode_puzzle_hash(ph, "xch"), "message": message})
+        response = await api_0.sign_message_by_address({"address": encode_puzzle_hash(ph, "aba"), "message": message})
         puzzle: Program = Program.to((CHIP_0002_SIGN_MESSAGE_PREFIX, message))
 
         assert AugSchemeMPL.verify(
@@ -1647,7 +1648,7 @@ class TestWalletSimulator:
         # Test hex string
         message = "0123456789ABCDEF"
         response = await api_0.sign_message_by_address(
-            {"address": encode_puzzle_hash(ph, "xch"), "message": message, "is_hex": True}
+            {"address": encode_puzzle_hash(ph, "aba"), "message": message, "is_hex": True}
         )
         puzzle = Program.to((CHIP_0002_SIGN_MESSAGE_PREFIX, bytes.fromhex(message)))
 
@@ -1659,7 +1660,7 @@ class TestWalletSimulator:
         # Test informal input
         message = "0123456789ABCDEF"
         response = await api_0.sign_message_by_address(
-            {"address": encode_puzzle_hash(ph, "xch"), "message": message, "is_hex": "true", "safe_mode": "true"}
+            {"address": encode_puzzle_hash(ph, "aba"), "message": message, "is_hex": "true", "safe_mode": "true"}
         )
         puzzle = Program.to((CHIP_0002_SIGN_MESSAGE_PREFIX, bytes.fromhex(message)))
 
@@ -1671,7 +1672,7 @@ class TestWalletSimulator:
         # Test BLS sign string
         message = "Hello World"
         response = await api_0.sign_message_by_address(
-            {"address": encode_puzzle_hash(ph, "xch"), "message": message, "is_hex": False, "safe_mode": False}
+            {"address": encode_puzzle_hash(ph, "aba"), "message": message, "is_hex": False, "safe_mode": False}
         )
 
         assert AugSchemeMPL.verify(
@@ -1682,7 +1683,7 @@ class TestWalletSimulator:
         # Test BLS sign hex
         message = "0123456789ABCDEF"
         response = await api_0.sign_message_by_address(
-            {"address": encode_puzzle_hash(ph, "xch"), "message": message, "is_hex": True, "safe_mode": False}
+            {"address": encode_puzzle_hash(ph, "aba"), "message": message, "is_hex": True, "safe_mode": False}
         )
 
         assert AugSchemeMPL.verify(

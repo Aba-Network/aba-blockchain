@@ -129,7 +129,7 @@ if ($p)
 Write-Output ""
 Write-Output "Aba blockchain .\Install.ps1 complete."
 Write-Output "For assistance join us on Discord in the #support chat channel:"
-Write-Output "https://discord.gg/chia"
+Write-Output "https://discord.gg/Cz3gpRpV"
 Write-Output ""
 Write-Output "Try the Quick Start Guide to running chia-blockchain:"
 Write-Output "https://github.com/Chia-Network/chia-blockchain/wiki/Quick-Start-Guide"

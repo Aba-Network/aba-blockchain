@@ -1,3 +1,4 @@
+# Aba modified this file
 from __future__ import annotations
 
 import asyncio
@@ -1009,7 +1010,7 @@ async def test_nft_transfer_nft_with_did(
     resp = await api_0.nft_transfer_nft(
         dict(
             wallet_id=nft_wallet_0_id,
-            target_address=encode_puzzle_hash(ph1, "xch"),
+            target_address=encode_puzzle_hash(ph1, "aba"),
             nft_coin_id=coins[0].nft_coin_id.hex(),
             fee=fee,
         )

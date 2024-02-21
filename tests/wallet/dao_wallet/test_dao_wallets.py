@@ -1,3 +1,4 @@
+# Aba modified this file
 from __future__ import annotations
 
 import asyncio
@@ -1307,10 +1308,10 @@ async def test_dao_rpc_api(
     )
 
     await rpc_state(
-        20, api_0.dao_get_treasury_balance, [{"wallet_id": dao_wallet_0_id}], lambda x: x["balances"]["xch"]
+        20, api_0.dao_get_treasury_balance, [{"wallet_id": dao_wallet_0_id}], lambda x: x["balances"]["aba"]
     )
     balances = await api_0.dao_get_treasury_balance({"wallet_id": dao_wallet_0_id})
-    assert balances["balances"]["xch"] == xch_funding_amt
+    assert balances["balances"]["aba"] == xch_funding_amt
     assert balances["balances"][cat_id.hex()] == cat_funding_amt
 
     # Send some cats to wallet_1
@@ -1318,7 +1319,7 @@ async def test_dao_rpc_api(
         {
             "wallet_id": dao_cat_wallet_0_id,
             "amount": cat_amt // 2,
-            "inner_address": encode_puzzle_hash(ph_1, "xch"),
+            "inner_address": encode_puzzle_hash(ph_1, "aba"),
             "fee": fee,
         }
     )
@@ -1442,7 +1443,7 @@ async def test_dao_rpc_api(
             "wallet_id": dao_wallet_0_id,
             "proposal_type": "mint",
             "amount": uint64(10000),
-            "cat_target_address": encode_puzzle_hash(ph_0, "xch"),
+            "cat_target_address": encode_puzzle_hash(ph_0, "aba"),
             "vote_amount": cat_amt // 2,
             "fee": fee,
         }
@@ -1776,7 +1777,7 @@ async def test_dao_rpc_client(
         await full_node_api.process_all_wallet_transactions(wallet_0, timeout=60)
         await full_node_api.wait_for_wallets_synced(wallet_nodes=[wallet_node_0, wallet_node_1], timeout=30)
 
-        await rpc_state(20, client_0.dao_get_treasury_balance, [dao_id_0], lambda x: x["balances"]["xch"], xch_funds)
+        await rpc_state(20, client_0.dao_get_treasury_balance, [dao_id_0], lambda x: x["balances"]["aba"], xch_funds)
         assert isinstance(new_cat_wallet, CATWallet)
         new_cat_asset_id = new_cat_wallet.cat_info.limitations_program_hash
         await rpc_state(
@@ -1790,7 +1791,7 @@ async def test_dao_rpc_client(
             20,
             client_0.dao_get_treasury_balance,
             [dao_id_0],
-            lambda x: x["balances"]["xch"],
+            lambda x: x["balances"]["aba"],
             xch_funds,
         )
 
@@ -1799,7 +1800,7 @@ async def test_dao_rpc_client(
             wallet_id=dao_wallet_dict_0["cat_wallet_id"],
             tx_config=DEFAULT_TX_CONFIG,
             amount=cat_amt,
-            inner_address=encode_puzzle_hash(ph_1, "xch"),
+            inner_address=encode_puzzle_hash(ph_1, "aba"),
             fee=fee,
         )
 
@@ -1950,7 +1951,7 @@ async def test_dao_rpc_client(
             new_cat_amt - 10000,
         )
         await rpc_state(
-            20, client_0.dao_get_treasury_balance, [dao_id_0], lambda x: x["balances"]["xch"], xch_funds - 1000
+            20, client_0.dao_get_treasury_balance, [dao_id_0], lambda x: x["balances"]["aba"], xch_funds - 1000
         )
 
         # check wallet balances
@@ -2198,7 +2199,7 @@ async def test_dao_complex_spends(
             await full_node_api.process_all_wallet_transactions(wallet_0, timeout=60)
             await full_node_api.wait_for_wallets_synced(wallet_nodes=[wallet_node_0, wallet_node_1], timeout=30)
 
-        await rpc_state(20, client_0.dao_get_treasury_balance, [dao_id_0], lambda x: x["balances"]["xch"], xch_funds)
+        await rpc_state(20, client_0.dao_get_treasury_balance, [dao_id_0], lambda x: x["balances"]["aba"], xch_funds)
         assert isinstance(new_cat_wallet, CATWallet)
         new_cat_asset_id = new_cat_wallet.cat_info.limitations_program_hash
         assert isinstance(new_cat_wallet_2, CATWallet)
@@ -2278,7 +2279,7 @@ async def test_dao_complex_spends(
             20,
             client_0.dao_get_treasury_balance,
             [dao_id_0],
-            lambda x: x["balances"]["xch"],
+            lambda x: x["balances"]["aba"],
             xch_funds / 2,
         )
 
@@ -2422,7 +2423,7 @@ async def test_dao_complex_spends(
             20,
             client_1.dao_get_treasury_balance,
             [dao_id_0],
-            lambda x: x["balances"]["xch"] + 1,  # add 1 so result isn't 0
+            lambda x: x["balances"]["aba"] + 1,  # add 1 so result isn't 0
             1,
         )
         await rpc_state(
@@ -2780,7 +2781,7 @@ async def test_dao_cat_exits(
         await full_node_api.process_all_wallet_transactions(wallet_0, timeout=60)
         await full_node_api.wait_for_wallets_synced(wallet_nodes=[wallet_node_0, wallet_node_1], timeout=30)
 
-        await rpc_state(20, client_0.dao_get_treasury_balance, [dao_id_0], lambda x: x["balances"]["xch"], xch_funds)
+        await rpc_state(20, client_0.dao_get_treasury_balance, [dao_id_0], lambda x: x["balances"]["aba"], xch_funds)
 
         # send cats to lockup
         lockup_0 = await client_0.dao_send_to_lockup(dao_id_0, cat_amt, DEFAULT_TX_CONFIG)

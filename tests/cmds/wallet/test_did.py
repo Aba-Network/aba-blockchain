@@ -1,3 +1,4 @@
+# Aba modified this file
 from __future__ import annotations
 
 from pathlib import Path
@@ -29,7 +30,7 @@ def test_did_create(capsys: object, get_test_cli_clients: Tuple[TestRpcClients, 
             if backup_ids is None:
                 backup_ids = []
             self.add_to_log("create_new_did_wallet", (amount, fee, name, backup_ids, required_num))
-            return {"wallet_id": 3, "my_did": "did:chia:testdid123456"}
+            return {"wallet_id": 3, "my_did": "did:aba:testdid123456"}
 
     inst_rpc_client = DidCreateRpcClient()  # pylint: disable=no-value-for-parameter
     test_rpc_clients.wallet_rpc_client = inst_rpc_client
@@ -37,7 +38,7 @@ def test_did_create(capsys: object, get_test_cli_clients: Tuple[TestRpcClients, 
     # these are various things that should be in the output
     assert_list = [
         "Successfully created a DID wallet with name test and id 3 on key 123456",
-        "Successfully created a DID did:chia:testdid123456 in the newly created DID wallet",
+        "Successfully created a DID did:aba:testdid123456 in the newly created DID wallet",
     ]
     run_cli_command_and_assert(capsys, root_dir, command_args, assert_list)
     expected_calls: logType = {
@@ -52,7 +53,7 @@ def test_did_sign_message(capsys: object, get_test_cli_clients: Tuple[TestRpcCli
     # set RPC Client
     inst_rpc_client = TestWalletRpcClient()  # pylint: disable=no-value-for-parameter
     test_rpc_clients.wallet_rpc_client = inst_rpc_client
-    did_id = encode_puzzle_hash(get_bytes32(1), "did:chia:")
+    did_id = encode_puzzle_hash(get_bytes32(1), "did:aba:")
     message = b"hello did world!!"
     command_args = ["wallet", "did", "sign_message", FINGERPRINT_ARG, f"-m{message.hex()}"]
     # these are various things that should be in the output
@@ -99,12 +100,12 @@ def test_did_get_did(capsys: object, get_test_cli_clients: Tuple[TestRpcClients,
     class DidGetDidRpcClient(TestWalletRpcClient):
         async def get_did_id(self, wallet_id: int) -> Dict[str, str]:
             self.add_to_log("get_did_id", (wallet_id,))
-            return {"my_did": encode_puzzle_hash(get_bytes32(1), "did:chia:"), "coin_id": get_bytes32(2).hex()}
+            return {"my_did": encode_puzzle_hash(get_bytes32(1), "did:aba:"), "coin_id": get_bytes32(2).hex()}
 
     inst_rpc_client = DidGetDidRpcClient()  # pylint: disable=no-value-for-parameter
     test_rpc_clients.wallet_rpc_client = inst_rpc_client
     w_id = 3
-    expected_did = encode_puzzle_hash(get_bytes32(1), "did:chia:")
+    expected_did = encode_puzzle_hash(get_bytes32(1), "did:aba:")
     command_args = ["wallet", "did", "get_did", FINGERPRINT_ARG, f"-i{w_id}"]
     # these are various things that should be in the output
     assert_list = [f"DID:                    {expected_did}", f"Coin ID:                {get_bytes32(2)}"]
@@ -123,9 +124,9 @@ def test_did_get_details(capsys: object, get_test_cli_clients: Tuple[TestRpcClie
         async def get_did_info(self, coin_id: str, latest: bool) -> Dict[str, object]:
             self.add_to_log("get_did_info", (coin_id, latest))
             response = {
-                "did_id": encode_puzzle_hash(get_bytes32(2), "did:chia:"),
+                "did_id": encode_puzzle_hash(get_bytes32(2), "did:aba:"),
                 "latest_coin": get_bytes32(3).hex(),
-                "p2_address": encode_puzzle_hash(get_bytes32(4), "xch"),
+                "p2_address": encode_puzzle_hash(get_bytes32(4), "aba"),
                 "public_key": bytes48([5] * 48).hex(),
                 "launcher_id": get_bytes32(6).hex(),
                 "metadata": "did metadata",
@@ -143,7 +144,7 @@ def test_did_get_details(capsys: object, get_test_cli_clients: Tuple[TestRpcClie
     command_args = ["wallet", "did", "get_details", FINGERPRINT_ARG, "--coin_id", did_coin_id_hex]
     # these are various things that should be in the output
     assert_list = [
-        f"DID:                    {encode_puzzle_hash(get_bytes32(2), 'did:chia:')}",
+        f"DID:                    {encode_puzzle_hash(get_bytes32(2), 'did:aba:')}",
         f"Coin ID:                {get_bytes32(3).hex()}",
         "Inner P2 Address:       xch1qszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqkxck8d",
         f"Public Key:             {bytes48([5] * 48).hex()}",
@@ -300,7 +301,7 @@ def test_did_transfer(capsys: object, get_test_cli_clients: Tuple[TestRpcClients
     inst_rpc_client = DidTransferRpcClient()  # pylint: disable=no-value-for-parameter
     test_rpc_clients.wallet_rpc_client = inst_rpc_client
     w_id = 3
-    t_address = encode_puzzle_hash(get_bytes32(1), "xch")
+    t_address = encode_puzzle_hash(get_bytes32(1), "aba")
     command_args = [
         "wallet",
         "did",

@@ -1,3 +1,4 @@
+# Aba modified this file
 from __future__ import annotations
 
 import dataclasses
@@ -135,13 +136,13 @@ async def test_vc_lifecycle(wallet_environments: WalletTestFramework) -> None:
 
     # Define wallet aliases
     env_0.wallet_aliases = {
-        "xch": 1,
+        "aba": 1,
         "did": 2,
         "vc": 3,
         "crcat": 4,
     }
     env_1.wallet_aliases = {
-        "xch": 1,
+        "aba": 1,
         "crcat": 2,
         "vc": 3,
     }
@@ -160,7 +161,7 @@ async def test_vc_lifecycle(wallet_environments: WalletTestFramework) -> None:
         [
             WalletStateTransition(
                 pre_block_balance_updates={
-                    "xch": {
+                    "aba": {
                         "unconfirmed_wallet_balance": -202,  # 200 for VC mint fee, 1 for VC singleton, 1 for DID mint
                         # I'm not sure incrementing pending_coin_removal_count here by 3 is the spirit of this number
                         # One existing coin has been removed and two ephemeral coins have been removed
@@ -184,7 +185,7 @@ async def test_vc_lifecycle(wallet_environments: WalletTestFramework) -> None:
                     },
                 },
                 post_block_balance_updates={
-                    "xch": {
+                    "aba": {
                         "confirmed_wallet_balance": -202,  # 200 for VC mint fee, 1 for VC singleton, 1 for DID mint
                         "pending_coin_removal_count": -4,  # 3 for VC mint, 1 for DID mint
                         "set_remainder": True,
@@ -216,7 +217,7 @@ async def test_vc_lifecycle(wallet_environments: WalletTestFramework) -> None:
         [
             WalletStateTransition(
                 pre_block_balance_updates={
-                    "xch": {
+                    "aba": {
                         "unconfirmed_wallet_balance": -100,
                         "pending_coin_removal_count": 1,
                         "<=#spendable_balance": -100,
@@ -233,7 +234,7 @@ async def test_vc_lifecycle(wallet_environments: WalletTestFramework) -> None:
                     },
                 },
                 post_block_balance_updates={
-                    "xch": {
+                    "aba": {
                         "confirmed_wallet_balance": -100,
                         "pending_coin_removal_count": -1,
                         "set_remainder": True,
@@ -289,7 +290,7 @@ async def test_vc_lifecycle(wallet_environments: WalletTestFramework) -> None:
         [
             WalletStateTransition(
                 pre_block_balance_updates={
-                    "xch": {
+                    "aba": {
                         "unconfirmed_wallet_balance": -100,
                         "<=#spendable_balance": -100,
                         "<=#max_send_amount": -100,
@@ -297,7 +298,7 @@ async def test_vc_lifecycle(wallet_environments: WalletTestFramework) -> None:
                     },
                 },
                 post_block_balance_updates={
-                    "xch": {
+                    "aba": {
                         "confirmed_wallet_balance": -100,
                         "set_remainder": True,
                     },
@@ -348,7 +349,7 @@ async def test_vc_lifecycle(wallet_environments: WalletTestFramework) -> None:
         [
             WalletStateTransition(
                 pre_block_balance_updates={
-                    "xch": {
+                    "aba": {
                         "unconfirmed_wallet_balance": -2000000000,
                         "pending_coin_removal_count": 1,
                         "<=#spendable_balance": -2000000000,
@@ -366,7 +367,7 @@ async def test_vc_lifecycle(wallet_environments: WalletTestFramework) -> None:
                     },
                 },
                 post_block_balance_updates={
-                    "xch": {
+                    "aba": {
                         "confirmed_wallet_balance": -2000000000,
                         "pending_coin_removal_count": -1,
                         "set_remainder": True,
@@ -455,7 +456,7 @@ async def test_vc_lifecycle(wallet_environments: WalletTestFramework) -> None:
             WalletStateTransition(),
             WalletStateTransition(
                 pre_block_balance_updates={
-                    "xch": {
+                    "aba": {
                         "unconfirmed_wallet_balance": -90,
                         "pending_coin_removal_count": 1,
                         "<=#spendable_balance": -90,
@@ -471,7 +472,7 @@ async def test_vc_lifecycle(wallet_environments: WalletTestFramework) -> None:
                     },
                 },
                 post_block_balance_updates={
-                    "xch": {
+                    "aba": {
                         "confirmed_wallet_balance": -90,
                         "pending_coin_removal_count": -1,
                         "set_remainder": True,
@@ -520,7 +521,7 @@ async def test_vc_lifecycle(wallet_environments: WalletTestFramework) -> None:
             WalletStateTransition(),
             WalletStateTransition(
                 pre_block_balance_updates={
-                    "xch": {
+                    "aba": {
                         "unconfirmed_wallet_balance": 20,
                         "pending_coin_removal_count": 1,
                         "<=#spendable_balance": 20,
@@ -538,7 +539,7 @@ async def test_vc_lifecycle(wallet_environments: WalletTestFramework) -> None:
                     },
                 },
                 post_block_balance_updates={
-                    "xch": {
+                    "aba": {
                         "confirmed_wallet_balance": 20,
                         "pending_coin_removal_count": -1,
                         "set_remainder": True,
@@ -566,7 +567,7 @@ async def test_vc_lifecycle(wallet_environments: WalletTestFramework) -> None:
         [
             WalletStateTransition(
                 pre_block_balance_updates={
-                    "xch": {
+                    "aba": {
                         "unconfirmed_wallet_balance": -1,
                         "pending_coin_removal_count": 1,
                         "<=#spendable_balance": -1,
@@ -580,7 +581,7 @@ async def test_vc_lifecycle(wallet_environments: WalletTestFramework) -> None:
                     },
                 },
                 post_block_balance_updates={
-                    "xch": {
+                    "aba": {
                         "confirmed_wallet_balance": -1,
                         "pending_coin_removal_count": -1,
                         "set_remainder": True,
@@ -626,7 +627,7 @@ async def test_self_revoke(wallet_environments: WalletTestFramework) -> None:
 
     # Aliases
     env_0.wallet_aliases = {
-        "xch": 1,
+        "aba": 1,
         "did": 2,
         "vc": 3,
     }
@@ -645,12 +646,12 @@ async def test_self_revoke(wallet_environments: WalletTestFramework) -> None:
             WalletStateTransition(
                 # Balance checking for this spend covered in test_vc_lifecycle
                 pre_block_balance_updates={
-                    "xch": {"set_remainder": True},
+                    "aba": {"set_remainder": True},
                     "did": {"init": True, "set_remainder": True},
                     "vc": {"init": True, "set_remainder": True},
                 },
                 post_block_balance_updates={
-                    "xch": {"set_remainder": True},
+                    "aba": {"set_remainder": True},
                     "did": {"set_remainder": True},
                     "vc": {"set_remainder": True},
                 },

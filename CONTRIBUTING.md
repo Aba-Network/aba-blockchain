@@ -1,7 +1,8 @@
 # Introduction
 
-Welcome to the chia-blockchain project!
-We are happy that you are taking a look at the code for Chia, a proof of space and time cryptocurrency.
+OUT OF DATE; WILL BE UPDATED SOON
+Welcome to the aba-blockchain project!
+We are happy that you are taking a look at the code for Aba a proof of space and time cryptocurrency.
 
 A lot of fascinating new cryptography and blockchain concepts are used and implemented here.
 This repo includes the code for the Chia full node, farmer, and timelord (in chia folder), which are all written in python.
@@ -120,3 +121,5 @@ To propose changes for the production releases of Chia, please make a pull reque
 ## Copyright
 
 By contributing to this repository, you agree to license your work under the Apache License Version 2.0, or the MIT License, or release your work to the public domain. Any work contributed where you are not the original author must contain its license header with the original author(s) and be in the public domain, or licensed under the Apache License Version 2.0 or the MIT License.
+
+Aba modified this page.

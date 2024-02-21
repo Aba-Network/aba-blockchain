@@ -1,3 +1,4 @@
+# Aba modified this file
 from __future__ import annotations
 
 from pathlib import Path
@@ -367,7 +368,7 @@ def test_send(capsys: object, get_test_cli_clients: Tuple[TestRpcClients, Path])
     inst_rpc_client = SendWalletRpcClient()  # pylint: disable=no-value-for-parameter
     test_rpc_clients.wallet_rpc_client = inst_rpc_client
     # get output with all options but verbose
-    addr = encode_puzzle_hash(get_bytes32(3), "xch")
+    addr = encode_puzzle_hash(get_bytes32(3), "aba")
     command_args = [
         "wallet",
         "send",
@@ -445,14 +446,14 @@ def test_get_address(capsys: object, get_test_cli_clients: Tuple[TestRpcClients,
         async def get_next_address(self, wallet_id: int, new_address: bool) -> str:
             self.add_to_log("get_next_address", (wallet_id, new_address))
             if new_address:
-                return encode_puzzle_hash(get_bytes32(3), "xch")
-            return encode_puzzle_hash(get_bytes32(4), "xch")
+                return encode_puzzle_hash(get_bytes32(3), "aba")
+            return encode_puzzle_hash(get_bytes32(4), "aba")
 
     inst_rpc_client = GetAddressWalletRpcClient()  # pylint: disable=no-value-for-parameter
     test_rpc_clients.wallet_rpc_client = inst_rpc_client
     # get output with all options but verbose
-    addr1 = encode_puzzle_hash(get_bytes32(3), "xch")
-    addr2 = encode_puzzle_hash(get_bytes32(4), "xch")
+    addr1 = encode_puzzle_hash(get_bytes32(3), "aba")
+    addr2 = encode_puzzle_hash(get_bytes32(4), "aba")
     command_args = [
         "wallet",
         "get_address",
@@ -560,7 +561,7 @@ def test_sign_message(capsys: object, get_test_cli_clients: Tuple[TestRpcClients
     # set RPC Client
     inst_rpc_client = TestWalletRpcClient()  # pylint: disable=no-value-for-parameter
     test_rpc_clients.wallet_rpc_client = inst_rpc_client
-    xch_addr = encode_puzzle_hash(get_bytes32(1), "xch")
+    xch_addr = encode_puzzle_hash(get_bytes32(1), "aba")
     message = b"hello world"
     command_args = ["wallet", "sign_message", FINGERPRINT_ARG, f"-m{message.hex()}"]
     # these are various things that should be in the output

@@ -1,3 +1,4 @@
+# Aba modified this file
 from __future__ import annotations
 
 import pytest
@@ -71,7 +72,7 @@ async def test_balance_checking(
     with pytest.raises(KeyError):
         await env_0.change_balances(
             {
-                "xch": {
+                "aba": {
                     "confirmed_wallet_balance": 2_000_000_000_000,
                     "unconfirmed_wallet_balance": 2_000_000_000_000,
                     "spendable_balance": 2_000_000_000_000,
@@ -81,7 +82,7 @@ async def test_balance_checking(
             }
         )
     env_0.wallet_aliases = {
-        "xch": 1,
+        "aba": 1,
         "cat": 2,
     }
     with pytest.raises(ValueError, match="Error before block was farmed"):
@@ -92,7 +93,7 @@ async def test_balance_checking(
             [
                 WalletStateTransition(
                     pre_block_balance_updates={
-                        "xch": {
+                        "aba": {
                             "confirmed_wallet_balance": 2_000_000_000_000,
                             "unconfirmed_wallet_balance": 2_000_000_000_000,
                             "spendable_balance": 2_000_000_000_000,
@@ -101,7 +102,7 @@ async def test_balance_checking(
                         }
                     },
                     post_block_balance_updates={
-                        "xch": {
+                        "aba": {
                             "confirmed_wallet_balance": 13,
                         }
                     },
@@ -112,7 +113,7 @@ async def test_balance_checking(
     # this is necessary to undo the changes made before raising above
     await env_0.change_balances(
         {
-            "xch": {
+            "aba": {
                 "confirmed_wallet_balance": -2_000_000_000_013,
                 "unconfirmed_wallet_balance": -2_000_000_000_000,
                 "spendable_balance": -2_000_000_000_000,
@@ -126,7 +127,7 @@ async def test_balance_checking(
         [
             WalletStateTransition(
                 pre_block_balance_updates={
-                    "xch": {
+                    "aba": {
                         "confirmed_wallet_balance": 2_000_000_000_000,
                         "unconfirmed_wallet_balance": 2_000_000_000_000,
                         "spendable_balance": 2_000_000_000_000,
@@ -135,7 +136,7 @@ async def test_balance_checking(
                     }
                 },
                 post_block_balance_updates={
-                    "xch": {
+                    "aba": {
                         "set_remainder": True,
                     }
                 },
@@ -182,7 +183,7 @@ async def test_balance_checking(
     # Test override
     await env_0.check_balances(additional_balance_info={"cat": {"confirmed_wallet_balance": 0}})
     with pytest.raises(BalanceCheckingError, match="not in balance response"):
-        await env_0.check_balances(additional_balance_info={"xch": {"something not there": 0}})
+        await env_0.check_balances(additional_balance_info={"aba": {"something not there": 0}})
 
     await env_0.change_balances({"cat": {"init": True, "set_remainder": True}})
     await env_0.check_balances()
@@ -193,7 +194,7 @@ async def test_balance_checking(
     with pytest.raises(ValueError, match=r"\+ 2000000000000"):
         await env_0.change_balances(
             {
-                "xch": {
+                "aba": {
                     "<#confirmed_wallet_balance": 2_000_000_000_000,
                 }
             }
@@ -202,7 +203,7 @@ async def test_balance_checking(
     with pytest.raises(ValueError, match=r"\+ 2000000000000"):
         await env_0.change_balances(
             {
-                "xch": {
+                "aba": {
                     ">#confirmed_wallet_balance": 2_000_000_000_000,
                 }
             }
@@ -211,7 +212,7 @@ async def test_balance_checking(
     with pytest.raises(ValueError, match=r"\+ 1999999999999"):
         await env_0.change_balances(
             {
-                "xch": {
+                "aba": {
                     "<=#confirmed_wallet_balance": 1_999_999_999_999,
                 }
             }
@@ -220,7 +221,7 @@ async def test_balance_checking(
     with pytest.raises(ValueError, match=r"\+ 2000000000001"):
         await env_0.change_balances(
             {
-                "xch": {
+                "aba": {
                     ">=#confirmed_wallet_balance": 2_000_000_000_001,
                 }
             }
@@ -230,7 +231,7 @@ async def test_balance_checking(
 
     await env_0.change_balances(
         {
-            "xch": {
+            "aba": {
                 "<#confirmed_wallet_balance": 2_000_000_000_001,
                 "set_remainder": True,
             }
@@ -241,7 +242,7 @@ async def test_balance_checking(
 
     await env_0.change_balances(
         {
-            "xch": {
+            "aba": {
                 ">#confirmed_wallet_balance": 1_999_999_999_999,
                 "set_remainder": True,
             }
@@ -252,7 +253,7 @@ async def test_balance_checking(
 
     await env_0.change_balances(
         {
-            "xch": {
+            "aba": {
                 ">=#confirmed_wallet_balance": 2_000_000_000_000,
                 "set_remainder": True,
             }
@@ -263,7 +264,7 @@ async def test_balance_checking(
 
     await env_0.change_balances(
         {
-            "xch": {
+            "aba": {
                 "<=#confirmed_wallet_balance": 2_000_000_000_000,
                 "set_remainder": True,
             }

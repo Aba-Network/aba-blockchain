@@ -1,3 +1,4 @@
+# Aba modified this file
 from __future__ import annotations
 
 from dataclasses import replace
@@ -241,13 +242,13 @@ async def test_complex_offer(cost_logger: CostLogger) -> None:
         }
         assert new_offer.get_requested_amounts() == {None: 900, str_to_tail_hash("red"): 350}
         assert new_offer.summary() == (
-            {"xch": 1000, str_to_tail_hash("red").hex(): 350, str_to_tail_hash("blue").hex(): 2000},
-            {"xch": 900, str_to_tail_hash("red").hex(): 350},
+            {"aba": 1000, str_to_tail_hash("red").hex(): 350, str_to_tail_hash("blue").hex(): 2000},
+            {"aba": 900, str_to_tail_hash("red").hex(): 350},
             driver_dict_as_infos,
             ConditionValidTimes(),
         )
         assert new_offer.get_pending_amounts() == {
-            "xch": 1200,
+            "aba": 1200,
             str_to_tail_hash("red").hex(): 350,
             str_to_tail_hash("blue").hex(): 3000,
         }
