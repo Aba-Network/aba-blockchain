@@ -35,7 +35,8 @@ sh install.sh
 . ./activate
 aba init
 . ./install-gui.sh
-bash start-gui.sh
+cd ../ (if needed)
+bash start-gui.sh &
 ```
 
 ## Installing & Running on the Command Line only
