@@ -69,3 +69,15 @@ To troubleshoot, do aba stop all, edit ~/.aba/mainnet/config/config.yaml (or equ
 with our support team
 
 aba-blockchain is based on chia-blockchain from Chia Network Inc., licensed under the Apache 2.0 license. The Aba team regularly offers support to CNI & several major Chia projects.
+
+## Install and start Timelord
+
+After installing aba-blockchain above:
+
+```
+. ./activate
+sh install-timelord.sh
+aba start timelord
+```
+
+To restart timelord: aba start timelord -r
