@@ -4,4 +4,4 @@
         branch = main
 [submodule "chia-blockchain-gui"]
 	path = chia-blockchain-gui
-	url = https://bitbucket.org:abacoin/aba-blockchain-gui.git
+	url = https://bitbucket.org/abacoin/aba-blockchain-gui.git
