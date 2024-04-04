@@ -1,4 +1,7 @@
 # Aba has modified this file
+#
+# used by precommit config hook
+#
 from __future__ import annotations
 
 import dataclasses
@@ -37,7 +40,7 @@ clsp_suffix = ".clsp"
 hex_suffix = ".clsp.hex"
 all_suffixes = {"clsp": clsp_suffix, "hex": hex_suffix, "clvm": clvm_suffix}
 # TODO: these could be cli options
-top_levels = {"aba"}
+top_levels = {"chia"}  # name of top directory for code
 hashes_path = root.joinpath("chia/wallet/puzzles/deployed_puzzle_hashes.json")
 std_libraries = root.joinpath("chia/wallet/puzzles")
 
