@@ -1,7 +1,7 @@
 # Building timelords
 
 The Linux and MacOS chiavdf binary wheels currently exclude an executable
-required to run a [Timelord](https://github.com/Chia-Network/chia-blockchain/wiki/Timelords).
+required to run a [Timelord](https://github.com/Aba-Network/aba-blockchain/wiki/Timelords).
 If you want to run a Timelord on Linux or MacOS, you must install the wheel
 from source (which may require some additional development packages) while in
 the virtual environment.
@@ -14,7 +14,7 @@ sh install-timelord.sh
 ```
 
 If the compile fails, it's likely due to a missing dependency. The script
-[install-timelord.sh](https://github.com/Chia-Network/chia-blockchain/blob/main/install-timelord.sh)
+[install-timelord.sh](https://github.com/Aba-Network/aba-blockchain/blob/main/install-timelord.sh)
 attempts to install required build dependencies for Linux and MacOS before
 invoking pip to build from the source python distribution of chiavdf.
 
@@ -24,8 +24,8 @@ Timelord uses to run the VDF and prove the Proof of Time is `vdf_client` and
 `vdf_bench` is a utility to get a sense of a given CPU's iterations per second.
 
 - To build vdf_client set the environment variable BUILD_VDF_CLIENT to "Y".
-`export BUILD_VDF_CLIENT=Y`.
+  `export BUILD_VDF_CLIENT=Y`.
 - Similarly, to build vdf_bench set the environment variable BUILD_VDF_BENCH
-to "Y". `export BUILD_VDF_BENCH=Y`.
+  to "Y". `export BUILD_VDF_BENCH=Y`.
 
 Building and running Timelords in Windows x86-64 is not yet supported.
