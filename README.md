@@ -19,17 +19,66 @@ If you are behind a NAT, it can be difficult for peers outside your subnet to
 reach you when they start up. You can enable
 [UPnP](https://www.homenethowto.com/ports-and-nat/upnp-automatic-port-forward/)
 on your router or add a NAT (for IPv4 but not IPv6) and firewall rules to allow
-TCP port 8444 access to your peer.
+TCP port 8644 access to your peer.
 These methods tend to be router make/model specific.
 
 Most users should only install harvesters, farmers, plotter, full nodes, and wallets.
 Setting up a seeder is best left to more advanced users.
 Building Timelords and VDFs is for sophisticated users, in most environments.
 
+# Windows install from source
+
+1. Make sure you have [Python 3.10](https://www.python.org/downloads/release/python-3109/) installed
+
+2. Make sure you have [git](https://git-scm.com/downloads) installed
+
 ## Installing & Running with Graphical Interface
 
 ```
-git clone https://bitbucket.org/abacoin/aba-blockchain.git --recurse-submodules
+git clone https://github.com/Aba-Network/aba-blockchain.git --recurse-submodules
+cd aba-blockchain
+./Install.ps1
+. ./venv/Scripts/Activate.ps1
+aba init
+. .\Install-gui.ps1
+cd aba-blockchain-gui (if needed)
+Start-Process -NoNewWindow npm run electron
+```
+
+## Installing & Running on the Command Line only
+
+```
+git clone https://github.com/Aba-Network/aba-blockchain.git --recurse-submodules
+cd aba-blockchain
+./Install.ps1
+. ./venv/Scripts/Activate.ps1
+aba init
+aba start all
+```
+
+## Running
+
+Once installed
+
+```
+. ./venv/Scripts/Activate.ps1
+aba start all
+
+or for gui:
+cd aba-blockchain-gui
+Start-Process -NoNewWindow npm run electron
+```
+
+# Linux / MacOS install from source
+
+1. Make sure you have [Python 3.10](https://www.python.org/downloads/release/python-3109/) installed
+
+2. Make sure you have [git](https://git-scm.com/downloads) installed
+
+## Installing & Running with Graphical Interface
+
+```
+git clone https://github.com/Aba-Network/aba-blockchain.git --recurse-submodules
 cd aba-blockchain
 sh install.sh
 . ./activate
@@ -42,7 +91,7 @@ bash start-gui.sh &
 ## Installing & Running on the Command Line only
 
 ```
-git clone https://bitbucket.org/abacoin/aba-blockchain.git --recurse-submodules
+git clone https://github.com/Aba-Network/aba-blockchain.git --recurse-submodules
 cd aba-blockchain
 sh install.sh
 . ./activate
@@ -57,6 +106,7 @@ Once installed
 ```
 . ./activate
 aba start all
+
 or for gui:
 bash start-gui.sh
 ```
