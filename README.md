@@ -41,8 +41,14 @@ cd aba-blockchain
 . ./venv/Scripts/Activate.ps1
 aba init
 . .\Install-gui.ps1
-cd aba-blockchain-gui (if needed)
+cd chia-blockchain-gui
 Start-Process -NoNewWindow npm run electron
+```
+
+if that last command gives error, you might try
+
+```
+Start-Process -NoNewWindow npm run dev:gui
 ```
 
 ## Installing & Running on the Command Line only
@@ -65,7 +71,7 @@ Once installed
 aba start all
 
 or for gui:
-cd aba-blockchain-gui
+cd chia-blockchain-gui
 Start-Process -NoNewWindow npm run electron
 ```
 
