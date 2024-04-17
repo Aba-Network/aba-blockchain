@@ -53,12 +53,6 @@ Start-Process -NoNewWindow npm run electron
 if that last command gives error, you might try
 
 ```
-Start-Process -NoNewWindow npm run dev:gui
-```
-
-or
-
-```
 cd ..
 ./start-gui.sh
 ```
