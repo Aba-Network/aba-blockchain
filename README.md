@@ -12,7 +12,7 @@ Aba is a modern cryptocurrency designed to be efficient, decentralized, secure, 
 - Support for light clients with fast, objective syncing
 - A growing community of farmers/miners and developers around the world
 
-Python 3.8.1+ is required. Make sure your default python version is >=3.8.1
+Python 3.8.1+ but not newer than 3.11.9 is required. Make sure your default python version is >=3.8.1
 by typing `python3`.
 
 If you are behind a NAT, it can be difficult for peers outside your subnet to
@@ -28,9 +28,11 @@ Building Timelords and VDFs is for sophisticated users, in most environments.
 
 # Windows install from source
 
-1. Make sure you have [Python 3.10](https://www.python.org/downloads/release/python-3109/) installed
+1. Make sure you have [Python 3.10] (& not Python > 3.11.9) (https://www.python.org/downloads/release/python-3109/) installed
 
 2. Make sure you have [git](https://git-scm.com/downloads) installed
+
+3. Install [node.js](https://nodejs.org/en/download)
 
 ## Installing & Running with Graphical Interface
 
@@ -56,6 +58,9 @@ if that last command gives error, you might try
 cd ..
 ./start-gui.sh
 ```
+
+Additional troubleshooting: this [CryptoEcho](https://thecryptoecho.myxch.space/blog/ABA-WIN) blog post may also help (external
+link, external content not under our control)
 
 ## Installing & Running on the Command Line only
 
