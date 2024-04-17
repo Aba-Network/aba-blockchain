@@ -39,6 +39,11 @@ git clone https://github.com/Aba-Network/aba-blockchain.git --recurse-submodules
 cd aba-blockchain
 ./Install.ps1
 . ./venv/Scripts/Activate.ps1
+```
+
+Note: you should now see <venv> on the left if Activate worked. Then do:
+
+```
 aba init
 . .\Install-gui.ps1
 cd chia-blockchain-gui
@@ -49,6 +54,13 @@ if that last command gives error, you might try
 
 ```
 Start-Process -NoNewWindow npm run dev:gui
+```
+
+or
+
+```
+cd ..
+./start-gui.sh
 ```
 
 ## Installing & Running on the Command Line only
