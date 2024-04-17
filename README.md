@@ -41,7 +41,7 @@ cd aba-blockchain
 . ./venv/Scripts/Activate.ps1
 ```
 
-Note: you should now see <venv> on the left if Activate worked. Then do:
+Note: you should now see (venv) on the left of the command prompt if Activate worked. Then do:
 
 ```
 aba init
