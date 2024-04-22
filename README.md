@@ -246,7 +246,6 @@ rm -r venv
 
 # Pull the latest version
 git fetch
-git checkout latest
 git reset --hard FETCH_HEAD --recurse-submodules
 
 # If you get RELEASE.dev0 then delete the package-lock.json in chia-blockchain-gui and install.sh again
@@ -303,7 +302,6 @@ rm -r venv
 
 # Pull the latest version
 git fetch
-git checkout latest
 git reset --hard FETCH_HEAD --recurse-submodules
 
 # If you get RELEASE.dev0 then delete the package-lock.json in chia-blockchain-gui and install.sh again
