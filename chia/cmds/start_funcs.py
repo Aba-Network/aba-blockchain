@@ -17,7 +17,7 @@ from chia.util.service_groups import services_for_groups
 
 
 def launch_start_daemon(root_path: Path) -> subprocess.Popen:
-    os.environ["CHIA_ROOT"] = str(root_path)
+    os.environ["ABA_ROOT"] = str(root_path)
     creationflags = 0
     if sys.platform == "win32":
         creationflags = subprocess.CREATE_NEW_PROCESS_GROUP | subprocess.CREATE_NO_WINDOW

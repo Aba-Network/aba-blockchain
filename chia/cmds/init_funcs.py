@@ -328,13 +328,13 @@ def chia_init(
     protected Keychain. When launching the daemon from the GUI, we want the GUI to
     handle unlocking the keychain.
     """
-    chia_root = os.environ.get("CHIA_ROOT", None)
+    chia_root = os.environ.get("ABA_ROOT", None)
     if chia_root is not None:
-        print(f"CHIA_ROOT is set to {chia_root}")
+        print(f"ABA_ROOT is set to {chia_root}")
 
     print(f"Aba directory {root_path}")
     if root_path.is_dir() and Path(root_path / "config" / "config.yaml").exists():
-        # This is reached if CHIA_ROOT is set, or if user has run aba init twice
+        # This is reached if ABA_ROOT is set, or if user has run aba init twice
         # before a new update.
         if testnet:
             configure(

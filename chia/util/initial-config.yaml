@@ -109,7 +109,7 @@ seeder:
   dns_port: 53
   # This will override the default full_node.peer_connect_timeout for the crawler full node
   peer_connect_timeout: 2
-  # Path to crawler DB. Defaults to $CHIA_ROOT/crawler.db
+  # Path to crawler DB. Defaults to $ABA_ROOT/crawler.db
   crawler_db_path: "crawler.db"
   # Peers used for the initial run.
   bootstrap_peers:

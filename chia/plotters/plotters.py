@@ -486,7 +486,7 @@ def build_parser(subparsers, root_path, option_list, name, plotter_desc):
 
 
 def call_plotters(root_path: Path, args):
-    # Add `plotters` section in CHIA_ROOT.
+    # Add `plotters` section in ABA_ROOT.
     chia_root_path = root_path
     root_path = get_plotters_root_path(root_path)
     if not root_path.is_dir():
@@ -497,7 +497,7 @@ def call_plotters(root_path: Path, args):
                 print(f"Exception deleting old root path: {type(e)} {e}.")
 
     if not os.path.exists(root_path):
-        print(f"Creating plotters folder within CHIA_ROOT: {root_path}")
+        print(f"Creating plotters folder within ABA_ROOT: {root_path}")
         try:
             os.mkdir(root_path)
         except Exception as e:

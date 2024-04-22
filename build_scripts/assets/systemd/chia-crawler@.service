@@ -5,7 +5,7 @@ After=chia-daemon@%i.service
 
 [Service]
 Type=simple
-Environment=CHIA_ROOT=/home/%i/.aba/mainnet
+Environment=ABA_ROOT=/home/%i/.aba/mainnet
 ExecStart=/opt/aba/start_crawler
 User=%i
 Group=%i

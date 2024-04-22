@@ -326,7 +326,7 @@ def assert_rpc_error(error: str) -> Iterator[None]:
 
 @contextlib.contextmanager
 def closing_chia_root_popen(chia_root: ChiaRoot, args: List[str]) -> Iterator[subprocess.Popen[Any]]:
-    environment = {**os.environ, "CHIA_ROOT": os.fspath(chia_root.path)}
+    environment = {**os.environ, "ABA_ROOT": os.fspath(chia_root.path)}
 
     with subprocess.Popen(args=args, env=environment) as process:
         try:

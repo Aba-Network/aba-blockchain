@@ -1,12 +1,12 @@
 [Unit]
-Description=Chia Introducer Service for %i
-Requires=chia-daemon@%i.service
-After=chia-daemon@%i.service
+Description=Aba Introducer Service for %i
+Requires=aba-daemon@%i.service
+After=aba-daemon@%i.service
 
 [Service]
 Type=simple
-Environment=CHIA_ROOT=/home/%i/.chia/mainnet
-ExecStart=/opt/chia/start_introducer
+Environment=ABA_ROOT=/home/%i/.aba/mainnet
+ExecStart=/opt/aba/start_introducer
 User=%i
 Group=%i
 LimitNOFILE=1048576

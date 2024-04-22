@@ -186,7 +186,7 @@ async def run_cli_cmd(*args: str, root_path: Path) -> asyncio.subprocess.Process
         "-m",
         "aba",
         *args,
-        env={**os.environ, "CHIA_ROOT": os.fspath(root_path)},
+        env={**os.environ, "ABA_ROOT": os.fspath(root_path)},
         stdout=asyncio.subprocess.PIPE,
         stderr=asyncio.subprocess.PIPE,
     )
@@ -2033,7 +2033,7 @@ async def test_clear_pending_roots(
             ]
             process = await asyncio.create_subprocess_exec(
                 *args,
-                env={**os.environ, "CHIA_ROOT": str(bt.root_path)},
+                env={**os.environ, "ABA_ROOT": str(bt.root_path)},
                 stdout=asyncio.subprocess.PIPE,
                 stderr=asyncio.subprocess.PIPE,
             )

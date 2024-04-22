@@ -59,6 +59,64 @@ cd ..
 ./start-gui.sh
 ```
 
+## Updating w/ Graphical Interface
+
+```
+# Change directory to primary aba-blockchain directory
+
+cd aba-blockchain
+
+# Activate the virtual environment
+. ./venv/Scripts/Activate.ps1
+
+# Stop running services
+aba stop -d all
+
+# Deactivate the virtual environment
+deactivate
+
+# Remove the current virtual environment
+rm -r venv
+
+# Pull the latest version
+git fetch
+git checkout latest
+git reset --hard FETCH_HEAD --recurse-submodules
+
+# If you get RELEASE.dev0 then delete the package-lock.json in chia-blockchain-gui and install.sh again
+
+# This should say "nothing to commit, working tree clean"
+# if you have uncommitted changes, RELEASE.dev0 will be reported
+git status
+
+# Install the new version
+./Install.ps1
+
+# Activate the virtual environment
+. ./venv/Scripts/Activate.ps1
+
+# Initialize the new version
+aba init
+
+# Change directory
+cd chia-blockchain-gui
+
+# Pull the latest version
+git fetch
+
+# Change directory
+cd ..
+
+# Install the new version of the GUI
+./Install-gui.ps1
+
+# Change directory
+cd chia-blockchain-gui
+
+# Start the GUI
+Start-Process -NoNewWindow npm run electron
+```
+
 Additional troubleshooting: this [CryptoEcho](https://thecryptoecho.myxch.space/blog/ABA-WIN) blog post may also help (external
 link, external content not under our control)
 
@@ -71,6 +129,46 @@ cd aba-blockchain
 . ./venv/Scripts/Activate.ps1
 aba init
 aba start all
+```
+
+## Updating for Running on the Command Line Only
+
+```
+# Change directory to primary aba-blockchain directory
+
+cd aba-blockchain
+
+# Activate the virtual environment
+. ./venv/Scripts/Activate.ps1
+
+# Stop running services
+aba stop -d all
+
+# Deactivate the virtual environment
+deactivate
+
+# Remove the current virtual environment
+rm -r venv
+
+# Pull the latest version
+git fetch
+git checkout latest
+git reset --hard FETCH_HEAD --recurse-submodules
+
+# If you get RELEASE.dev0 then delete the package-lock.json in chia-blockchain-gui and install.sh again
+
+# This should say "nothing to commit, working tree clean"
+# if you have uncommitted changes, RELEASE.dev0 will be reported
+git status
+
+# Install the new version
+./Install.ps1
+
+# Activate the virtual environment
+. ./venv/Scripts/Activate.ps1
+
+# Initialize the new version
+aba init
 ```
 
 ## Running
@@ -128,14 +226,119 @@ or for gui:
 bash start-gui.sh
 ```
 
+## Updating w/ Graphical Interface
+
+```
+# Change directory to main aba-blockchain directory
+cd aba-blockchain
+
+# Activate the virtual environment
+. ./activate
+
+# Stop running services
+aba stop -d all
+
+# Deactivate the virtual environment
+deactivate
+
+# Remove the current virtual environment
+rm -r venv
+
+# Pull the latest version
+git fetch
+git checkout latest
+git reset --hard FETCH_HEAD --recurse-submodules
+
+# If you get RELEASE.dev0 then delete the package-lock.json in chia-blockchain-gui and install.sh again
+
+# This should say "nothing to commit, working tree clean"
+# if you have uncommitted changes, RELEASE.dev0 will be reported
+git status
+
+# Install the new version
+sh install.sh
+
+# Activate the virtual environment
+. ./activate
+
+# Initialize the new version
+aba init
+
+# Change directory into the GUI
+cd chia-blockchain-gui
+
+# Pull the latest version
+git fetch
+
+# Change directory
+cd ..
+
+# Change permissions on install script
+chmod +x ./install-gui.sh
+
+# Install the new version of the GUI
+./install-gui.sh
+
+# Start the GUI
+bash start-gui.sh
+```
+
+## Updating w/ Command Line Only
+
+```
+# Change directory to main aba-blockchain directory
+cd aba-blockchain
+
+# Activate the virtual environment
+. ./activate
+
+# Stop running services
+aba stop -d all
+
+# Deactivate the virtual environment
+deactivate
+
+# Remove the current virtual environment
+rm -r venv
+
+# Pull the latest version
+git fetch
+git checkout latest
+git reset --hard FETCH_HEAD --recurse-submodules
+
+# If you get RELEASE.dev0 then delete the package-lock.json in chia-blockchain-gui and install.sh again
+
+# This should say "nothing to commit, working tree clean"
+# if you have uncommitted changes, RELEASE.dev0 will be reported
+git status
+
+# Install the new version
+sh install.sh
+
+# Activate the virtual environment
+. ./activate
+
+# Initialize the new version
+aba init
+```
+
 ## Troubleshooting
 
-Note: Code is still currently uses the $CHIA_ROOT environmental variable, so if that is set for a different installation, it may cause problems. Just set it in the local terminal environment before starting aba.
+For general troubleshooting, look for Error messages in .aba/mainnet/log/debug.log
 
-To troubleshoot, do aba stop all, edit ~/.aba/mainnet/config/config.yaml (or equivalent) and change log_level value to DEBUG, and review ~/.aba/mainnet/log/debug.log for messages to help diagnose the issue or communicate
-with our support team
+For additional logging, do "aba stop -d all", edit .aba/mainnet/config/config.yaml (or equivalent) and change
+log_level value to DEBUG, and review .aba/mainnet/log/debug.log for messages to help diagnose the issue or
+communicate with our support team, e.g. in the support channel in Discord.
 
-aba-blockchain is based on chia-blockchain from Chia Network Inc., licensed under the Apache 2.0 license. The Aba team is not affiliated with Chia Network Inc.
+## Troubleshooting Mining/Farming
+
+These steps may help you diagnose issues w/ mining/farming
+
+1. Try running "aba init --fix-ssl-permissions"
+
+2. Restart Aba
+
+3. Run "aba plots check" to check your plots; for additional options run "aba plots check -h"
 
 ## Install and start Timelord
 
@@ -148,3 +351,7 @@ aba start timelord
 ```
 
 To restart timelord: aba start timelord -r
+
+## About aba-blockchain repository
+
+aba-blockchain is based on chia-blockchain from Chia Network Inc., licensed under the Apache 2.0 license. The Aba team is not affiliated with Chia Network Inc.

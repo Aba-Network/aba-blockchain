@@ -4,7 +4,7 @@ StopWhenUnneeded=true
 
 [Service]
 Type=simple
-Environment=CHIA_ROOT=/home/%i/.aba/mainnet
+Environment=ABA_ROOT=/home/%i/.aba/mainnet
 ExecStart=/opt/aba/daemon
 ExecStartPost=/bin/bash -c '(while ! nc -z -v -w1 localhost 55600 2>/dev/null; do echo "Waiting for the daemon to listen on port 55600..."; sleep 1; done); sleep 1'
 User=%i
