@@ -1,7 +1,7 @@
 [Unit]
 Description=Aba Crawler Service for %i
-Requires=chia-daemon@%i.service
-After=chia-daemon@%i.service
+Requires=aba-daemon@%i.service
+After=aba-daemon@%i.service
 
 [Service]
 Type=simple
