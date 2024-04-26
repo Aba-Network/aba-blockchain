@@ -352,4 +352,5 @@ To restart timelord: aba start timelord -r
 
 ## About aba-blockchain repository
 
-aba-blockchain is based on chia-blockchain from Chia Network Inc., licensed under the Apache 2.0 license. The Aba team is not affiliated with Chia Network Inc.
+aba-blockchain is based on chia-blockchain from Chia Network Inc., licensed under the Apache 2.0 license. The Aba team is not affiliated with Chia Network Inc. The current version of
+aba-blockchain is up to date w/ chia-blockchain version 2.1.4.

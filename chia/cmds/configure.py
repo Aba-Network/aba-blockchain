@@ -148,10 +148,10 @@ def configure(
 
             elif testnet == "false" or testnet == "f":
                 print("Setting Mainnet")
-                mainnet_port = "8444"
-                mainnet_introducer = "introducer.chia.net"
-                mainnet_dns_introducer = "dns-introducer.chia.net"
-                bootstrap_peers = ["node.chia.net"]
+                mainnet_port = "8644"
+                mainnet_introducer = "introducer.aba.ooo"
+                mainnet_dns_introducer = "dns-introducer.aba.ooo"
+                bootstrap_peers = ["node.aba.ooo"]
                 net = "mainnet"
                 config["full_node"]["port"] = int(mainnet_port)
                 config["full_node"]["introducer_peer"]["port"] = int(mainnet_port)

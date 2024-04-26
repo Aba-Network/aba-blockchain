@@ -1601,7 +1601,7 @@ async def test_keyring_file_deleted(
         },
         response={
             "success": False,
-            "service_name": "chia_plotter",
+            "service_name": "aba_plotter",
             "error": "Choose one of pool_contract_address and pool_public_key",
         },
     ),
@@ -1728,7 +1728,7 @@ async def test_plotter_options(
     ws, keychain = daemon_connection_and_temp_keychain
 
     # register for chia_plotter events
-    service_name = "chia_plotter"
+    service_name = "aba_plotter"
     data = {"service": service_name}
     payload = create_payload("register_service", data, "chia_plotter", "daemon")
     await ws.send_str(payload)
@@ -1792,7 +1792,7 @@ async def test_plotter_roundtrip(
     ws, keychain = daemon_connection_and_temp_keychain
 
     # register for chia_plotter events
-    service_name = "chia_plotter"
+    service_name = "aba_plotter"
     data = {"service": service_name}
     payload = create_payload("register_service", data, "chia_plotter", "daemon")
     await ws.send_str(payload)
@@ -1864,7 +1864,7 @@ async def test_plotter_stop_plotting(
     ws, keychain = daemon_connection_and_temp_keychain
 
     # register for chia_plotter events
-    service_name = "chia_plotter"
+    service_name = "aba_plotter"
     data = {"service": service_name}
     payload = create_payload("register_service", data, "chia_plotter", "daemon")
     await ws.send_str(payload)

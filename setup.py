@@ -119,8 +119,8 @@ kwargs = dict(
     long_description_content_type="text/markdown",
     zip_safe=False,
     project_urls={
-        "Source": "https://github.com/Chia-Network/chia-blockchain/",
-        "Changelog": "https://github.com/Chia-Network/chia-blockchain/blob/main/CHANGELOG.md",
+        "Source": "https://github.com/Aba-Network/aba-blockchain/",
+        "Changelog": "https://github.com/Aba-Network/aba-blockchain/blob/main/CHANGELOG.md",
     },
 )
 
