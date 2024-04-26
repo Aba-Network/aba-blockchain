@@ -8,15 +8,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project does not yet adhere to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 for setuptools_scm/PEP 440 reasons.
 
+## 0.2.1 Aba blockchain 2024-04-26
+
+### Fixed
+
+- version numbers
+- various references updated from chia* to aba*
+- link to Aba faucet
+
 ## 0.2.0 Aba blockchain 2024-04-22
 
 ### Fixed
 
-- Offer displays in GUI
+- Offer display in GUI
 
 ### Changed
 
-- Renamed environmental variables from CHIA* to ABA*
+- Renamed 3 environmental variables from CHIA*\* to ABA*\*
 - Faucet url's
 - Various "xch" mentions changed to "aba"
 
