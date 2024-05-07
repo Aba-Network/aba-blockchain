@@ -15,11 +15,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Set Env
-        uses: Chia-Network/actions/setjobenv@main
+        uses: Aba-Network/actions/setjobenv@main
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: Chia-Network/actions/github/jwt@main
+      - uses: Aba-Network/actions/github/jwt@main
 
       - name: Trigger Workflow
         run: |

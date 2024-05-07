@@ -21,8 +21,8 @@ updates:
       # for example, `dependabot-npm_and_yarn-next_js-acorn-6.4.1`
       separator: "-"
     reviewers:
-      - "emlowe"
-      - "altendky"
+      - "rightsexyorc"
+      - "abakrombie"
 
   # Maintain dependencies for GitHub Actions
   - package-ecosystem: "github-actions"
@@ -41,8 +41,8 @@ updates:
       # for example, `dependabot-npm_and_yarn-next_js-acorn-6.4.1`
       separator: "-"
     reviewers:
-      - "cmmarslender"
-      - "altendky"
+      - "rightsexyorc"
+      - "abakrombie"
 
   - package-ecosystem: "npm"
     directory: "/"
@@ -60,5 +60,5 @@ updates:
       # for example, `dependabot-npm_and_yarn-next_js-acorn-6.4.1`
       separator: "-"
     reviewers:
-      - "cmmarslender"
-      - "paninaro"
+      - "rightsexyorc"
+      - "abakrombie"

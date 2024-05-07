@@ -125,22 +125,22 @@ jobs:
           fetch-depth: 0
 
       - name: Set Env
-        uses: Chia-Network/actions/setjobenv@main
+        uses: Aba-Network/actions/setjobenv@main
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Python environment
-        uses: Chia-Network/actions/setup-python@main
+        uses: Aba-Network/actions/setup-python@main
         with:
           python-version: ${{ matrix.python.action }}
 
       - name: Create keychain for CI use (macOS)
         if: matrix.os.matrix == 'macos'
         run: |
-          security create-keychain -p foo chiachain
-          security default-keychain -s chiachain
-          security unlock-keychain -p foo chiachain
-          security set-keychain-settings -t 7200 -u chiachain
+          security create-keychain -p foo abachain
+          security default-keychain -s abachain
+          security unlock-keychain -p foo abachain
+          security set-keychain-settings -t 7200 -u abachain
 
       - name: Cache npm (Ubuntu)
         if: matrix.os.matrix == 'ubuntu'
@@ -178,8 +178,8 @@ jobs:
         id: test-blocks-plots
         with:
           path: |
-            ${{ github.workspace }}/.chia/blocks
-            ${{ github.workspace }}/.chia/test-plots
+            ${{ github.workspace }}/.aba/blocks
+            ${{ github.workspace }}/.aba/test-plots
           key: ${{ env.BLOCKS_AND_PLOTS_VERSION }}
 
       - name: Checkout test blocks and plots
@@ -187,9 +187,9 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh release download -R Chia-Network/test-cache ${{ env.BLOCKS_AND_PLOTS_VERSION }} --archive=tar.gz -O - | tar xzf -
-          mkdir "${GITHUB_WORKSPACE}/.chia"
-          mv "${GITHUB_WORKSPACE}/test-cache-${{ env.BLOCKS_AND_PLOTS_VERSION }}/"* "${GITHUB_WORKSPACE}/.chia"
+          gh release download -R Aba-Network/test-cache ${{ env.BLOCKS_AND_PLOTS_VERSION }} --archive=tar.gz -O - | tar xzf -
+          mkdir "${GITHUB_WORKSPACE}/.aba"
+          mv "${GITHUB_WORKSPACE}/test-cache-${{ env.BLOCKS_AND_PLOTS_VERSION }}/"* "${GITHUB_WORKSPACE}/.aba"
 
       - name: Install boost (macOS)
         if: matrix.os.matrix == 'macos'
@@ -203,7 +203,7 @@ jobs:
           editable: false
           legacy_keyring: ${{ matrix.configuration.legacy_keyring_required }}
 
-      - uses: chia-network/actions/activate-venv@main
+      - uses: aba-network/actions/activate-venv@main
 
       - name: Install timelord
         if: matrix.configuration.install_timelord
@@ -211,7 +211,7 @@ jobs:
           sh install-timelord.sh -n
           ./vdf_bench square_asm 400000
 
-      - name: Move chia/ so we test the installed code
+      - name: Move aba/ so we test the installed code
         run: |
           mv chia/ notchia/
 

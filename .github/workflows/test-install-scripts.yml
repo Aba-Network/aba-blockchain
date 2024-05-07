@@ -43,7 +43,7 @@ jobs:
           fetch-depth: 0
 
       - name: Setup Python environment
-        uses: Chia-Network/actions/setup-python@main
+        uses: Aba-Network/actions/setup-python@main
         with:
           python-version: ${{ matrix.python-version }}
 
@@ -53,7 +53,7 @@ jobs:
           development: ${{ matrix.development.value }}
           do-system-installs: true
 
-      - uses: chia-network/actions/activate-venv@main
+      - uses: aba-network/actions/activate-venv@main
 
       - name: Run aba --help
         run: |
@@ -170,7 +170,7 @@ jobs:
           development: true
           do-system-installs: true
 
-      - uses: chia-network/actions/activate-venv@main
+      - uses: aba-network/actions/activate-venv@main
 
       - name: Run aba --help
         run: |

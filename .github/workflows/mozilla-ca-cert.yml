@@ -11,16 +11,16 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          ref: "${{ github.event.inputs.chia_ref }}"
-          repository: chia-network/chia-blockchain
+          ref: "${{ github.event.inputs.aba_ref }}"
+          repository: aba-network/aba-blockchain
           submodules: recursive
           token: "${{ secrets.GITHUB_TOKEN }}"
 
       - name: Set up commit signing
-        uses: Chia-Network/actions/commit-sign/gpg@main
+        uses: Aba-Network/actions/commit-sign/gpg@main
         with:
-          gpg_private_key: ${{ secrets.CHIA_AUTOMATION_PRIVATE_GPG_KEY }}
-          passphrase: ${{ secrets.CHIA_AUTOMATION_PRIVATE_GPG_PASSPHRASE }}
+          gpg_private_key: ${{ secrets.ABA_AUTOMATION_PRIVATE_GPG_KEY }}
+          passphrase: ${{ secrets.ABA_AUTOMATION_PRIVATE_GPG_PASSPHRASE }}
 
       - name: "Add changes to new branch"
         run: |
@@ -35,9 +35,9 @@ jobs:
           branch: mozilla-ca-updates
           commit-message: "adding ca updates"
           delete-branch: true
-          reviewers: "wjblanke,emlowe"
-          assignees: "wallentx"
+          reviewers: "rightsexyorc,abakrombie"
+          assignees: "rightsexyorc"
           title: "CA Cert updates"
           token: "${{ secrets.GITHUB_TOKEN }}"
-          committer: "ChiaAutomation <automation@chia.net>"
-          author: "ChiaAutomation <automation@chia.net>"
+          committer: "AbaAutomation <automation@aba.ooo>"
+          author: "AbaAutomation <automation@aba.ooo>"
