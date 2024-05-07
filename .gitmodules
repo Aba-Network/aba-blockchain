@@ -2,3 +2,6 @@
 	path = mozilla-ca
 	url = https://github.com/Chia-Network/mozilla-ca.git
         branch = main
+[submodule "aba-blockchain-gui"]
+	path = aba-blockchain-gui
+	url = https://github.com/Aba-Network/aba-blockchain-gui.git
