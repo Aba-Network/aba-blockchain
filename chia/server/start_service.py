@@ -106,7 +106,7 @@ class Service(Generic[_T_RpcServiceProtocol, _T_ApiProtocol, _T_RpcApiProtocol])
 
         self._log = logging.getLogger(service_name)
         self._log.info(f"Starting service {self._service_name} ...")
-        self._log.info(f"chia-blockchain version: {chia_full_version_str()}")
+        self._log.info(f"aba-blockchain version: {chia_full_version_str()}")
 
         self.service_config = self.config[service_name]
 
