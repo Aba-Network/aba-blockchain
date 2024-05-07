@@ -77,13 +77,13 @@ main.sym
 *.pstats
 
 # Dev config react
-# chia-blockchain-gui/src/dev_config.js
+# aba-blockchain-gui/src/dev_config.js
 # React built app
-chia-blockchain-gui/.eslintcache
-chia-blockchain-gui/build
+aba-blockchain-gui/.eslintcache
+aba-blockchain-gui/build
 build_scripts/dist
 build_scripts/*.Dmg
-chia-blockchain-gui/src/locales/_build
+aba-blockchain-gui/src/locales/_build
 build_scripts\win_build
 build_scripts/win_build
 win_code_sign_cert.p12

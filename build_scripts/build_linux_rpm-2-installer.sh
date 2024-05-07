@@ -18,11 +18,11 @@ fi
 # If the env variable NOTARIZE and the username and password variables are
 # set, this will attempt to Notarize the signed DMG
 
-if [ ! "$CHIA_INSTALLER_VERSION" ]; then
-	echo "WARNING: No environment variable CHIA_INSTALLER_VERSION set. Using 0.0.0."
-	CHIA_INSTALLER_VERSION="0.0.0"
+if [ ! "$ABA_INSTALLER_VERSION" ]; then
+	echo "WARNING: No environment variable ABA_INSTALLER_VERSION set. Using 0.0.0."
+	ABA_INSTALLER_VERSION="0.0.0"
 fi
-echo "Aba Installer Version is: $CHIA_INSTALLER_VERSION"
+echo "Aba Installer Version is: $ABA_INSTALLER_VERSION"
 
 echo "Installing npm and electron packagers"
 cd npm_linux || exit 1
@@ -48,14 +48,14 @@ pwd
 bash ./build_license_directory.sh
 
 # Builds CLI only rpm
-CLI_RPM_BASE="chia-blockchain-cli-$CHIA_INSTALLER_VERSION-1.$REDHAT_PLATFORM"
-mkdir -p "dist/$CLI_RPM_BASE/opt/chia"
+CLI_RPM_BASE="aba-blockchain-cli-$ABA_INSTALLER_VERSION-1.$REDHAT_PLATFORM"
+mkdir -p "dist/$CLI_RPM_BASE/opt/aba"
 mkdir -p "dist/$CLI_RPM_BASE/usr/bin"
 mkdir -p "dist/$CLI_RPM_BASE/etc/systemd/system"
-cp -r dist/daemon/* "dist/$CLI_RPM_BASE/opt/chia/"
+cp -r dist/daemon/* "dist/$CLI_RPM_BASE/opt/aba/"
 cp assets/systemd/*.service "dist/$CLI_RPM_BASE/etc/systemd/system/"
 
-ln -s ../../opt/chia/chia "dist/$CLI_RPM_BASE/usr/bin/chia"
+ln -s ../../opt/aba/aba "dist/$CLI_RPM_BASE/usr/bin/aba"
 # This is built into the base build image
 # shellcheck disable=SC1091
 . /etc/profile.d/rvm.sh
@@ -69,11 +69,11 @@ export FPM_EDITOR="cat >dist/cli.spec <"
 fpm -s dir -t rpm \
   --edit \
   -C "dist/$CLI_RPM_BASE" \
-  --directories "/opt/chia" \
+  --directories "/opt/aba" \
   -p "dist/$CLI_RPM_BASE.rpm" \
-  --name chia-blockchain-cli \
+  --name aba-blockchain-cli \
   --license Apache-2.0 \
-  --version "$CHIA_INSTALLER_VERSION" \
+  --version "$ABA_INSTALLER_VERSION" \
   --architecture "$REDHAT_PLATFORM" \
   --description "Chia is a modern cryptocurrency built from scratch, designed to be efficient, decentralized, and secure." \
   --rpm-tag 'Recommends: libxcrypt-compat' \
@@ -83,13 +83,13 @@ fpm -s dir -t rpm \
   --rpm-tag 'Requires(pre): findutils' \
   .
 # CLI only rpm done
-cp -r dist/daemon ../chia-blockchain-gui/packages/gui
+cp -r dist/daemon ../aba-blockchain-gui/packages/gui
 # Change to the gui package
-cd ../chia-blockchain-gui/packages/gui || exit 1
+cd ../aba-blockchain-gui/packages/gui || exit 1
 
-# sets the version for chia-blockchain in package.json
+# sets the version for aba-blockchain in package.json
 cp package.json package.json.orig
-jq --arg VER "$CHIA_INSTALLER_VERSION" '.version=$VER' package.json > temp.json && mv temp.json package.json
+jq --arg VER "$ABA_INSTALLER_VERSION" '.version=$VER' package.json > temp.json && mv temp.json package.json
 
 export FPM_EDITOR="cat >../../../build_scripts/dist/gui.spec <"
 jq '.rpm.fpm |= . + ["--edit"]' ../../../build_scripts/electron-builder.json > temp.json && mv temp.json ../../../build_scripts/electron-builder.json
@@ -101,14 +101,14 @@ if [ "$REDHAT_PLATFORM" = "arm64" ]; then
 fi
 PRODUCT_NAME="aba"
 echo npx electron-builder build --linux rpm "${OPT_ARCH}" \
-  --config.extraMetadata.name=chia-blockchain \
+  --config.extraMetadata.name=aba-blockchain \
   --config.productName="${PRODUCT_NAME}" --config.linux.desktop.Name="Chia Blockchain" \
-  --config.rpm.packageName="chia-blockchain" \
+  --config.rpm.packageName="aba-blockchain" \
   --config ../../../build_scripts/electron-builder.json
 npx electron-builder build --linux rpm "${OPT_ARCH}" \
-  --config.extraMetadata.name=chia-blockchain \
+  --config.extraMetadata.name=aba-blockchain \
   --config.productName="${PRODUCT_NAME}" --config.linux.desktop.Name="Chia Blockchain" \
-  --config.rpm.packageName="chia-blockchain" \
+  --config.rpm.packageName="aba-blockchain" \
   --config ../../../build_scripts/electron-builder.json
 LAST_EXIT_CODE=$?
 ls -l dist/linux*-unpacked/resources
@@ -121,8 +121,8 @@ if [ "$LAST_EXIT_CODE" -ne 0 ]; then
 	exit $LAST_EXIT_CODE
 fi
 
-GUI_RPM_NAME="chia-blockchain-${CHIA_INSTALLER_VERSION}-1.${REDHAT_PLATFORM}.rpm"
-mv "dist/${PRODUCT_NAME}-${CHIA_INSTALLER_VERSION}.rpm" "../../../build_scripts/dist/${GUI_RPM_NAME}"
+GUI_RPM_NAME="aba-blockchain-${ABA_INSTALLER_VERSION}-1.${REDHAT_PLATFORM}.rpm"
+mv "dist/${PRODUCT_NAME}-${ABA_INSTALLER_VERSION}.rpm" "../../../build_scripts/dist/${GUI_RPM_NAME}"
 cd ../../../build_scripts || exit 1
 
 echo "Create final installer"

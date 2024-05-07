@@ -90,14 +90,14 @@ async def async_main(service_config: Dict[str, Any]) -> int:
 def main() -> int:
     freeze_support()
 
-    with maybe_manage_task_instrumentation(enable=os.environ.get("CHIA_INSTRUMENT_NODE") is not None):
+    with maybe_manage_task_instrumentation(enable=os.environ.get("ABA_INSTRUMENT_NODE") is not None):
         service_config = load_config_cli(DEFAULT_ROOT_PATH, "config.yaml", SERVICE_NAME)
         target_peer_count = service_config.get("target_peer_count", 40) - service_config.get(
             "target_outbound_peer_count", 8
         )
         if target_peer_count < 0:
             target_peer_count = None
-        if not service_config.get("use_chia_loop_policy", True):
+        if not service_config.get("use_aba_loop_policy", True):
             target_peer_count = None
         return async_run(coro=async_main(service_config), connection_limit=target_peer_count)
 

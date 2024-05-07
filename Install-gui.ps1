@@ -28,7 +28,7 @@ if ( $SUBMODULE_BRANCH ) {
 
 Push-Location
 try {
-    Set-Location chia-blockchain-gui
+    Set-Location aba-blockchain-gui
 
     $ErrorActionPreference = "SilentlyContinue"
     npm ci --loglevel=error
@@ -39,7 +39,7 @@ try {
     Write-Output ""
     Write-Output "Aba blockchain Install-gui.ps1 completed."
     Write-Output ""
-    Write-Output "Type 'cd chia-blockchain-gui' and then 'npm run electron' to start the GUI."
+    Write-Output "Type 'cd aba-blockchain-gui' and then 'npm run electron' to start the GUI."
 } finally {
     Pop-Location
 }

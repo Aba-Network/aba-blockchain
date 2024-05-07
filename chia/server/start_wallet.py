@@ -101,7 +101,7 @@ async def async_main() -> int:
 def main() -> int:
     freeze_support()
 
-    with maybe_manage_task_instrumentation(enable=os.environ.get("CHIA_INSTRUMENT_WALLET") is not None):
+    with maybe_manage_task_instrumentation(enable=os.environ.get("ABA_INSTRUMENT_WALLET") is not None):
         return async_run(async_main())
 
 

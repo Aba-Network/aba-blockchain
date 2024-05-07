@@ -13,7 +13,7 @@ from chia.util.misc import format_bytes, prompt_yes_no, validate_directory_writa
 
 
 def default_beta_root_path() -> Path:
-    return Path(os.path.expanduser(os.getenv("CHIA_BETA_ROOT", "~/chia-beta-test"))).resolve()
+    return Path(os.path.expanduser(os.getenv("ABA_BETA_ROOT", "~/aba-beta-test"))).resolve()
 
 
 def warn_if_beta_enabled(config: Dict[str, Any]) -> None:

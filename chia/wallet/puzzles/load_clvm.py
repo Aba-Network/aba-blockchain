@@ -18,8 +18,8 @@ from chia.util.lock import Lockfile
 compile_clvm_py = None
 
 recompile_requested = (
-    (os.environ.get("CHIA_DEV_COMPILE_CLVM_ON_IMPORT", "") != "") or ("pytest" in sys.modules)
-) and os.environ.get("CHIA_DEV_COMPILE_CLVM_DISABLED", None) is None
+    (os.environ.get("ABA_DEV_COMPILE_CLVM_ON_IMPORT", "") != "") or ("pytest" in sys.modules)
+) and os.environ.get("ABA_DEV_COMPILE_CLVM_DISABLED", None) is None
 
 
 def translate_path(p_):
@@ -90,7 +90,7 @@ def load_serialized_clvm(
     """
     hex_filename = f"{clvm_filename}.hex"
 
-    # Set the CHIA_DEV_COMPILE_CLVM_ON_IMPORT environment variable to anything except
+    # Set the ABA_DEV_COMPILE_CLVM_ON_IMPORT environment variable to anything except
     # "" or "0" to trigger automatic recompilation of the Chialisp on load.
     if recompile:
         try:

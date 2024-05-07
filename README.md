@@ -48,7 +48,7 @@ Note: you should now see (venv) on the left of the command prompt if Activate wo
 ```
 aba init
 . .\Install-gui.ps1
-cd chia-blockchain-gui
+cd aba-blockchain-gui
 Start-Process -NoNewWindow npm run electron
 ```
 
@@ -82,7 +82,7 @@ rm -r venv
 git fetch
 git reset --hard FETCH_HEAD --recurse-submodules
 
-# If you get RELEASE.dev0 then delete the package-lock.json in chia-blockchain-gui and install.sh again
+# If you get RELEASE.dev0 then delete the package-lock.json in aba-blockchain-gui and install.sh again
 
 # This should say "nothing to commit, working tree clean"
 # if you have uncommitted changes, RELEASE.dev0 will be reported
@@ -98,7 +98,7 @@ git status
 aba init
 
 # Change directory
-cd chia-blockchain-gui
+cd aba-blockchain-gui
 
 # Pull the latest version
 git fetch
@@ -110,7 +110,7 @@ cd ..
 ./Install-gui.ps1
 
 # Change directory
-cd chia-blockchain-gui
+cd aba-blockchain-gui
 
 # Start the GUI
 Start-Process -NoNewWindow npm run electron
@@ -154,7 +154,7 @@ git fetch
 git checkout latest
 git reset --hard FETCH_HEAD --recurse-submodules
 
-# If you get RELEASE.dev0 then delete the package-lock.json in chia-blockchain-gui and install.sh again
+# If you get RELEASE.dev0 then delete the package-lock.json in aba-blockchain-gui and install.sh again
 
 # This should say "nothing to commit, working tree clean"
 # if you have uncommitted changes, RELEASE.dev0 will be reported
@@ -179,7 +179,7 @@ Once installed
 aba start all
 
 or for gui:
-cd chia-blockchain-gui
+cd aba-blockchain-gui
 Start-Process -NoNewWindow npm run electron
 ```
 
@@ -247,7 +247,7 @@ rm -r venv
 git fetch
 git reset --hard FETCH_HEAD --recurse-submodules
 
-# If you get RELEASE.dev0 then delete the package-lock.json in chia-blockchain-gui and install.sh again
+# If you get RELEASE.dev0 then delete the package-lock.json in aba-blockchain-gui and install.sh again
 
 # This should say "nothing to commit, working tree clean"
 # if you have uncommitted changes, RELEASE.dev0 will be reported
@@ -263,7 +263,7 @@ sh install.sh
 aba init
 
 # Change directory into the GUI
-cd chia-blockchain-gui
+cd aba-blockchain-gui
 
 # Pull the latest version
 git fetch
@@ -303,7 +303,7 @@ rm -r venv
 git fetch
 git reset --hard FETCH_HEAD --recurse-submodules
 
-# If you get RELEASE.dev0 then delete the package-lock.json in chia-blockchain-gui and install.sh again
+# If you get RELEASE.dev0 then delete the package-lock.json in aba-blockchain-gui and install.sh again
 
 # This should say "nothing to commit, working tree clean"
 # if you have uncommitted changes, RELEASE.dev0 will be reported

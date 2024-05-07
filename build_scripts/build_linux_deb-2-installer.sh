@@ -19,12 +19,12 @@ git submodule
 # If the env variable NOTARIZE and the username and password variables are
 # set, this will attempt to Notarize the signed DMG
 
-if [ ! "$CHIA_INSTALLER_VERSION" ]; then
-	echo "WARNING: No environment variable CHIA_INSTALLER_VERSION set. Using 0.0.0."
-	CHIA_INSTALLER_VERSION="0.0.0"
+if [ ! "$ABA_INSTALLER_VERSION" ]; then
+	echo "WARNING: No environment variable ABA_INSTALLER_VERSION set. Using 0.0.0."
+	ABA_INSTALLER_VERSION="0.0.0"
 fi
-echo "Aba Installer Version is: $CHIA_INSTALLER_VERSION"
-export CHIA_INSTALLER_VERSION
+echo "Aba Installer Version is: $ABA_INSTALLER_VERSION"
+export ABA_INSTALLER_VERSION
 
 echo "Installing npm and electron packagers"
 cd npm_linux || exit 1
@@ -53,7 +53,7 @@ bash ./build_license_directory.sh
 # Builds CLI only .deb
 # need j2 for templating the control file
 pip install j2cli
-CLI_DEB_BASE="chia-blockchain-cli_$CHIA_INSTALLER_VERSION-1_$PLATFORM"
+CLI_DEB_BASE="aba-blockchain-cli_$ABA_INSTALLER_VERSION-1_$PLATFORM"
 mkdir -p "dist/$CLI_DEB_BASE/opt/aba"
 mkdir -p "dist/$CLI_DEB_BASE/usr/bin"
 mkdir -p "dist/$CLI_DEB_BASE/DEBIAN"
@@ -66,14 +66,14 @@ ln -s ../../opt/aba/aba "dist/$CLI_DEB_BASE/usr/bin/aba"
 dpkg-deb --build --root-owner-group "dist/$CLI_DEB_BASE"
 # CLI only .deb done
 
-cp -r dist/daemon ../chia-blockchain-gui/packages/gui
+cp -r dist/daemon ../aba-blockchain-gui/packages/gui
 
 # Change to the gui package
-cd ../chia-blockchain-gui/packages/gui || exit 1
+cd ../aba-blockchain-gui/packages/gui || exit 1
 
-# sets the version for chia-blockchain in package.json
+# sets the version for aba-blockchain in package.json
 cp package.json package.json.orig
-jq --arg VER "$CHIA_INSTALLER_VERSION" '.version=$VER' package.json > temp.json && mv temp.json package.json
+jq --arg VER "$ABA_INSTALLER_VERSION" '.version=$VER' package.json > temp.json && mv temp.json package.json
 
 echo "Building Linux(deb) Electron app"
 PRODUCT_NAME="aba"
@@ -125,8 +125,8 @@ if [ "$LAST_EXIT_CODE" -ne 0 ]; then
 	exit $LAST_EXIT_CODE
 fi
 
-GUI_DEB_NAME=aba-blockchain_${CHIA_INSTALLER_VERSION}_${PLATFORM}.deb
-mv "dist/${PRODUCT_NAME}-${CHIA_INSTALLER_VERSION}.deb" "../../../build_scripts/dist/${GUI_DEB_NAME}"
+GUI_DEB_NAME=aba-blockchain_${ABA_INSTALLER_VERSION}_${PLATFORM}.deb
+mv "dist/${PRODUCT_NAME}-${ABA_INSTALLER_VERSION}.deb" "../../../build_scripts/dist/${GUI_DEB_NAME}"
 cd ../../../build_scripts || exit 1
 
 echo "Create final installer"

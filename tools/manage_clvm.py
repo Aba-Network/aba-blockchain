@@ -425,4 +425,4 @@ def build() -> int:
     sys.exit(1 if overall_fail else 0)
 
 
-main(auto_envvar_prefix="CHIA_MANAGE_CLVM")
+main(auto_envvar_prefix="ABA_MANAGE_CLVM")

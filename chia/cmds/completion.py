@@ -47,4 +47,4 @@ def generate(shell: str) -> None:
     """
     # Could consider calling directly in the future.
     # https://github.com/pallets/click/blob/ef11be6e49e19a055fe7e5a89f0f1f4062c68dba/src/click/shell_completion.py#L17
-    subprocess.run(["aba"], check=True, env={**os.environ, "_CHIA_COMPLETE": f"{shell}_source"})
+    subprocess.run(["aba"], check=True, env={**os.environ, "_ABA_COMPLETE": f"{shell}_source"})

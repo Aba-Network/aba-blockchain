@@ -20,7 +20,7 @@ keyring_datas = copy_metadata("keyring")[0]
 
 version_data = [
     copy_metadata(name)[0]
-    for name in ["chia-blockchain", "chiapos"]
+    for name in ["aba-blockchain", "chiapos"]
 ]
 
 block_cipher = None

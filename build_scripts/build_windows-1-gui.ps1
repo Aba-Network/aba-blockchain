@@ -11,9 +11,9 @@ Set-Location -Path ".\npm_windows" -PassThru
 npm ci
 
 Set-Location -Path "..\..\" -PassThru
-git submodule update --init chia-blockchain-gui
+git submodule update --init aba-blockchain-gui
 
-Set-Location -Path ".\chia-blockchain-gui" -PassThru
+Set-Location -Path ".\aba-blockchain-gui" -PassThru
 
 Write-Output "   ---"
 Write-Output "Build GUI npm modules"
@@ -38,9 +38,9 @@ If ($LastExitCode -gt 0){
 # Remove unused packages
 Remove-Item node_modules -Recurse -Force
 
-# Other than `chia-blockchain-gui/package/gui`, all other packages are no longer necessary after build.
+# Other than `aba-blockchain-gui/package/gui`, all other packages are no longer necessary after build.
 # Since these unused packages make cache unnecessarily fat, unused packages should be removed.
-Write-Output "Remove unused @chia-network packages to make cache slim"
+Write-Output "Remove unused @aba-network packages to make cache slim"
 Remove-Item packages\api -Recurse -Force
 Remove-Item packages\api-react -Recurse -Force
 Remove-Item packages\core -Recurse -Force
@@ -54,5 +54,5 @@ Remove-Item packages\wallets -Recurse -Force
 #Remove-Item "@mui" -Recurse -Force # ~71MB
 #Remove-Item typescript -Recurse -Force # ~63MB
 
-# Remove `packages/gui/node_modules/@chia-network` because it causes an error on later `electron-packager` command
-#Remove-Item "@chia-network" -Recurse -Force
+# Remove `packages/gui/node_modules/@aba-network` because it causes an error on later `electron-packager` command
+#Remove-Item "@aba-network" -Recurse -Force

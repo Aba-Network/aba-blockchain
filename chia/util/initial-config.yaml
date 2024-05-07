@@ -439,7 +439,7 @@ full_node:
     private_key: "config/ssl/full_node/private_full_node.key"
     public_crt: "config/ssl/full_node/public_full_node.crt"
     public_key: "config/ssl/full_node/public_full_node.key"
-  use_chia_loop_policy: True
+  use_aba_loop_policy: True
 
 ui:
   # Which port to use to communicate with the full node

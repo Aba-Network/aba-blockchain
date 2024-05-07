@@ -4,25 +4,15 @@
   "asar": true,
   "asarUnpack": "**/daemon/**",
   "npmRebuild": false,
-  "files": [
-    "build",
-    "daemon",
-    "!node_modules",
-    "!src",
-    "!public"
-  ],
+  "files": ["build", "daemon", "!node_modules", "!src", "!public"],
   "protocols": [
     {
       "name": "Aba URL",
-      "schemes": [
-        "aba"
-      ]
+      "schemes": ["aba"]
     },
     {
       "name": "Aba ABA Address",
-      "schemes": [
-        "aba"
-      ]
+      "schemes": ["aba"]
     }
   ],
   "win": {
@@ -32,7 +22,7 @@
     "executableName": "Aba"
   },
   "nsis": {
-    "artifactName": "AbaSetup-${env.CHIA_INSTALLER_VERSION}.exe",
+    "artifactName": "AbaSetup-${env.ABA_INSTALLER_VERSION}.exe",
     "oneClick": false,
     "deleteAppDataOnUninstall": true,
     "allowToChangeInstallationDirectory": true,
@@ -43,7 +33,7 @@
   },
   "mac": {
     "executableName": "Aba",
-    "artifactName": "${productName}-${env.CHIA_INSTALLER_VERSION}.${ext}",
+    "artifactName": "${productName}-${env.ABA_INSTALLER_VERSION}.${ext}",
     "category": "public.app-category.finance",
     "target": "dmg",
     "icon": "src/assets/img/chia.icns",
@@ -75,7 +65,7 @@
     }
   },
   "linux": {
-    "artifactName": "${productName}-${env.CHIA_INSTALLER_VERSION}.${ext}",
+    "artifactName": "${productName}-${env.ABA_INSTALLER_VERSION}.${ext}",
     "icon": "src/assets/img/chia.icns"
   },
   "deb": {
