@@ -44,7 +44,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: abanetwork/rocky8-builder:latest
-    timeout-minutes: 40
+    timeout-minutes: 400
     outputs:
       aba-installer-version: ${{ steps.version_number.outputs.ABA_INSTALLER_VERSION }}
     strategy:
