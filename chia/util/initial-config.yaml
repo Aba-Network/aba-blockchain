@@ -423,6 +423,7 @@ full_node:
     - "dns-introducer.aba.ooo"
     - "dns-introducer.abacoin.io"
     - "dns-introducer.abacoin.net"
+    - "dns-introducer.aba-project.io"
   introducer_peer:
     host: introducer.aba.ooo #
     port: 8644
