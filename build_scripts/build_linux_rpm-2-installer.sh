@@ -75,7 +75,7 @@ fpm -s dir -t rpm \
   --license Apache-2.0 \
   --version "$ABA_INSTALLER_VERSION" \
   --architecture "$REDHAT_PLATFORM" \
-  --description "Chia is a modern cryptocurrency built from scratch, designed to be efficient, decentralized, and secure." \
+  --description "Aba is a modern cryptocurrency designed to be efficient, decentralized, and secure." \
   --rpm-tag 'Recommends: libxcrypt-compat' \
   --rpm-tag '%define _build_id_links none' \
   --rpm-tag '%undefine _missing_build_ids_terminate_build' \
@@ -102,12 +102,12 @@ fi
 PRODUCT_NAME="aba"
 echo npx electron-builder build --linux rpm "${OPT_ARCH}" \
   --config.extraMetadata.name=aba-blockchain \
-  --config.productName="${PRODUCT_NAME}" --config.linux.desktop.Name="Chia Blockchain" \
+  --config.productName="${PRODUCT_NAME}" --config.linux.desktop.Name="Aba Blockchain" \
   --config.rpm.packageName="aba-blockchain" \
   --config ../../../build_scripts/electron-builder.json
 npx electron-builder build --linux rpm "${OPT_ARCH}" \
   --config.extraMetadata.name=aba-blockchain \
-  --config.productName="${PRODUCT_NAME}" --config.linux.desktop.Name="Chia Blockchain" \
+  --config.productName="${PRODUCT_NAME}" --config.linux.desktop.Name="Aba Blockchain" \
   --config.rpm.packageName="aba-blockchain" \
   --config ../../../build_scripts/electron-builder.json
 LAST_EXIT_CODE=$?
