@@ -277,7 +277,7 @@ class FullNodeDiscovery:
 
     async def _connect_to_peers(self, random: Random) -> None:
         next_feeler = self._poisson_next_send(time.time() * 1000 * 1000, 240, random)
-        retry_introducers = False
+        retry_introducers = True #False
         dns_server_index: int = 0
         tried_all_dns_servers: bool = False
         local_peerinfo: Optional[PeerInfo] = await self.server.get_peer_info()

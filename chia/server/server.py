@@ -141,6 +141,7 @@ class ChiaServer:
     received_message_callback: Optional[ConnectionCallback] = None
     banned_peers: Dict[str, float] = field(default_factory=dict)
     invalid_protocol_ban_seconds = INVALID_PROTOCOL_BAN_SECONDS
+    blocked_ports: List[int] = field(default_factory=lambda: [8444, 8544, 28744])
 
     @classmethod
     def create(
@@ -306,6 +307,25 @@ class ChiaServer:
             reason = f"Peer {request.remote} is banned, refusing connection"
             self.log.warning(reason)
             raise web.HTTPForbidden(reason=reason)
+            
+        # Check if the peer's port is blocked
+        try:
+            peer_port = None
+            if ":" in request.remote:
+                # IPv4 address format: 127.0.0.1:12345
+                peer_port = int(request.remote.split(":")[-1])
+            elif "]:" in request.remote:
+                # IPv6 address format: [::1]:12345
+                peer_port = int(request.remote.split("]:")[-1])
+                
+            if peer_port is not None and peer_port in self.blocked_ports:
+                reason = f"Peer {request.remote} is connecting from blocked port {peer_port}, refusing connection"
+                self.log.warning(reason)
+                raise web.HTTPForbidden(reason=reason)
+        except (ValueError, IndexError):
+            # If we can't parse the port, continue with the connection
+            pass
+            
         ws = web.WebSocketResponse(max_msg_size=max_message_size)
         await ws.prepare(request)
         ssl_object = request.get_extra_info("ssl_object")
@@ -420,6 +440,11 @@ class ChiaServer:
 
         if target_node.host in self.banned_peers and time.time() < self.banned_peers[target_node.host]:
             self.log.warning(f"Peer {target_node.host} is still banned, not connecting to it")
+            return False
+            
+        # Check if the target node's port is blocked
+        if target_node.port in self.blocked_ports:
+            self.log.warning(f"Not connecting to {target_node.host}:{target_node.port}, port is blocked")
             return False
 
         session = None
